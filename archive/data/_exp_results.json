@@ -1,0 +1,2178 @@
+{
+  "baseline": {
+    "mrr_5": 0.5889,
+    "precision_5": 0.1467,
+    "recall_5": 0.6667,
+    "latency_ms": 375.78,
+    "rankings": [
+      {
+        "query": "whiteboard architecture diagram explanation",
+        "top_1_id": "sports_news_breakdown_372460f80e66",
+        "top_1_score": 0.236208,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "sports_news_breakdown_372460f80e66",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "space view earth horizon nasa shuttle",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.270869,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "crowd standing at podium american flags",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.288238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "person speaking at microphone press conference",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.270131,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "city buildings traffic skyline scene",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.206615,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49",
+          "identity_politics_interview_d8c8047ee6b7",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "studio news anchor desk broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275204,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "military soldier uniform parade format",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.221187,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "middle_east_news_report_0a56c7e5359d",
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "rocket launch satellite in space horizon",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.26844,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "audience clapping audience applause classroom",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.258985,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "sports stadium field green grass lights",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.217203,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "discussion about interest rates and economy inflation",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.245011,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "thank you very much democracy God bless America speech",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.299616,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "interview discussion regarding identity politics",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.256977,
+        "top_1_rrf": 0.016129,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "atheist debate faith religion interview",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.267738,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "opening ceremony address welcome distinguished guests",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.245549,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "football game highlights score final breakdown",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.245291,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "NASA space mission trajectory countdown report",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275985,
+        "top_1_rrf": 0.015385,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "middle east conflict international relations statement",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.272784,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "philosophical moral debate reasoning evidence",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.243138,
+        "top_1_rrf": 0.015385,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "political campaign election public voting rights",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.231261,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "Obama speaking at podium during farewell address to public",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.326872,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "broadcast presenter discussing whiteboard tactical breakdown",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.246946,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "middle_east_news_report_0a56c7e5359d",
+          "nasa_space_flight_news_a485d4f58b49",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "NASA astronaut footage earth orbit background communication",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.303064,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east news report city background speaker",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.29912,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "opening speech stage lights banner welcome address",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.254671,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "two people seated in studio room interview dialogue",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.262982,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "identity politics discussion panelist speaking",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.246238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "presidential speech audience waving cheering",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.314014,
+        "top_1_rrf": 0.015873,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "news report on economics financial chart broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.269273,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "ecns_opening_speech_665f4791a4e8",
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "sports arena crowd cheering match commentary",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.298901,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      }
+    ]
+  },
+  "fixed_alpha_0_5": {
+    "mrr_5": 0.5889,
+    "precision_5": 0.1467,
+    "recall_5": 0.6667,
+    "latency_ms": 313.92,
+    "rankings": [
+      {
+        "query": "whiteboard architecture diagram explanation",
+        "top_1_id": "sports_news_breakdown_372460f80e66",
+        "top_1_score": 0.236208,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "sports_news_breakdown_372460f80e66",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "space view earth horizon nasa shuttle",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.270869,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "crowd standing at podium american flags",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.288238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "person speaking at microphone press conference",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.270131,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "city buildings traffic skyline scene",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.206615,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49",
+          "identity_politics_interview_d8c8047ee6b7",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "studio news anchor desk broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275204,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "military soldier uniform parade format",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.221187,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "middle_east_news_report_0a56c7e5359d",
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "rocket launch satellite in space horizon",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.26844,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "audience clapping audience applause classroom",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.258985,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "sports stadium field green grass lights",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.217203,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "discussion about interest rates and economy inflation",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.245011,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "thank you very much democracy God bless America speech",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.299616,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "interview discussion regarding identity politics",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.256977,
+        "top_1_rrf": 0.016129,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "atheist debate faith religion interview",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.267738,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "opening ceremony address welcome distinguished guests",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.245549,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "football game highlights score final breakdown",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.245291,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "NASA space mission trajectory countdown report",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275985,
+        "top_1_rrf": 0.015385,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "middle east conflict international relations statement",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.272784,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "philosophical moral debate reasoning evidence",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.243138,
+        "top_1_rrf": 0.015385,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "political campaign election public voting rights",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.231261,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "Obama speaking at podium during farewell address to public",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.326872,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "broadcast presenter discussing whiteboard tactical breakdown",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.246946,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "middle_east_news_report_0a56c7e5359d",
+          "nasa_space_flight_news_a485d4f58b49",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "NASA astronaut footage earth orbit background communication",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.303064,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east news report city background speaker",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.29912,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "opening speech stage lights banner welcome address",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.254671,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "two people seated in studio room interview dialogue",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.262982,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "identity politics discussion panelist speaking",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.246238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "presidential speech audience waving cheering",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.314014,
+        "top_1_rrf": 0.015873,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "news report on economics financial chart broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.269273,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "ecns_opening_speech_665f4791a4e8",
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "sports arena crowd cheering match commentary",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.298901,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      }
+    ]
+  },
+  "fixed_alpha_1_0": {
+    "mrr_5": 0.5611,
+    "precision_5": 0.1333,
+    "recall_5": 0.6167,
+    "latency_ms": 174.89,
+    "rankings": [
+      {
+        "query": "whiteboard architecture diagram explanation",
+        "top_1_id": "sports_news_breakdown_372460f80e66",
+        "top_1_score": 0.236208,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "sports_news_breakdown_372460f80e66",
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "space view earth horizon nasa shuttle",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.270869,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "crowd standing at podium american flags",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.288238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "person speaking at microphone press conference",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.270131,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "city buildings traffic skyline scene",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.206615,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "studio news anchor desk broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275204,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "military soldier uniform parade format",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.221187,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "rocket launch satellite in space horizon",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.26844,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "audience clapping audience applause classroom",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.258985,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "sports stadium field green grass lights",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.217203,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "discussion about interest rates and economy inflation",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.245011,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "thank you very much democracy God bless America speech",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.299616,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "interview discussion regarding identity politics",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.258643,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "atheist debate faith religion interview",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.267738,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "opening ceremony address welcome distinguished guests",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.245549,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "football game highlights score final breakdown",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.245291,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "NASA space mission trajectory countdown report",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.281286,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east conflict international relations statement",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.272784,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "philosophical moral debate reasoning evidence",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.257135,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "political campaign election public voting rights",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.231261,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "identity_politics_interview_d8c8047ee6b7",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "Obama speaking at podium during farewell address to public",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.326872,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "broadcast presenter discussing whiteboard tactical breakdown",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.246946,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "NASA astronaut footage earth orbit background communication",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.303064,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east news report city background speaker",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.29912,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "opening speech stage lights banner welcome address",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.254671,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "two people seated in studio room interview dialogue",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.262982,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "identity politics discussion panelist speaking",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.246238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "presidential speech audience waving cheering",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.315914,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "news report on economics financial chart broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.269273,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "sports arena crowd cheering match commentary",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.298901,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      }
+    ]
+  },
+  "fixed_alpha_0_0": {
+    "mrr_5": 0.5611,
+    "precision_5": 0.1333,
+    "recall_5": 0.6167,
+    "latency_ms": 173.97,
+    "rankings": [
+      {
+        "query": "whiteboard architecture diagram explanation",
+        "top_1_id": "sports_news_breakdown_372460f80e66",
+        "top_1_score": 0.236208,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "sports_news_breakdown_372460f80e66",
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "space view earth horizon nasa shuttle",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.270869,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "crowd standing at podium american flags",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.288238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "person speaking at microphone press conference",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.270131,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "city buildings traffic skyline scene",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.206615,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "studio news anchor desk broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275204,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "military soldier uniform parade format",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.221187,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "rocket launch satellite in space horizon",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.26844,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "audience clapping audience applause classroom",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.258985,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "sports stadium field green grass lights",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.217203,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "discussion about interest rates and economy inflation",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.245011,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "thank you very much democracy God bless America speech",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.299616,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "interview discussion regarding identity politics",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.258643,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "atheist debate faith religion interview",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.267738,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "opening ceremony address welcome distinguished guests",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.245549,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "football game highlights score final breakdown",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.245291,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "NASA space mission trajectory countdown report",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.281286,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east conflict international relations statement",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.272784,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "philosophical moral debate reasoning evidence",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.257135,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "political campaign election public voting rights",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.231261,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "identity_politics_interview_d8c8047ee6b7",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "Obama speaking at podium during farewell address to public",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.326872,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "broadcast presenter discussing whiteboard tactical breakdown",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.246946,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "NASA astronaut footage earth orbit background communication",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.303064,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east news report city background speaker",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.29912,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "opening speech stage lights banner welcome address",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.254671,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "two people seated in studio room interview dialogue",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.262982,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "identity politics discussion panelist speaking",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.246238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "presidential speech audience waving cheering",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.315914,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "news report on economics financial chart broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.269273,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "sports arena crowd cheering match commentary",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.298901,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      }
+    ]
+  },
+  "disabled_reranker": {
+    "mrr_5": 0.6622,
+    "precision_5": 0.1933,
+    "recall_5": 0.9,
+    "latency_ms": 216.97,
+    "rankings": [
+      {
+        "query": "whiteboard architecture diagram explanation",
+        "top_1_id": "sports_news_breakdown_372460f80e66",
+        "top_1_score": 0.236208,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "sports_news_breakdown_372460f80e66",
+          "atheist_discussion_interview_a3bb4396b531",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "space view earth horizon nasa shuttle",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.270869,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "crowd standing at podium american flags",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.288238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "sports_news_breakdown_372460f80e66",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "person speaking at microphone press conference",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.270131,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "obama_farewell_speech_353ca4868dfb",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "city buildings traffic skyline scene",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.206615,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "obama_farewell_speech_353ca4868dfb",
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "studio news anchor desk broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275204,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "obama_farewell_speech_353ca4868dfb",
+          "atheist_discussion_interview_a3bb4396b531",
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "military soldier uniform parade format",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.221187,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "rocket launch satellite in space horizon",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.26844,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "ecns_opening_speech_665f4791a4e8",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "audience clapping audience applause classroom",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.258985,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8",
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "sports stadium field green grass lights",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.217203,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66",
+          "ecns_opening_speech_665f4791a4e8",
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "discussion about interest rates and economy inflation",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.245011,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "thank you very much democracy God bless America speech",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.299616,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8",
+          "sports_news_breakdown_372460f80e66",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "interview discussion regarding identity politics",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.258643,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "atheist debate faith religion interview",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.267738,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "sports_news_breakdown_372460f80e66",
+          "atheist_discussion_interview_a3bb4396b531",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "opening ceremony address welcome distinguished guests",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.245549,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "sports_news_breakdown_372460f80e66",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "football game highlights score final breakdown",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.245291,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "sports_news_breakdown_372460f80e66",
+          "ecns_opening_speech_665f4791a4e8",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "NASA space mission trajectory countdown report",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.281286,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "middle east conflict international relations statement",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.272784,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "philosophical moral debate reasoning evidence",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.257135,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8",
+          "sports_news_breakdown_372460f80e66",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "political campaign election public voting rights",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.231261,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66",
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "Obama speaking at podium during farewell address to public",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.326872,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "sports_news_breakdown_372460f80e66",
+          "middle_east_news_report_0a56c7e5359d",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "broadcast presenter discussing whiteboard tactical breakdown",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.246946,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "sports_news_breakdown_372460f80e66",
+          "atheist_discussion_interview_a3bb4396b531",
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "NASA astronaut footage earth orbit background communication",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.303064,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "ecns_opening_speech_665f4791a4e8",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "middle east news report city background speaker",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.29912,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66",
+          "ecns_opening_speech_665f4791a4e8",
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "opening speech stage lights banner welcome address",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.254671,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "two people seated in studio room interview dialogue",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.262982,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "obama_farewell_speech_353ca4868dfb",
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "identity politics discussion panelist speaking",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.246238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "sports_news_breakdown_372460f80e66",
+          "atheist_discussion_interview_a3bb4396b531",
+          "identity_politics_interview_d8c8047ee6b7",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "presidential speech audience waving cheering",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.315914,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "news report on economics financial chart broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.269273,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66",
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "sports arena crowd cheering match commentary",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.298901,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      }
+    ]
+  },
+  "disabled_mmr": {
+    "mrr_5": 0.5611,
+    "precision_5": 0.1333,
+    "recall_5": 0.6167,
+    "latency_ms": 176.63,
+    "rankings": [
+      {
+        "query": "whiteboard architecture diagram explanation",
+        "top_1_id": "sports_news_breakdown_372460f80e66",
+        "top_1_score": 0.236208,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "sports_news_breakdown_372460f80e66",
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "space view earth horizon nasa shuttle",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.270869,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "crowd standing at podium american flags",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.288238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "person speaking at microphone press conference",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.270131,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "obama_farewell_speech_353ca4868dfb",
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "city buildings traffic skyline scene",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.206615,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "studio news anchor desk broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275204,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "military soldier uniform parade format",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.221187,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "rocket launch satellite in space horizon",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.26844,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "audience clapping audience applause classroom",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.258985,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "sports stadium field green grass lights",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.217203,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "discussion about interest rates and economy inflation",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.245011,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "thank you very much democracy God bless America speech",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.299616,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "interview discussion regarding identity politics",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.256977,
+        "top_1_rrf": 0.016129,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "atheist debate faith religion interview",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.267738,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "opening ceremony address welcome distinguished guests",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.245549,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "football game highlights score final breakdown",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.245291,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "NASA space mission trajectory countdown report",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275985,
+        "top_1_rrf": 0.015385,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east conflict international relations statement",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.272784,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "philosophical moral debate reasoning evidence",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.243138,
+        "top_1_rrf": 0.015385,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "political campaign election public voting rights",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.231261,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "identity_politics_interview_d8c8047ee6b7",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "Obama speaking at podium during farewell address to public",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.326872,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "broadcast presenter discussing whiteboard tactical breakdown",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.246946,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "NASA astronaut footage earth orbit background communication",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.303064,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east news report city background speaker",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.29912,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "opening speech stage lights banner welcome address",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.254671,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "two people seated in studio room interview dialogue",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.262982,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "identity politics discussion panelist speaking",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.246238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "presidential speech audience waving cheering",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.314014,
+        "top_1_rrf": 0.015873,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "news report on economics financial chart broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.269273,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "sports arena crowd cheering match commentary",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.298901,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      }
+    ]
+  },
+  "disabled_reranker_and_mmr": {
+    "mrr_5": 0.5611,
+    "precision_5": 0.1333,
+    "recall_5": 0.6167,
+    "latency_ms": 177.47,
+    "rankings": [
+      {
+        "query": "whiteboard architecture diagram explanation",
+        "top_1_id": "sports_news_breakdown_372460f80e66",
+        "top_1_score": 0.236208,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "sports_news_breakdown_372460f80e66",
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "space view earth horizon nasa shuttle",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.270869,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "crowd standing at podium american flags",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.288238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "person speaking at microphone press conference",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.270131,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "city buildings traffic skyline scene",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.206615,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "studio news anchor desk broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.275204,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "military soldier uniform parade format",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.221187,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "nasa_space_flight_news_a485d4f58b49",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "rocket launch satellite in space horizon",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.26844,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "audience clapping audience applause classroom",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.258985,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "sports stadium field green grass lights",
+        "top_1_id": "atheist_discussion_interview_a3bb4396b531",
+        "top_1_score": 0.217203,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "atheist_discussion_interview_a3bb4396b531",
+          "sports_news_breakdown_372460f80e66"
+        ]
+      },
+      {
+        "query": "discussion about interest rates and economy inflation",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.245011,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "thank you very much democracy God bless America speech",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.299616,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "interview discussion regarding identity politics",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.258643,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "atheist debate faith religion interview",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.267738,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "opening ceremony address welcome distinguished guests",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.245549,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "football game highlights score final breakdown",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.245291,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "nasa_space_flight_news_a485d4f58b49",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "NASA space mission trajectory countdown report",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.281286,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east conflict international relations statement",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.272784,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d"
+        ]
+      },
+      {
+        "query": "philosophical moral debate reasoning evidence",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.257135,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "political campaign election public voting rights",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.231261,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49",
+          "identity_politics_interview_d8c8047ee6b7",
+          "atheist_discussion_interview_a3bb4396b531"
+        ]
+      },
+      {
+        "query": "Obama speaking at podium during farewell address to public",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.326872,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "broadcast presenter discussing whiteboard tactical breakdown",
+        "top_1_id": "identity_politics_interview_d8c8047ee6b7",
+        "top_1_score": 0.246946,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "NASA astronaut footage earth orbit background communication",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.303064,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "middle east news report city background speaker",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.29912,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "opening speech stage lights banner welcome address",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.254671,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "two people seated in studio room interview dialogue",
+        "top_1_id": "middle_east_news_report_0a56c7e5359d",
+        "top_1_score": 0.262982,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7",
+          "ecns_opening_speech_665f4791a4e8"
+        ]
+      },
+      {
+        "query": "identity politics discussion panelist speaking",
+        "top_1_id": "ecns_opening_speech_665f4791a4e8",
+        "top_1_score": 0.246238,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "ecns_opening_speech_665f4791a4e8",
+          "middle_east_news_report_0a56c7e5359d",
+          "identity_politics_interview_d8c8047ee6b7"
+        ]
+      },
+      {
+        "query": "presidential speech audience waving cheering",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.315914,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      },
+      {
+        "query": "news report on economics financial chart broadcast",
+        "top_1_id": "nasa_space_flight_news_a485d4f58b49",
+        "top_1_score": 0.269273,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "nasa_space_flight_news_a485d4f58b49"
+        ]
+      },
+      {
+        "query": "sports arena crowd cheering match commentary",
+        "top_1_id": "obama_farewell_speech_353ca4868dfb",
+        "top_1_score": 0.298901,
+        "top_1_rrf": 0.016393,
+        "retrieved": [
+          "obama_farewell_speech_353ca4868dfb"
+        ]
+      }
+    ]
+  }
+}

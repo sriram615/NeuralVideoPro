@@ -104,7 +104,7 @@ export async function fetchSearch(
   query: string,
   topK = 5,
   overrideAlpha?: number,
-  domainFilter = "news",
+  domainFilter = "all",
 ): Promise<SearchResponse> {
   return apiFetch<SearchResponse>("/api/v1/search", {
     method: "POST",
@@ -128,8 +128,11 @@ export function staticVideoUrl(filename: string): string {
 
 /** Construct full URL for static keyframe assets served by FastAPI. */
 export function staticFrameUrl(framePath: string): string {
-  const cleaned = framePath
-    .replace(/^\.\/data\/extracted_frames\//, "")
-    .replace(/^data\/extracted_frames\//, "");
-  return `${API_BASE}/static/frames/${cleaned}`;
+  if (!framePath) return "";
+  const match = framePath.match(/(?:extracted_frames\/|extracted_frames_v2\/|extracted_frames_my_llm_talk\/)(.+)$/);
+  if (match && match[1]) {
+    return `${API_BASE}/static/frames/${match[1]}`;
+  }
+  const basename = framePath.split("/").pop() || "";
+  return `${API_BASE}/static/frames/${basename}`;
 }
