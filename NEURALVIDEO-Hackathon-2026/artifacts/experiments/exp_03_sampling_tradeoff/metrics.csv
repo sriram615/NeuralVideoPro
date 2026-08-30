@@ -1,0 +1,3 @@
+sampling_method,keyframes_yielded,extraction_time_s,compression_ratio_pct
+Uniform 1 FPS Sampling,91,0.97,0.0
+Adaptive HSV Threshold (tau=0.25),91,0.91,0.0

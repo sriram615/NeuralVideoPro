@@ -1,0 +1,328 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CTHDRL.CO EXACT EDITORIAL BRUTALIST DESIGN SYSTEM
+   Palette:
+     Background: Pitch Charcoal (#0C0C0C)
+     Primary Text: Warm Bone Cream (#E6E1D5)
+     Muted Text / Wireframe: rgba(230, 225, 213, 0.45)
+     Wireframe Border: rgba(230, 225, 213, 0.25)
+     Accent Cyan: #38BDF8
+   ============================================================ */
+
+:root {
+  --bg-pitch: #0c0c0c;
+  --text-bone: #e6e1d5;
+  --text-muted: rgba(230, 225, 213, 0.45);
+  --border-wire: rgba(230, 225, 213, 0.25);
+  --accent-cyan: #00ff66;
+  --accent-cyan-dim: rgba(0, 255, 102, 0.2);
+}
+
+/* ── Base Reset ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-pitch);
+  color: var(--text-bone);
+}
+
+body {
+  background-color: var(--bg-pitch);
+  color: var(--text-bone);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Heavy Grain Texture ───────────────────────────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Page View Setup (Clean 100% Viewport Isolation) ─────────────── */
+.page-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-pitch);
+}
+
+.page-view {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--bg-pitch);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-view-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  z-index: 10;
+}
+
+.page-view-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(20px);
+  z-index: 0;
+}
+
+/* ── Header Bar ───────────────────────────────── */
+.cthdrl-header {
+  height: 56px;
+  border-bottom: 1px solid var(--border-wire);
+  display: flex;
+  align-items: stretch;
+  background-color: rgba(12, 12, 12, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 50;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.cthdrl-logo-box {
+  width: 60px;
+  border-right: 1px solid var(--border-wire);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.cthdrl-logo-box:hover {
+  background-color: rgba(230, 225, 213, 0.05);
+}
+
+.cthdrl-nav-block {
+  padding: 0 20px;
+  border-right: 1px solid var(--border-wire);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: ui-monospace, "SF Mono", "Fira Code", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-bone);
+  flex-shrink: 0;
+}
+
+.cthdrl-header-ticker {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  border-right: 1px solid var(--border-wire);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-bone);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cthdrl-page-counter {
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: ui-monospace, "SF Mono", monospace;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+/* ── Mass Typography ───────────────────────────────── */
+.cthdrl-hero-heading {
+  font-size: clamp(2.5rem, 5.5vw, 6rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: var(--text-bone);
+}
+
+.cthdrl-section-heading {
+  font-size: clamp(2.2rem, 4.5vw, 4.8rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--text-bone);
+}
+
+/* Monospaced labels — HIGH CONTRAST */
+.cthdrl-mono {
+  font-family: ui-monospace, "SF Mono", "Fira Code", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(230, 225, 213, 0.75);
+}
+
+.cthdrl-mono-bright {
+  font-family: ui-monospace, "SF Mono", "Fira Code", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+}
+
+/* ── Wire Borders ───────────────────────────────────── */
+.wire-b {
+  border-bottom: 1px solid var(--border-wire);
+}
+
+.wire-r {
+  border-right: 1px solid var(--border-wire);
+}
+
+.wire-t {
+  border-top: 1px solid var(--border-wire);
+}
+
+.wire-l {
+  border-left: 1px solid var(--border-wire);
+}
+
+.wire-all {
+  border: 1px solid var(--border-wire);
+}
+
+/* ── Large Arrow Links ──────────────────────────────── */
+.cthdrl-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--text-bone);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.cthdrl-link-btn:hover {
+  color: var(--accent-cyan);
+  transform: translateX(4px);
+}
+
+/* ── Terminal Input ────────────────────────────────────────── */
+.cthdrl-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: none !important;
+  color: #ffffff;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  padding: 26px 36px;
+  width: 100%;
+  outline: none;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cthdrl-input::placeholder {
+  color: rgba(230, 225, 213, 0.4);
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  font-weight: 500;
+}
+
+.cthdrl-input:focus {
+  background: rgba(255, 255, 255, 0.13);
+  box-shadow: 0 0 35px rgba(0, 255, 102, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.15);
+}
+
+/* ── Dome Vault Mask for Video / Frame Container ────────────── */
+.dome-mask-container {
+  border-radius: 400px 400px 0 0;
+  overflow: hidden;
+  border: 1px solid var(--border-wire);
+  position: relative;
+  background: #000;
+}
+
+/* ── Horizontal Scroll Gallery ─────────────────────────────── */
+.cthdrl-card {
+  width: 480px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-wire);
+  background-color: #0c0c0c;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.cthdrl-card:hover {
+  border-color: rgba(230, 225, 213, 0.6);
+}
+
+/* ── Highlighted Transcript Badge ──────────────────────────── */
+.transcript-mark {
+  background: rgba(0, 255, 102, 0.2);
+  color: #00ff66;
+  padding: 2px 6px;
+  border: 1px solid rgba(0, 255, 102, 0.4);
+  font-weight: 600;
+}
+
+/* ── KaTeX Math Override ───────────────────────────────────── */
+.katex {
+  color: var(--text-bone) !important;
+  font-size: 1.1em !important;
+}
+
+/* ── Custom Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(230, 225, 213, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(230, 225, 213, 0.5);
+}

@@ -1,0 +1,25 @@
+config,query,top1_score,redundant_pairs_in_top5
+Base Retrieval (No MMR / No Rerank),whiteboard discussion on artificial intelligence,0.2526,0
+Base Retrieval (No MMR / No Rerank),security camera footage of incident scene,0.3112,0
+Base Retrieval (No MMR / No Rerank),person wearing black jacket,0.2639,0
+Base Retrieval (No MMR / No Rerank),speaker discussing transformers and neural networks,0.2784,0
+Base Retrieval (No MMR / No Rerank),television shoots for the lowest common denominator,0.2491,0
+Base Retrieval (No MMR / No Rerank),discussion about interest rates and inflation,0.2472,0
+Base Retrieval (No MMR / No Rerank),Show me where Steve Jobs talks about AI,0.2909,0
+Base Retrieval (No MMR / No Rerank),speaker presenting at podium,0.2793,0
+RRF + Cross-Agreement (No MMR),whiteboard discussion on artificial intelligence,0.2526,0
+RRF + Cross-Agreement (No MMR),security camera footage of incident scene,0.3112,0
+RRF + Cross-Agreement (No MMR),person wearing black jacket,0.2639,0
+RRF + Cross-Agreement (No MMR),speaker discussing transformers and neural networks,0.2784,0
+RRF + Cross-Agreement (No MMR),television shoots for the lowest common denominator,0.2491,0
+RRF + Cross-Agreement (No MMR),discussion about interest rates and inflation,0.2472,0
+RRF + Cross-Agreement (No MMR),Show me where Steve Jobs talks about AI,0.2909,0
+RRF + Cross-Agreement (No MMR),speaker presenting at podium,0.2793,0
+RRF + Cross-Agreement + MMR (Default),whiteboard discussion on artificial intelligence,0.2526,0
+RRF + Cross-Agreement + MMR (Default),security camera footage of incident scene,0.3112,0
+RRF + Cross-Agreement + MMR (Default),person wearing black jacket,0.2639,0
+RRF + Cross-Agreement + MMR (Default),speaker discussing transformers and neural networks,0.2784,0
+RRF + Cross-Agreement + MMR (Default),television shoots for the lowest common denominator,0.2491,0
+RRF + Cross-Agreement + MMR (Default),discussion about interest rates and inflation,0.2472,0
+RRF + Cross-Agreement + MMR (Default),Show me where Steve Jobs talks about AI,0.2909,0
+RRF + Cross-Agreement + MMR (Default),speaker presenting at podium,0.2793,0

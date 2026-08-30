@@ -1,0 +1,212 @@
+[
+  {
+    "query_id": "v_01",
+    "query": "whiteboard architecture diagram explanation",
+    "category": "visual",
+    "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
+    "ground_truth_timestamps": [12.0, 45.0]
+  },
+  {
+    "query_id": "v_02",
+    "query": "space view earth horizon nasa shuttle",
+    "category": "visual",
+    "ground_truth_video_ids": ["nasa_space_flight_news_a485d4f58b49"],
+    "ground_truth_timestamps": [0.0]
+  },
+  {
+    "query_id": "v_03",
+    "query": "crowd standing at podium american flags",
+    "category": "visual",
+    "ground_truth_video_ids": ["obama_farewell_speech_353ca4868dfb", "ecns_opening_speech_665f4791a4e8"],
+    "ground_truth_timestamps": [58.0]
+  },
+  {
+    "query_id": "v_04",
+    "query": "person speaking at microphone press conference",
+    "category": "visual",
+    "ground_truth_video_ids": ["ecns_opening_speech_665f4791a4e8", "obama_farewell_speech_353ca4868dfb"],
+    "ground_truth_timestamps": [10.0]
+  },
+  {
+    "query_id": "v_05",
+    "query": "city buildings traffic skyline scene",
+    "category": "visual",
+    "ground_truth_video_ids": ["middle_east_news_report_0a56c7e5359d"],
+    "ground_truth_timestamps": [5.0]
+  },
+  {
+    "query_id": "v_06",
+    "query": "studio news anchor desk broadcast",
+    "category": "visual",
+    "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66", "middle_east_news_report_0a56c7e5359d"],
+    "ground_truth_timestamps": [0.0]
+  },
+  {
+    "query_id": "v_07",
+    "query": "military soldier uniform parade format",
+    "category": "visual",
+    "ground_truth_video_ids": ["middle_east_news_report_0a56c7e5359d"],
+    "ground_truth_timestamps": [20.0]
+  },
+  {
+    "query_id": "v_08",
+    "query": "rocket launch satellite in space horizon",
+    "category": "visual",
+    "ground_truth_video_ids": ["nasa_space_flight_news_a485d4f58b49"],
+    "ground_truth_timestamps": [15.0]
+  },
+  {
+    "query_id": "v_09",
+    "query": "audience clapping audience applause classroom",
+    "category": "visual",
+    "ground_truth_video_ids": ["obama_farewell_speech_353ca4868dfb"],
+    "ground_truth_timestamps": [110.0]
+  },
+  {
+    "query_id": "v_10",
+    "query": "sports stadium field green grass lights",
+    "category": "visual",
+    "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
+    "ground_truth_timestamps": [100.0]
+  },
+  {
+    "query_id": "a_01",
+    "query": "discussion about interest rates and economy inflation",
+    "category": "audio",
+    "ground_truth_video_ids": ["middle_east_news_report_0a56c7e5359d"],
+    "ground_truth_timestamps": [45.0]
+  },
+  {
+    "query_id": "a_02",
+    "query": "thank you very much democracy God bless America speech",
+    "category": "audio",
+    "ground_truth_video_ids": ["obama_farewell_speech_353ca4868dfb"],
+    "ground_truth_timestamps": [50.0]
+  },
+  {
+    "query_id": "a_03",
+    "query": "interview discussion regarding identity politics",
+    "category": "audio",
+    "ground_truth_video_ids": ["identity_politics_interview_d8c8047ee6b7"],
+    "ground_truth_timestamps": [15.0]
+  },
+  {
+    "query_id": "a_04",
+    "query": "atheist debate faith religion interview",
+    "category": "audio",
+    "ground_truth_video_ids": ["atheist_discussion_interview_a3bb4396b531"],
+    "ground_truth_timestamps": [30.0]
+  },
+  {
+    "query_id": "a_05",
+    "query": "opening ceremony address welcome distinguished guests",
+    "category": "audio",
+    "ground_truth_video_ids": ["ecns_opening_speech_665f4791a4e8"],
+    "ground_truth_timestamps": [5.0]
+  },
+  {
+    "query_id": "a_06",
+    "query": "football game highlights score final breakdown",
+    "category": "audio",
+    "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
+    "ground_truth_timestamps": [250.0]
+  },
+  {
+    "query_id": "a_07",
+    "query": "NASA space mission trajectory countdown report",
+    "category": "audio",
+    "ground_truth_video_ids": ["nasa_space_flight_news_a485d4f58b49"],
+    "ground_truth_timestamps": [30.0]
+  },
+  {
+    "query_id": "a_08",
+    "query": "middle east conflict international relations statement",
+    "category": "audio",
+    "ground_truth_video_ids": ["middle_east_news_report_0a56c7e5359d"],
+    "ground_truth_timestamps": [60.0]
+  },
+  {
+    "query_id": "a_09",
+    "query": "philosophical moral debate reasoning evidence",
+    "category": "audio",
+    "ground_truth_video_ids": ["atheist_discussion_interview_a3bb4396b531"],
+    "ground_truth_timestamps": [120.0]
+  },
+  {
+    "query_id": "a_10",
+    "query": "political campaign election public voting rights",
+    "category": "audio",
+    "ground_truth_video_ids": ["identity_politics_interview_d8c8047ee6b7"],
+    "ground_truth_timestamps": [40.0]
+  },
+  {
+    "query_id": "h_01",
+    "query": "Obama speaking at podium during farewell address to public",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["obama_farewell_speech_353ca4868dfb"],
+    "ground_truth_timestamps": [58.1]
+  },
+  {
+    "query_id": "h_02",
+    "query": "broadcast presenter discussing whiteboard tactical breakdown",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
+    "ground_truth_timestamps": [12.0]
+  },
+  {
+    "query_id": "h_03",
+    "query": "NASA astronaut footage earth orbit background communication",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["nasa_space_flight_news_a485d4f58b49"],
+    "ground_truth_timestamps": [5.0]
+  },
+  {
+    "query_id": "h_04",
+    "query": "middle east news report city background speaker",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["middle_east_news_report_0a56c7e5359d"],
+    "ground_truth_timestamps": [10.0]
+  },
+  {
+    "query_id": "h_05",
+    "query": "opening speech stage lights banner welcome address",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["ecns_opening_speech_665f4791a4e8"],
+    "ground_truth_timestamps": [15.0]
+  },
+  {
+    "query_id": "h_06",
+    "query": "two people seated in studio room interview dialogue",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["atheist_discussion_interview_a3bb4396b531"],
+    "ground_truth_timestamps": [10.0]
+  },
+  {
+    "query_id": "h_07",
+    "query": "identity politics discussion panelist speaking",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["identity_politics_interview_d8c8047ee6b7"],
+    "ground_truth_timestamps": [20.0]
+  },
+  {
+    "query_id": "h_08",
+    "query": "presidential speech audience waving cheering",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["obama_farewell_speech_353ca4868dfb"],
+    "ground_truth_timestamps": [80.0]
+  },
+  {
+    "query_id": "h_09",
+    "query": "news report on economics financial chart broadcast",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["middle_east_news_report_0a56c7e5359d"],
+    "ground_truth_timestamps": [35.0]
+  },
+  {
+    "query_id": "h_10",
+    "query": "sports arena crowd cheering match commentary",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
+    "ground_truth_timestamps": [150.0]
+  }
+]

@@ -1,0 +1,33 @@
+================================================================================
+EXPERIMENT 2: Post-Processing & Redundancy Benchmark (RRF + MMR)
+================================================================================
+
+--- Testing Config: Base Retrieval (No MMR / No Rerank) ---
+  Query: 'whiteboard discussion on artificial...' | Top1 Score: 0.2526 | Redundant Pairs: 0
+  Query: 'security camera footage of incident...' | Top1 Score: 0.3112 | Redundant Pairs: 0
+  Query: 'person wearing black jacket...' | Top1 Score: 0.2639 | Redundant Pairs: 0
+  Query: 'speaker discussing transformers and...' | Top1 Score: 0.2784 | Redundant Pairs: 0
+  Query: 'television shoots for the lowest co...' | Top1 Score: 0.2491 | Redundant Pairs: 0
+  Query: 'discussion about interest rates and...' | Top1 Score: 0.2472 | Redundant Pairs: 0
+  Query: 'Show me where Steve Jobs talks abou...' | Top1 Score: 0.2909 | Redundant Pairs: 0
+  Query: 'speaker presenting at podium...' | Top1 Score: 0.2793 | Redundant Pairs: 0
+
+--- Testing Config: RRF + Cross-Agreement (No MMR) ---
+  Query: 'whiteboard discussion on artificial...' | Top1 Score: 0.2526 | Redundant Pairs: 0
+  Query: 'security camera footage of incident...' | Top1 Score: 0.3112 | Redundant Pairs: 0
+  Query: 'person wearing black jacket...' | Top1 Score: 0.2639 | Redundant Pairs: 0
+  Query: 'speaker discussing transformers and...' | Top1 Score: 0.2784 | Redundant Pairs: 0
+  Query: 'television shoots for the lowest co...' | Top1 Score: 0.2491 | Redundant Pairs: 0
+  Query: 'discussion about interest rates and...' | Top1 Score: 0.2472 | Redundant Pairs: 0
+  Query: 'Show me where Steve Jobs talks abou...' | Top1 Score: 0.2909 | Redundant Pairs: 0
+  Query: 'speaker presenting at podium...' | Top1 Score: 0.2793 | Redundant Pairs: 0
+
+--- Testing Config: RRF + Cross-Agreement + MMR (Default) ---
+  Query: 'whiteboard discussion on artificial...' | Top1 Score: 0.2526 | Redundant Pairs: 0
+  Query: 'security camera footage of incident...' | Top1 Score: 0.3112 | Redundant Pairs: 0
+  Query: 'person wearing black jacket...' | Top1 Score: 0.2639 | Redundant Pairs: 0
+  Query: 'speaker discussing transformers and...' | Top1 Score: 0.2784 | Redundant Pairs: 0
+  Query: 'television shoots for the lowest co...' | Top1 Score: 0.2491 | Redundant Pairs: 0
+  Query: 'discussion about interest rates and...' | Top1 Score: 0.2472 | Redundant Pairs: 0
+  Query: 'Show me where Steve Jobs talks abou...' | Top1 Score: 0.2909 | Redundant Pairs: 0
+  Query: 'speaker presenting at podium...' | Top1 Score: 0.2793 | Redundant Pairs: 0

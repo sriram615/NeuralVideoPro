@@ -1,0 +1,6 @@
+================================================================================
+EXPERIMENT 3: Keyframe Sampling & Ingestion Latency Trade-Off
+================================================================================
+Uniform 1 FPS Yield     : 91 frames (0.97s)
+Adaptive HSV (tau=0.25)  : 91 frames (0.91s)
+Keyframe Reduction Ratio : 0.0% reduction

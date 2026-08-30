@@ -1,0 +1,170 @@
+[
+  {
+    "category": "Visual Focus",
+    "query": "whiteboard architecture diagram",
+    "top_5_retrieved_events": [
+      {
+        "rank": 1,
+        "video_id": "sports_news_breakdown_372460f80e66",
+        "timestamp_range": "12:47 - 13:07",
+        "final_score": 0.0164,
+        "visual_score": 0.245149,
+        "audio_score": 0.0,
+        "transcript_snippet": "news video footage scene",
+        "match_rationale": "Visual vector cosine similarity (0.2451) + Audio similarity (0.0000) fused via RRF (0.0164) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 2,
+        "video_id": "identity_politics_interview_d8c8047ee6b7",
+        "timestamp_range": "00:38 - 00:58",
+        "final_score": 0.0133,
+        "visual_score": 0.183013,
+        "audio_score": 0.0,
+        "transcript_snippet": "everywhere. And underneath it all, I see this terrible striving for arbitrary power that's",
+        "match_rationale": "Visual vector cosine similarity (0.1830) + Audio similarity (0.0000) fused via RRF (0.0133) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 3,
+        "video_id": "sports_news_breakdown_372460f80e66",
+        "timestamp_range": "12:44 - 13:04",
+        "final_score": 0.013,
+        "visual_score": 0.182028,
+        "audio_score": 0.0,
+        "transcript_snippet": "A quaint call of ages of one and the platform.",
+        "match_rationale": "Visual vector cosine similarity (0.1820) + Audio similarity (0.0000) fused via RRF (0.0130) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 4,
+        "video_id": "identity_politics_interview_d8c8047ee6b7",
+        "timestamp_range": "00:42 - 01:02",
+        "final_score": 0.0148,
+        "visual_score": 0.184388,
+        "audio_score": 0.714847,
+        "transcript_snippet": "associated with this crazy utopianism. But I still don't exactly understand what seems to be the",
+        "match_rationale": "Visual vector cosine similarity (0.1844) + Audio similarity (0.7148) fused via RRF (0.0139) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 5,
+        "video_id": "identity_politics_interview_d8c8047ee6b7",
+        "timestamp_range": "00:02 - 00:22",
+        "final_score": 0.0137,
+        "visual_score": 0.183316,
+        "audio_score": 0.0,
+        "transcript_snippet": "and everything is a fluid culture that can be manipulated at will. In Canada, there are terrible arg",
+        "match_rationale": "Visual vector cosine similarity (0.1833) + Audio similarity (0.0000) fused via RRF (0.0137) and cross-modal agreement scoring."
+      }
+    ]
+  },
+  {
+    "category": "Audio Focus",
+    "query": "discussion about interest rates and inflation",
+    "top_5_retrieved_events": [
+      {
+        "rank": 1,
+        "video_id": "identity_politics_interview_d8c8047ee6b7",
+        "timestamp_range": "00:00 - 00:14",
+        "final_score": 0.0164,
+        "visual_score": 0.247158,
+        "audio_score": 0.0,
+        "transcript_snippet": "It seems to me what they're trying to do is to take all the potential power for the creation of huma",
+        "match_rationale": "Visual vector cosine similarity (0.2472) + Audio similarity (0.0000) fused via RRF (0.0164) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 2,
+        "video_id": "ecns_opening_speech_665f4791a4e8",
+        "timestamp_range": "05:59 - 06:19",
+        "final_score": 0.0137,
+        "visual_score": 0.237274,
+        "audio_score": 0.0,
+        "transcript_snippet": "the platform could not be cheap. The best layoffs and have a nice time in Istanbul. Thank you.",
+        "match_rationale": "Visual vector cosine similarity (0.2373) + Audio similarity (0.0000) fused via RRF (0.0137) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 3,
+        "video_id": "identity_politics_interview_d8c8047ee6b7",
+        "timestamp_range": "00:46 - 01:06",
+        "final_score": 0.0133,
+        "visual_score": 0.236943,
+        "audio_score": 0.0,
+        "transcript_snippet": "hatred that motivates it, and in the desire to do nothing but, let's say, demolish the patriarchy.",
+        "match_rationale": "Visual vector cosine similarity (0.2369) + Audio similarity (0.0000) fused via RRF (0.0133) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 4,
+        "video_id": "identity_politics_interview_d8c8047ee6b7",
+        "timestamp_range": "00:38 - 00:58",
+        "final_score": 0.0127,
+        "visual_score": 0.234197,
+        "audio_score": 0.0,
+        "transcript_snippet": "everywhere. And underneath it all, I see this terrible striving for arbitrary power that's",
+        "match_rationale": "Visual vector cosine similarity (0.2342) + Audio similarity (0.0000) fused via RRF (0.0127) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 5,
+        "video_id": "ecns_opening_speech_665f4791a4e8",
+        "timestamp_range": "05:57 - 06:17",
+        "final_score": 0.0125,
+        "visual_score": 0.234127,
+        "audio_score": 0.0,
+        "transcript_snippet": "the platform could not be cheap. The best layoffs and have a nice time in Istanbul. Thank you.",
+        "match_rationale": "Visual vector cosine similarity (0.2341) + Audio similarity (0.0000) fused via RRF (0.0125) and cross-modal agreement scoring."
+      }
+    ]
+  },
+  {
+    "category": "Hybrid Multimodal",
+    "query": "Obama speaking at podium during farewell address",
+    "top_5_retrieved_events": [
+      {
+        "rank": 1,
+        "video_id": "obama_farewell_speech_353ca4868dfb",
+        "timestamp_range": "01:44 - 02:04",
+        "final_score": 0.0164,
+        "visual_score": 0.327527,
+        "audio_score": 0.0,
+        "transcript_snippet": "news video footage scene",
+        "match_rationale": "Visual vector cosine similarity (0.3275) + Audio similarity (0.0000) fused via RRF (0.0164) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 2,
+        "video_id": "obama_farewell_speech_353ca4868dfb",
+        "timestamp_range": "00:33 - 00:53",
+        "final_score": 0.0147,
+        "visual_score": 0.322132,
+        "audio_score": 0.0,
+        "transcript_snippet": "For the past 25 years, you have not only been my wife and mother of my children,",
+        "match_rationale": "Visual vector cosine similarity (0.3221) + Audio similarity (0.0000) fused via RRF (0.0147) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 3,
+        "video_id": "obama_farewell_speech_353ca4868dfb",
+        "timestamp_range": "00:05 - 00:25",
+        "final_score": 0.0145,
+        "visual_score": 0.321671,
+        "audio_score": 0.0,
+        "transcript_snippet": "news video footage scene",
+        "match_rationale": "Visual vector cosine similarity (0.3217) + Audio similarity (0.0000) fused via RRF (0.0145) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 4,
+        "video_id": "obama_farewell_speech_353ca4868dfb",
+        "timestamp_range": "01:42 - 02:02",
+        "final_score": 0.0159,
+        "visual_score": 0.324898,
+        "audio_score": 0.0,
+        "transcript_snippet": "news video footage scene",
+        "match_rationale": "Visual vector cosine similarity (0.3249) + Audio similarity (0.0000) fused via RRF (0.0159) and cross-modal agreement scoring."
+      },
+      {
+        "rank": 5,
+        "video_id": "obama_farewell_speech_353ca4868dfb",
+        "timestamp_range": "01:32 - 01:52",
+        "final_score": 0.0161,
+        "visual_score": 0.326601,
+        "audio_score": 0.0,
+        "transcript_snippet": "and the new generation sets its sights higher because it has you as a role model.",
+        "match_rationale": "Visual vector cosine similarity (0.3266) + Audio similarity (0.0000) fused via RRF (0.0161) and cross-modal agreement scoring."
+      }
+    ]
+  }
+]

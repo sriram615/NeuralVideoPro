@@ -1,0 +1,11 @@
+{
+  "exp_id": "exp_01",
+  "name": "Multimodal Fusion & Intent Routing Matrix",
+  "queries_count": 8,
+  "configs": [
+    "Visual Only (alpha=1.0)",
+    "Audio Only (alpha=0.0)",
+    "Static Fusion (alpha=0.5)",
+    "Dynamic Auto-Intent (alpha=auto)"
+  ]
+}

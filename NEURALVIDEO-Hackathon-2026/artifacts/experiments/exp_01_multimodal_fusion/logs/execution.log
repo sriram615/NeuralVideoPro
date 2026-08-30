@@ -1,0 +1,43 @@
+================================================================================
+EXPERIMENT 1: Multimodal Fusion & Intent Routing Matrix
+================================================================================
+
+--- Testing Config: Visual Only (alpha=1.0) ---
+  Query: 'whiteboard discussion on artificial...' | Alpha: 1.0 | Top1 Score: 0.2526 | Latency: 836.6ms
+  Query: 'security camera footage of incident...' | Alpha: 1.0 | Top1 Score: 0.3112 | Latency: 353.8ms
+  Query: 'person wearing black jacket...' | Alpha: 1.0 | Top1 Score: 0.2639 | Latency: 251.4ms
+  Query: 'speaker discussing transformers and...' | Alpha: 1.0 | Top1 Score: 0.2784 | Latency: 245.1ms
+  Query: 'television shoots for the lowest co...' | Alpha: 1.0 | Top1 Score: 0.2491 | Latency: 183.5ms
+  Query: 'discussion about interest rates and...' | Alpha: 1.0 | Top1 Score: 0.2472 | Latency: 182.9ms
+  Query: 'Show me where Steve Jobs talks abou...' | Alpha: 1.0 | Top1 Score: 0.2909 | Latency: 174.1ms
+  Query: 'speaker presenting at podium...' | Alpha: 1.0 | Top1 Score: 0.2793 | Latency: 184.1ms
+
+--- Testing Config: Audio Only (alpha=0.0) ---
+  Query: 'whiteboard discussion on artificial...' | Alpha: 0.0 | Top1 Score: 0.2526 | Latency: 173.7ms
+  Query: 'security camera footage of incident...' | Alpha: 0.0 | Top1 Score: 0.3112 | Latency: 175.9ms
+  Query: 'person wearing black jacket...' | Alpha: 0.0 | Top1 Score: 0.2639 | Latency: 171.1ms
+  Query: 'speaker discussing transformers and...' | Alpha: 0.0 | Top1 Score: 0.2784 | Latency: 182.0ms
+  Query: 'television shoots for the lowest co...' | Alpha: 0.0 | Top1 Score: 0.2491 | Latency: 168.8ms
+  Query: 'discussion about interest rates and...' | Alpha: 0.0 | Top1 Score: 0.2472 | Latency: 177.4ms
+  Query: 'Show me where Steve Jobs talks abou...' | Alpha: 0.0 | Top1 Score: 0.2909 | Latency: 172.7ms
+  Query: 'speaker presenting at podium...' | Alpha: 0.0 | Top1 Score: 0.2793 | Latency: 173.4ms
+
+--- Testing Config: Static Fusion (alpha=0.5) ---
+  Query: 'whiteboard discussion on artificial...' | Alpha: 0.5 | Top1 Score: 0.2526 | Latency: 216.1ms
+  Query: 'security camera footage of incident...' | Alpha: 0.5 | Top1 Score: 0.3112 | Latency: 158.9ms
+  Query: 'person wearing black jacket...' | Alpha: 0.5 | Top1 Score: 0.2639 | Latency: 166.7ms
+  Query: 'speaker discussing transformers and...' | Alpha: 0.5 | Top1 Score: 0.2784 | Latency: 411.2ms
+  Query: 'television shoots for the lowest co...' | Alpha: 0.5 | Top1 Score: 0.2491 | Latency: 184.2ms
+  Query: 'discussion about interest rates and...' | Alpha: 0.5 | Top1 Score: 0.2472 | Latency: 156.7ms
+  Query: 'Show me where Steve Jobs talks abou...' | Alpha: 0.5 | Top1 Score: 0.2909 | Latency: 156.6ms
+  Query: 'speaker presenting at podium...' | Alpha: 0.5 | Top1 Score: 0.2793 | Latency: 175.1ms
+
+--- Testing Config: Dynamic Auto-Intent (alpha=auto) ---
+  Query: 'whiteboard discussion on artificial...' | Alpha: 0.2 | Top1 Score: 0.2526 | Latency: 232.1ms
+  Query: 'security camera footage of incident...' | Alpha: 0.8 | Top1 Score: 0.3112 | Latency: 177.5ms
+  Query: 'person wearing black jacket...' | Alpha: 0.8 | Top1 Score: 0.2639 | Latency: 163.8ms
+  Query: 'speaker discussing transformers and...' | Alpha: 0.2 | Top1 Score: 0.2784 | Latency: 167.5ms
+  Query: 'television shoots for the lowest co...' | Alpha: 0.5 | Top1 Score: 0.2491 | Latency: 184.6ms
+  Query: 'discussion about interest rates and...' | Alpha: 0.2 | Top1 Score: 0.2472 | Latency: 164.3ms
+  Query: 'Show me where Steve Jobs talks abou...' | Alpha: 0.2 | Top1 Score: 0.2909 | Latency: 200.3ms
+  Query: 'speaker presenting at podium...' | Alpha: 0.5 | Top1 Score: 0.2793 | Latency: 175.4ms
