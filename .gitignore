@@ -13,3 +13,7 @@ qdrant_storage/
 
 # Environment Secrets
 .env
+
+# Testing cache
+.pytest_cache/
+
