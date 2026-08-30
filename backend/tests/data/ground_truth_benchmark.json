@@ -1,10 +1,10 @@
 [
   {
     "query_id": "v_01",
-    "query": "sports player running on green grass field",
+    "query": "sports news and player discussion",
     "category": "visual",
     "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
-    "ground_truth_timestamps": [777.0, 100.0]
+    "ground_truth_timestamps": [535.0]
   },
   {
     "query_id": "v_02",
@@ -148,10 +148,10 @@
   },
   {
     "query_id": "h_02",
-    "query": "sports presenter discussing game tactics breakdown",
+    "query": "Ireland beat the All Blacks in Chicago",
     "category": "hybrid",
     "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
-    "ground_truth_timestamps": [223.0, 12.0]
+    "ground_truth_timestamps": [718.0]
   },
   {
     "query_id": "h_03",
