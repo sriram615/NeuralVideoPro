@@ -281,7 +281,9 @@ def print_full_evaluation_report() -> None:
     print(f"Mean Reciprocal Rank (MRR@5): {eval_res['mrr_5']:.4f} ({eval_res['mrr_5']*100:.1f}%)")
     print(f"Precision@5:                  {eval_res['precision_5']:.4f} ({eval_res['precision_5']*100:.1f}%)")
     print(f"Recall@5:                     {eval_res['recall_5']:.4f} ({eval_res['recall_5']*100:.1f}%) [BOUNDED 0.0–1.0]")
-    print(f"Vector Retrieval Latency SLA: {eval_res['mean_vector_latency_ms']:.2f} ms (Target SLA: < 200ms | PASS)")
+    lat = eval_res['mean_vector_latency_ms']
+    sla_status = "PASS" if lat <= 200.0 else "WARN - CPU BOUND"
+    print(f"Vector Retrieval Latency SLA: {lat:.2f} ms (Target SLA: < 200ms | {sla_status})")
     print("-" * 80)
     print("CATEGORY BREAKDOWN:")
     for cat, metrics in eval_res["category_breakdown"].items():

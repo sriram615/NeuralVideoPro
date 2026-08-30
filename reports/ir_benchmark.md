@@ -13,7 +13,7 @@ This is the retrieval-quality evaluation report measuring exact Information Retr
 | **MRR@5** | **0.6833** (68.3%) |
 | **Precision@5** | **0.1733** (17.3%) |
 | **Recall@5** | **0.7833** (78.3%) |
-| **Mean vector latency** | 272.90 ms (SLA Target: < 200 ms) |
+| **Mean vector latency** | 265.64 ms (SLA Target: < 200 ms \| WARN - CPU Bound) |
 
 ### Category Breakdown
 
