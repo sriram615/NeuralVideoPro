@@ -12,7 +12,9 @@
 - **Dual-Modality Vector Search:** 512-D Cosine similarity matching across both visual keyframes and acoustic speech text.
 - **Auto-Intent Classification:** Dynamic query intent detection balancing visual bias ($\alpha = 0.8$) vs. acoustic speech bias ($\alpha = 0.2$) or hybrid fusion ($\alpha = 0.5$).
 - **Explainable AI (XAI) Attribution:** Full score breakdowns (`visual_score`, `audio_score`, `rrf_score`, `confidence_band`, `match_rationale`) for every retrieved snippet.
-- **RAG & Video QA:** Decoupled LLM video question answering (`/api/v1/ask-video`) with sub-200ms vector search SLA.
+### Repo History & Archive
+
+The `archive/` directory contains the pre-restructure development history for this repository (early `src/api.py` prototypes, one-off data collection scripts, and legacy virtual environments). It is preserved strictly for historical reference and is not part of the active project codebase.
 
 ---
 
