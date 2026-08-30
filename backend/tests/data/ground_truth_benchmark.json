@@ -1,10 +1,10 @@
 [
   {
     "query_id": "v_01",
-    "query": "sports news and player discussion",
+    "query": "person in dark suit standing at podium",
     "category": "visual",
-    "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
-    "ground_truth_timestamps": [535.0]
+    "ground_truth_video_ids": ["obama_farewell_speech_353ca4868dfb", "ecns_opening_speech_665f4791a4e8"],
+    "ground_truth_timestamps": [3.0, 10.0]
   },
   {
     "query_id": "v_02",

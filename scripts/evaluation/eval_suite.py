@@ -20,6 +20,11 @@ from typing import Any, Dict, List, Optional
 
 os.environ["OMP_NUM_THREADS"] = "2"
 os.environ["MKL_NUM_THREADS"] = "2"
+os.environ["OPENBLAS_NUM_THREADS"] = "2"
+
+import torch
+
+torch.set_num_threads(2)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "backend"))
@@ -67,55 +72,56 @@ def evaluate_pipeline(
         "hybrid": {"mrr": [], "precision": [], "recall": []},
     }
 
-    for item in benchmark_data:
-        q = item["query"]
-        cat = item.get("category", "hybrid")
-        gt_vids = set(item["ground_truth_video_ids"])
+    with torch.inference_mode():
+        for item in benchmark_data:
+            q = item["query"]
+            cat = item.get("category", "hybrid")
+            gt_vids = set(item["ground_truth_video_ids"])
 
-        t_start = time.perf_counter()
-        search_out = pipeline.search(
-            query=q,
-            top_k=k,
-            alpha=alpha_override,
-            enable_reranker=enable_reranker,
-            enable_mmr=enable_mmr,
-        )
-        lat_ms = (time.perf_counter() - t_start) * 1000
-        vector_latencies.append(lat_ms)
+            t_start = time.perf_counter()
+            search_out = pipeline.search(
+                query=q,
+                top_k=k,
+                alpha=alpha_override,
+                enable_reranker=enable_reranker,
+                enable_mmr=enable_mmr,
+            )
+            lat_ms = (time.perf_counter() - t_start) * 1000
+            vector_latencies.append(lat_ms)
 
-        results = search_out.get("results", [])
+            results = search_out.get("results", [])
 
-        # Extract unique retrieved video IDs in rank order
-        retrieved_vids: List[str] = []
-        for r in results[:k]:
-            vid = r.get("payload", {}).get("video_id")
-            if vid and vid not in retrieved_vids:
-                retrieved_vids.append(vid)
+            # Extract unique retrieved video IDs in rank order
+            retrieved_vids: List[str] = []
+            for r in results[:k]:
+                vid = r.get("payload", {}).get("video_id")
+                if vid and vid not in retrieved_vids:
+                    retrieved_vids.append(vid)
 
-        # 1. MRR@K Calculation
-        first_match_rank = 0
-        for rank, vid in enumerate(retrieved_vids, 1):
-            if vid in gt_vids:
-                first_match_rank = rank
-                break
-        rr = (1.0 / first_match_rank) if first_match_rank > 0 else 0.0
-        mrr_list.append(rr)
+            # 1. MRR@K Calculation
+            first_match_rank = 0
+            for rank, vid in enumerate(retrieved_vids, 1):
+                if vid in gt_vids:
+                    first_match_rank = rank
+                    break
+            rr = (1.0 / first_match_rank) if first_match_rank > 0 else 0.0
+            mrr_list.append(rr)
 
-        # 2. Precision@K Calculation (bounded [0.0, 1.0])
-        hits = len(set(retrieved_vids) & gt_vids)
-        precision = hits / float(k)
-        assert 0.0 <= precision <= 1.0, f"Invalid Precision@K: {precision}"
-        precision_list.append(precision)
+            # 2. Precision@K Calculation (bounded [0.0, 1.0])
+            hits = len(set(retrieved_vids) & gt_vids)
+            precision = hits / float(k)
+            assert 0.0 <= precision <= 1.0, f"Invalid Precision@K: {precision}"
+            precision_list.append(precision)
 
-        # 3. Recall@K Calculation (strictly bounded [0.0, 1.0])
-        recall = (hits / float(len(gt_vids))) if gt_vids else 0.0
-        assert 0.0 <= recall <= 1.0, f"Invalid Recall@K calculation: {recall} (hits={hits}, gt={len(gt_vids)})"
-        recall_list.append(recall)
+            # 3. Recall@K Calculation (strictly bounded [0.0, 1.0])
+            recall = (hits / float(len(gt_vids))) if gt_vids else 0.0
+            assert 0.0 <= recall <= 1.0, f"Invalid Recall@K calculation: {recall} (hits={hits}, gt={len(gt_vids)})"
+            recall_list.append(recall)
 
-        if cat in category_metrics:
-            category_metrics[cat]["mrr"].append(rr)
-            category_metrics[cat]["precision"].append(precision)
-            category_metrics[cat]["recall"].append(recall)
+            if cat in category_metrics:
+                category_metrics[cat]["mrr"].append(rr)
+                category_metrics[cat]["precision"].append(precision)
+                category_metrics[cat]["recall"].append(recall)
 
     mean_mrr = sum(mrr_list) / len(mrr_list) if mrr_list else 0.0
     mean_precision = sum(precision_list) / len(precision_list) if precision_list else 0.0
