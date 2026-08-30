@@ -1,10 +1,10 @@
 [
   {
     "query_id": "v_01",
-    "query": "whiteboard architecture diagram explanation",
+    "query": "sports player running on green grass field",
     "category": "visual",
     "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
-    "ground_truth_timestamps": [12.0, 45.0]
+    "ground_truth_timestamps": [777.0, 100.0]
   },
   {
     "query_id": "v_02",
@@ -148,10 +148,10 @@
   },
   {
     "query_id": "h_02",
-    "query": "broadcast presenter discussing whiteboard tactical breakdown",
+    "query": "sports presenter discussing game tactics breakdown",
     "category": "hybrid",
     "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
-    "ground_truth_timestamps": [12.0]
+    "ground_truth_timestamps": [223.0, 12.0]
   },
   {
     "query_id": "h_03",

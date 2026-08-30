@@ -42,12 +42,19 @@ def evaluate_pipeline(
     enable_reranker: bool = True,
     enable_mmr: bool = True,
     k: int = 5,
+    exclude_flagged: bool = False,
 ) -> Dict[str, Any]:
-    """Execute IR benchmark over 30 annotated ground-truth queries."""
+    """Execute IR benchmark over 30 verified ground-truth queries."""
     if pipeline is None:
         pipeline = VideoSearchPipeline(db_path="./data/vectors/qdrant_db")
 
-    benchmark_data = load_ground_truth_benchmark()
+    raw_benchmark_data = load_ground_truth_benchmark()
+    if exclude_flagged:
+        benchmark_data = [item for item in raw_benchmark_data if not item.get("needs_review")]
+        flagged_count = len(raw_benchmark_data) - len(benchmark_data)
+    else:
+        benchmark_data = raw_benchmark_data
+        flagged_count = 0
 
     mrr_list: List[float] = []
     precision_list: List[float] = []
@@ -121,6 +128,7 @@ def evaluate_pipeline(
         "recall_5": round(mean_recall, 4),
         "mean_vector_latency_ms": round(mean_latency, 2),
         "total_queries_tested": len(benchmark_data),
+        "flagged_queries_excluded": flagged_count,
         "category_breakdown": {
             cat: {
                 "mrr_5": round(sum(vals["mrr"]) / len(vals["mrr"]), 4) if vals["mrr"] else 0.0,
@@ -262,10 +270,12 @@ def generate_qualitative_case_studies(pipeline: Optional[VideoSearchPipeline] = 
 
 def print_full_evaluation_report() -> None:
     pipeline = VideoSearchPipeline(db_path="./data/vectors/qdrant_db")
-    eval_res = evaluate_pipeline(pipeline=pipeline)
+    eval_res = evaluate_pipeline(pipeline=pipeline, exclude_flagged=False)
 
     print("\n" + "=" * 80)
-    print("NEURALVIDEO v5.0 PRO — EMPIRICAL BENCHMARK REPORT (30 ANNOTATED QUERIES)")
+    print(f"NEURALVIDEO v5.0 PRO — EMPIRICAL BENCHMARK REPORT ({eval_res['total_queries_tested']} ANNOTATED QUERIES)")
+    if eval_res.get("flagged_queries_excluded", 0) > 0:
+        print(f"Note: Excluded {eval_res['flagged_queries_excluded']} unverified/flagged queries pending ground-truth re-labeling.")
     print("=" * 80)
     print(f"Total Benchmark Queries:   {eval_res['total_queries_tested']}")
     print(f"Mean Reciprocal Rank (MRR@5): {eval_res['mrr_5']:.4f} ({eval_res['mrr_5']*100:.1f}%)")

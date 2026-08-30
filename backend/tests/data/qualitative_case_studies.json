@@ -17,21 +17,21 @@
         "rank": 2,
         "video_id": "identity_politics_interview_d8c8047ee6b7",
         "timestamp_range": "00:48 - 00:54",
-        "final_score": 0.0148,
+        "final_score": 0.0143,
         "visual_score": 0.184388,
         "audio_score": 0.714847,
         "transcript_snippet": "everywhere. And underneath it all, I see this terrible striving for arbitrary power that's associate",
-        "match_rationale": "Visual vector cosine similarity (0.1844) + Audio similarity (0.7148) fused via RRF (0.0139) and cross-modal agreement scoring."
+        "match_rationale": "Visual vector cosine similarity (0.1844) + Audio similarity (0.7148) fused via RRF (0.0134) and cross-modal agreement scoring."
       },
       {
         "rank": 3,
         "video_id": "identity_politics_interview_d8c8047ee6b7",
         "timestamp_range": "00:12 - 00:14",
-        "final_score": 0.0137,
+        "final_score": 0.0111,
         "visual_score": 0.183316,
         "audio_score": 0.0,
         "transcript_snippet": "and everything is a fluid culture that can be manipulated at will. In Canada, there are terrible arg",
-        "match_rationale": "Visual vector cosine similarity (0.1833) + Audio similarity (0.0000) fused via RRF (0.0137) and cross-modal agreement scoring."
+        "match_rationale": "Visual vector cosine similarity (0.1833) + Audio similarity (0.0000) fused via RRF (0.0111) and cross-modal agreement scoring."
       }
     ]
   },
@@ -41,43 +41,23 @@
     "top_5_retrieved_events": [
       {
         "rank": 1,
-        "video_id": "identity_politics_interview_d8c8047ee6b7",
-        "timestamp_range": "00:04 - 00:06",
-        "final_score": 0.0164,
-        "visual_score": 0.247158,
-        "audio_score": 0.0,
-        "transcript_snippet": "It seems to me what they're trying to do is to take all the potential power for the creation of huma",
-        "match_rationale": "Visual vector cosine similarity (0.2472) + Audio similarity (0.0000) fused via RRF (0.0164) and cross-modal agreement scoring."
+        "video_id": "middle_east_news_report_0a56c7e5359d",
+        "timestamp_range": "01:02 - 01:10",
+        "final_score": 0.0133,
+        "visual_score": 0.0,
+        "audio_score": 0.85549,
+        "transcript_snippet": "if not, you know, near trillions, dollars worth of investment from their wealth in the United States",
+        "match_rationale": "Visual vector cosine similarity (0.0000) + Audio similarity (0.8555) fused via RRF (0.0133) and cross-modal agreement scoring."
       },
       {
         "rank": 2,
         "video_id": "ecns_opening_speech_665f4791a4e8",
-        "timestamp_range": "06:07 - 06:11",
-        "final_score": 0.0137,
-        "visual_score": 0.237274,
-        "audio_score": 0.0,
-        "transcript_snippet": "the platform could not be cheap. The best layoffs and have a nice time in Istanbul. Thank you.",
-        "match_rationale": "Visual vector cosine similarity (0.2373) + Audio similarity (0.0000) fused via RRF (0.0137) and cross-modal agreement scoring."
-      },
-      {
-        "rank": 3,
-        "video_id": "identity_politics_interview_d8c8047ee6b7",
-        "timestamp_range": "00:56 - 00:58",
-        "final_score": 0.0133,
-        "visual_score": 0.236943,
-        "audio_score": 0.0,
-        "transcript_snippet": "hatred that motivates it, and in the desire to do nothing but, let's say, demolish the patriarchy.",
-        "match_rationale": "Visual vector cosine similarity (0.2369) + Audio similarity (0.0000) fused via RRF (0.0133) and cross-modal agreement scoring."
-      },
-      {
-        "rank": 4,
-        "video_id": "identity_politics_interview_d8c8047ee6b7",
-        "timestamp_range": "00:48 - 00:50",
-        "final_score": 0.0127,
-        "visual_score": 0.234197,
-        "audio_score": 0.0,
-        "transcript_snippet": "everywhere. And underneath it all, I see this terrible striving for arbitrary power that's",
-        "match_rationale": "Visual vector cosine similarity (0.2342) + Audio similarity (0.0000) fused via RRF (0.0127) and cross-modal agreement scoring."
+        "timestamp_range": "01:25 - 01:27",
+        "final_score": 0.0116,
+        "visual_score": 0.0,
+        "audio_score": 0.849541,
+        "transcript_snippet": "The idea of that all of us share is very serious. We are the community who will be able to get",
+        "match_rationale": "Visual vector cosine similarity (0.0000) + Audio similarity (0.8495) fused via RRF (0.0116) and cross-modal agreement scoring."
       }
     ]
   },
@@ -98,32 +78,22 @@
       {
         "rank": 2,
         "video_id": "obama_farewell_speech_353ca4868dfb",
-        "timestamp_range": "01:42 - 01:44",
-        "final_score": 0.0161,
-        "visual_score": 0.326601,
+        "timestamp_range": "00:14 - 00:18",
+        "final_score": 0.0154,
+        "visual_score": 0.322951,
         "audio_score": 0.0,
-        "transcript_snippet": "and the new generation sets its sights higher because it has you as a role model.",
-        "match_rationale": "Visual vector cosine similarity (0.3266) + Audio similarity (0.0000) fused via RRF (0.0161) and cross-modal agreement scoring."
+        "transcript_snippet": "Visual scene footage",
+        "match_rationale": "Visual vector cosine similarity (0.3230) + Audio similarity (0.0000) fused via RRF (0.0154) and cross-modal agreement scoring."
       },
       {
         "rank": 3,
         "video_id": "obama_farewell_speech_353ca4868dfb",
-        "timestamp_range": "00:43 - 00:45",
-        "final_score": 0.0147,
-        "visual_score": 0.322132,
+        "timestamp_range": "01:42 - 01:44",
+        "final_score": 0.0131,
+        "visual_score": 0.326601,
         "audio_score": 0.0,
-        "transcript_snippet": "For the past 25 years, you have not only been my wife and mother of my children,",
-        "match_rationale": "Visual vector cosine similarity (0.3221) + Audio similarity (0.0000) fused via RRF (0.0147) and cross-modal agreement scoring."
-      },
-      {
-        "rank": 4,
-        "video_id": "obama_farewell_speech_353ca4868dfb",
-        "timestamp_range": "00:15 - 00:17",
-        "final_score": 0.0145,
-        "visual_score": 0.321671,
-        "audio_score": 0.0,
-        "transcript_snippet": "Visual scene footage",
-        "match_rationale": "Visual vector cosine similarity (0.3217) + Audio similarity (0.0000) fused via RRF (0.0145) and cross-modal agreement scoring."
+        "transcript_snippet": "and the new generation sets its sights higher because it has you as a role model.",
+        "match_rationale": "Visual vector cosine similarity (0.3266) + Audio similarity (0.0000) fused via RRF (0.0131) and cross-modal agreement scoring."
       }
     ]
   }
