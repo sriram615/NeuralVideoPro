@@ -279,7 +279,7 @@ def print_full_evaluation_report() -> None:
     eval_res = evaluate_pipeline(pipeline=pipeline, exclude_flagged=False)
 
     print("\n" + "=" * 80)
-    print(f"NEURALVIDEO v5.0 PRO — EMPIRICAL BENCHMARK REPORT ({eval_res['total_queries_tested']} ANNOTATED QUERIES)")
+    print(f"NEURALVIDEO — EMPIRICAL BENCHMARK REPORT ({eval_res['total_queries_tested']} ANNOTATED QUERIES)")
     if eval_res.get("flagged_queries_excluded", 0) > 0:
         print(f"Note: Excluded {eval_res['flagged_queries_excluded']} unverified/flagged queries pending ground-truth re-labeling.")
     print("=" * 80)

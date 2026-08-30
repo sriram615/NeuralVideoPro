@@ -6,7 +6,7 @@
 
 ## 1. Project Overview
 
-**NEURALVIDEO** is an enterprise-grade multimodal video search engine designed to perform sub-200ms semantic search over unstructured video archives. The engine breaks down video streams into synchronized visual keyframe embeddings (via OpenAI CLIP) and speech transcript embeddings (via OpenAI Whisper), fusing them in an embedded **Qdrant Vector Database** using Auto-Intent Late Fusion.
+**NEURALVIDEO** is a multimodal video search engine designed to perform semantic search over unstructured video archives. The engine breaks down video streams into synchronized visual keyframe embeddings (via OpenAI CLIP) and speech transcript embeddings (via OpenAI Whisper), fusing them in an embedded **Qdrant Vector Database** using Auto-Intent Late Fusion.
 
 ### Core Capabilities
 - **Dual-Modality Vector Search:** 512-D Cosine similarity matching across both visual keyframes and acoustic speech text.

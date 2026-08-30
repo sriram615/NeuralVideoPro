@@ -181,7 +181,7 @@ def generate_markdown_report(eval_results: List[Dict[str, Any]]) -> None:
 - **Maximum Query Latency:** **{max_latency:.1f} ms**
 - **Score Integrity:** 100% of scores within bounds $[0.0, 1.0]$ with zero `NaN`, `Inf`, or `KeyError` exceptions.
 - **L2 Vector Normalization:** Verified ($||v||_2 = 1.000000$ for all text/visual query vectors).
-- **System Readiness Score:** **100 / 100 (PRODUCTION READY)**
+- **System Readiness Score:** **100 / 100**
 
 ---
 
