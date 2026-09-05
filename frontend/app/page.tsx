@@ -125,14 +125,12 @@ function Header({
    ================================================================ */
 
 function PageLanding({
-  isActive,
   onNavigate,
   health,
   corpusStats,
   selectedVideo,
   onSelectVideo,
 }: {
-  isActive: boolean;
   onNavigate: (page: number) => void;
   health: HealthResponse | null;
   corpusStats: CorpusStats | null;
@@ -140,7 +138,7 @@ function PageLanding({
   onSelectVideo: (video: string) => void;
 }) {
   return (
-    <div className={`page-view ${isActive ? "page-view-active" : "page-view-hidden"}`}>
+    <div className="page-view page-view-active">
       <Header
         tickerText="JUDGE DEMO CONSOLE // REAL-TIME MULTIMODAL VIDEO RETRIEVAL"
         pageIndex={0}
@@ -156,7 +154,7 @@ function PageLanding({
         <div className="z-10 max-w-5xl mx-auto flex flex-col items-center justify-center my-auto px-4">
           {/* Status Badge */}
           <div className="inline-flex items-center gap-3 px-5 py-2 bg-black/60 backdrop-blur-md rounded-full border border-emerald-500/40 mb-8 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
             <span className="font-mono font-bold text-xs text-emerald-400 tracking-[0.25em] uppercase">
               HACKATHON JUDGE DEMO MODE &bull; SUB-180MS RETRIEVAL SLA
             </span>
@@ -237,7 +235,6 @@ function PageLanding({
    ================================================================ */
 
 function PageConsole({
-  isActive,
   onNavigate,
   onSearch,
   isSearching,
@@ -247,7 +244,6 @@ function PageConsole({
   selectedVideo,
   onSelectVideo,
 }: {
-  isActive: boolean;
   onNavigate: (page: number) => void;
   onSearch: (query: string) => void;
   isSearching: boolean;
@@ -288,7 +284,7 @@ function PageConsole({
   ];
 
   return (
-    <div className={`page-view ${isActive ? "page-view-active" : "page-view-hidden"}`}>
+    <div className="page-view page-view-active">
       <Header
         tickerText="SEARCH CONSOLE // LIVE PIPELINE STORYTELLING & INFERENCE"
         pageIndex={1}
@@ -322,7 +318,7 @@ function PageConsole({
                   placeholder='Try "speaker discussing transformers" or "prompt engineering"...'
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  autoFocus={isActive}
+                  autoFocus
                   disabled={isSearching}
                 />
                 <button
@@ -362,7 +358,7 @@ function PageConsole({
                         isDone
                           ? "bg-emerald-950/60 border-emerald-500/50 text-emerald-300"
                           : isActiveStep
-                          ? "bg-cyan-950/80 border-cyan-400 text-cyan-200 shadow-[0_0_15px_rgba(6,182,212,0.3)] animate-pulse"
+                          ? "bg-cyan-950/80 border-cyan-400 text-cyan-200 shadow-[0_0_15px_rgba(6,182,212,0.3)]"
                           : "bg-white/5 border-white/10 text-gray-500"
                       }`}
                     >
@@ -374,7 +370,7 @@ function PageConsole({
                           {isDone ? (
                             <span className="text-emerald-400 font-bold">✓</span>
                           ) : isActiveStep ? (
-                            <span className="w-2 h-2 rounded-full bg-cyan-400 inline-block animate-ping" />
+                            <span className="w-2 h-2 rounded-full bg-cyan-400 inline-block" />
                           ) : (
                             <span className="text-gray-600">&bull;</span>
                           )}
@@ -428,12 +424,10 @@ function PageConsole({
    ================================================================ */
 
 function PageResultsAndXAI({
-  isActive,
   onNavigate,
   data,
   isSearching,
 }: {
-  isActive: boolean;
   onNavigate: (page: number) => void;
   data: SearchResponse | null;
   isSearching: boolean;
@@ -457,7 +451,7 @@ function PageResultsAndXAI({
 
   if (isSearching) {
     return (
-      <div className={`page-view ${isActive ? "page-view-active" : "page-view-hidden"}`}>
+      <div className="page-view page-view-active">
         <Header
           tickerText="SEARCH ENGINE EXECUTING MULTIMODAL INFERENCE..."
           pageIndex={2}
@@ -477,7 +471,7 @@ function PageResultsAndXAI({
 
   if (!data || !data.results || data.results.length === 0 || !activeItem) {
     return (
-      <div className={`page-view ${isActive ? "page-view-active" : "page-view-hidden"}`}>
+      <div className="page-view page-view-active">
         <Header
           tickerText="RESULTS GALLERY // AWAITING SEARCH EXECUTION"
           pageIndex={2}
@@ -518,7 +512,7 @@ function PageResultsAndXAI({
   const maxDurationSec = Math.max(1170, maxTimestampInResults + 30); // default ~19:30 or max ts
 
   return (
-    <div className={`page-view ${isActive ? "page-view-active" : "page-view-hidden"}`}>
+    <div className="page-view page-view-active">
       <Header
         tickerText={`RESULTS // ${data.total_results} MATCHES FOR "${data.query}" (${data.latency_ms}ms)`}
         pageIndex={2}
@@ -805,31 +799,34 @@ export default function Home() {
 
   return (
     <main className="page-container bg-[#08080a] min-h-screen text-white font-sans overflow-hidden">
-      <PageLanding
-        isActive={currentPage === 0}
-        onNavigate={navigateToPage}
-        health={health}
-        corpusStats={corpusStats}
-        selectedVideo={selectedVideo}
-        onSelectVideo={setSelectedVideo}
-      />
-      <PageConsole
-        isActive={currentPage === 1}
-        onNavigate={navigateToPage}
-        onSearch={handleSearch}
-        isSearching={isSearching}
-        searchStage={searchStage}
-        searchError={searchError}
-        corpusStats={corpusStats}
-        selectedVideo={selectedVideo}
-        onSelectVideo={setSelectedVideo}
-      />
-      <PageResultsAndXAI
-        isActive={currentPage === 2}
-        onNavigate={navigateToPage}
-        data={searchData}
-        isSearching={isSearching}
-      />
+      {currentPage === 0 && (
+        <PageLanding
+          onNavigate={navigateToPage}
+          health={health}
+          corpusStats={corpusStats}
+          selectedVideo={selectedVideo}
+          onSelectVideo={setSelectedVideo}
+        />
+      )}
+      {currentPage === 1 && (
+        <PageConsole
+          onNavigate={navigateToPage}
+          onSearch={handleSearch}
+          isSearching={isSearching}
+          searchStage={searchStage}
+          searchError={searchError}
+          corpusStats={corpusStats}
+          selectedVideo={selectedVideo}
+          onSelectVideo={setSelectedVideo}
+        />
+      )}
+      {currentPage === 2 && (
+        <PageResultsAndXAI
+          onNavigate={navigateToPage}
+          data={searchData}
+          isSearching={isSearching}
+        />
+      )}
 
       {/* Floating Dock Navbar */}
       <nav className="fixed bottom-6 right-8 z-50 flex items-center gap-2 bg-black/80 px-4 py-2 rounded-full backdrop-blur-2xl border border-white/20 shadow-2xl">
