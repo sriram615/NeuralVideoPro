@@ -39,6 +39,16 @@ TEXT = (230, 225, 213)   # #E6E1D5
 MUTED = (156, 163, 175)  # #9CA3AF
 WIRE = (230, 225, 213, 40)
 
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+FRAMES_DIR = REPO_ROOT / "data" / "processed" / "extracted_frames_v2"
+
+# Real keyframe thumbnails (video_id, frame file, label)
+THUMBNAILS = [
+    ("middle_east_news_report_7fdb863b5a04/frame_000040.jpg", "middle_east_news_report", "00:40"),
+    ("obama_farewell_speech_17b0dcb3e70a/frame_000040.jpg", "obama_farewell_speech", "00:40"),
+    ("sports_news_breakdown_5e48e48d7100/frame_000040.jpg", "sports_news_breakdown", "00:40"),
+]
+
 FONT_BOLD = "/System/Library/Fonts/Supplemental/Helvetica.ttc"
 FONT_MONO = "/System/Library/Fonts/SFNSMonoItalic.ttf"  # SF NS Mono
 FONT_UI = "/System/Library/Fonts/SFNS.ttf"
@@ -84,6 +94,26 @@ class Canvas:
 
     def to_pil(self) -> Image.Image:
         return self.img
+
+
+def load_thumbnail(rel_path: str, size: Tuple[int, int]) -> Image.Image:
+    """Load a real keyframe from the corpus and resize it."""
+    src = FRAMES_DIR / rel_path
+    if not src.exists():
+        return None
+    img = Image.open(src).convert("RGB")
+    img = img.resize(size, Image.LANCZOS)
+    return img
+
+
+def paste_thumb(c: Canvas, img: Image.Image | None, xy: Tuple[int, int], size: Tuple[int, int], radius: int = 8):
+    """Paste a thumbnail image onto the canvas inside a rounded card area."""
+    x0, y0 = xy
+    x1, y1 = x0 + size[0], y0 + size[1]
+    if img is not None:
+        c.img.paste(img, (x0, y0))
+    # draw a subtle border
+    c.rect([x0, y0, x1, y1], None, radius=radius, outline=(*WIRE[:3], 100), outline_w=1)
 
 
 def make_frame() -> Canvas:
@@ -205,10 +235,10 @@ def loading_state(c: Canvas, stage: int = 4):
     c.text((W // 2, H - 100), "COMPUTING...", load_font(16, mono=True), fill=CYAN, anchor="mm")
 
 
-def results_page(c: Canvas, selected_idx: int = 0):
+def results_page(c: Canvas, selected_idx: int = 0, thumbs: list | None = None):
     header(c, "XAI")
     c.rect([0, 72, W, H], BG)
-    c.text((40, 104), f'RESULTS  //  {3 - selected_idx} MATCHES FOR "speaker discussing transformers"  (142ms)', load_font(13, mono=True), fill=TEXT)
+    c.text((40, 104), f'RESULTS  //  {len(thumbs) if thumbs else 3} MATCHES FOR "speaker discussing transformers"  (142ms)', load_font(13, mono=True), fill=TEXT)
     # Timeline track
     c.rect([120, 160, W - 120, 220], CARD, radius=12, outline=(*WIRE[:3], 60))
     c.text((140, 170), "RETRIEVAL TIMELINE TRACK", load_font(11, mono=True), fill=CYAN)
@@ -222,33 +252,41 @@ def results_page(c: Canvas, selected_idx: int = 0):
         sel = i == selected_idx
         c.rect([px - 12, 184, px + 12, 206], col if sel else CARD, radius=8, outline=col if sel else (*WIRE[:3], 80), outline_w=2)
         c.text((px, 195), lab, load_font(11, mono=True), fill=BG if sel else col, anchor="mm")
-    # Keyframe gallery (left)
+    # Keyframe gallery (left) — real thumbnails
     c.text((120, 250), "TIMELINE MATCH REEL", load_font(13, mono=True), fill=CYAN)
     cards = [
-        ("Steve Jobs Interview", "09:42", "89.2%", "09:42", CYAN),
-        ("Steve Jobs Interview", "11:08", "76.4%", "11:08", EMERALD),
-        ("Steve Jobs Interview", "13:15", "61.8%", "13:15", AMBER),
+        ("middle east news report", "00:40", "89.2%", CYAN),
+        ("obama farewell speech", "00:40", "76.4%", EMERALD),
+        ("sports news breakdown", "00:40", "61.8%", AMBER),
     ]
-    for i, (vid, ts, pct, h_ts, col) in enumerate(cards):
+    thumb_w, thumb_h = 300, 60
+    for i, (vid, ts, pct, col) in enumerate(cards):
         y = 280 + i * 130
         sel = i == selected_idx
         c.rect([120, y, 460, y + 110], CARD, radius=14,
                outline=col if sel else (*WIRE[:3], 60), outline_w=3 if sel else 1)
-        c.text((140, y + 14), f"RANK #{i + 1}", load_font(11, mono=True, ), fill=col if sel else MUTED)
-        c.rect([140, y + 34, 440, y + 94], (20, 20, 25), radius=8)
-        c.text((160, y + 56), f"FRAME {h_ts}", load_font(11, mono=True), fill=col)
+        c.text((140, y + 14), f"RANK #{i + 1}", load_font(11, mono=True), fill=col if sel else MUTED)
+        # paste real thumbnail
+        thumb_img = thumbs[i] if thumbs and i < len(thumbs) else None
+        paste_thumb(c, thumb_img, (140, y + 34), (thumb_w, thumb_h), radius=8)
+        c.text((450, y + 64), f"{ts}", load_font(11, mono=True), fill=col, anchor="rm")
         c.text((140, y + 100), f"{vid}", load_font(12, mono=True), fill=TEXT)
-        c.text((300, y + 100), f"{pct} MATCH", load_font(12, mono=True, ), fill=EMERALD)
-    # Video player (right)
+        c.text((300, y + 100), f"{pct} MATCH", load_font(12, mono=True), fill=EMERALD)
+    # Video player (right) — real thumbnail
     c.rect([490, 280, W - 40, 620], CARD, radius=16, outline=(*WIRE[:3], 60))
-    c.rect([510, 300, W - 60, 500], (20, 20, 25), radius=12)
-    c.text((530, 320), "SYNCHRONIZED VIDEO PLAYER", load_font(11, mono=True), fill=CYAN)
-    c.text((530, 350), "Steve Jobs Interview Feb 18 1981", load_font(16), fill=TEXT)
-    c.text((530, 380), "09:42", load_font(24, mono=True), fill=CYAN)
-    c.rect([510, 510, W - 60, 540], (*WIRE[:3], 60), radius=4)
-    c.text((510, 552), "MATCH TIMESTAMP: 09:42 (582.0s)", load_font(11, mono=True), fill=TEXT)
-    c.rect([620, 544, 760, 576], CYAN, radius=10)
-    c.text((690, 560), "▶ JUMP TO TIMESTAMP", load_font(11, mono=True), fill=BG, anchor="mm")
+    vid_w, vid_h = 450, 180
+    vid_x, vid_y = 510, 300
+    c.rect([vid_x, vid_y, vid_x + vid_w, vid_y + vid_h], (20, 20, 25), radius=12)
+    # paste main thumbnail into player
+    main_thumb = thumbs[selected_idx] if thumbs and selected_idx < len(thumbs) else None
+    paste_thumb(c, main_thumb, (vid_x + 10, vid_y + 10), (vid_w - 20, vid_h - 20), radius=10)
+    c.text((vid_x + 10, vid_y + vid_h + 10), "SYNCHRONIZED VIDEO PLAYER", load_font(11, mono=True), fill=CYAN)
+    c.text((vid_x + 10, vid_y + vid_h + 32), "middle east news report", load_font(16), fill=TEXT)
+    c.text((vid_x + 10, vid_y + vid_h + 58), "00:40", load_font(24, mono=True), fill=CYAN)
+    c.rect([vid_x, vid_y + vid_h + 80, vid_x + vid_w, vid_y + vid_h + 110], (*WIRE[:3], 60), radius=4)
+    c.text((vid_x + 10, vid_y + vid_h + 94), "MATCH TIMESTAMP: 00:40 (40.0s)", load_font(11, mono=True), fill=TEXT)
+    c.rect([vid_x + 110, vid_y + vid_h + 104, vid_x + 250, vid_y + vid_h + 136], CYAN, radius=10)
+    c.text((vid_x + 180, vid_y + vid_h + 120), "▶ JUMP TO TIMESTAMP", load_font(11, mono=True), fill=BG, anchor="mm")
     # XAI grid bottom
     c.text((120, 640), "TECHNICAL ML SCORE CALCULATIONS", load_font(11, mono=True), fill=EMERALD)
     scores = [("FUSED SCORE", "89.2%", CYAN), ("VISUAL (CLIP)", "62.1%", CYAN), ("AUDIO (WHISPER)", "89.2%", EMERALD)]
@@ -272,6 +310,9 @@ def build_frames(tmpdir: Path) -> list[str]:
             canvas.save(str(p))
             frames.append(str(p))
 
+    # Load real thumbnails once
+    thumbs = [load_thumbnail(rel, (300, 60)) for rel, _, _ in THUMBNAILS]
+
     # 1. Landing page (~1s)
     c = make_frame()
     landing_page(c)
@@ -292,17 +333,17 @@ def build_frames(tmpdir: Path) -> list[str]:
 
     # 4. Results page - result #1 selected (~1s)
     c = make_frame()
-    results_page(c, selected_idx=0)
+    results_page(c, selected_idx=0, thumbs=thumbs)
     add(c, FPS, "results_1")
 
     # 5. Results page - result #2 selected (~1s)
     c = make_frame()
-    results_page(c, selected_idx=1)
+    results_page(c, selected_idx=1, thumbs=thumbs)
     add(c, FPS, "results_2")
 
     # 6. Results page - result #3 selected (~1s)
     c = make_frame()
-    results_page(c, selected_idx=2)
+    results_page(c, selected_idx=2, thumbs=thumbs)
     add(c, FPS, "results_3")
 
     return frames
