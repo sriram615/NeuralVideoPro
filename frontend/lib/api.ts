@@ -128,6 +128,8 @@ export async function fetchSearch(
   topK = 5,
   overrideAlpha?: number,
   domainFilter = "all",
+  enableMmr = true,
+  enableReranker = false,
 ): Promise<SearchResponse> {
   return apiFetch<SearchResponse>("/api/v1/search", {
     method: "POST",
@@ -136,6 +138,8 @@ export async function fetchSearch(
       top_k: topK,
       override_alpha: overrideAlpha ?? null,
       domain_filter: domainFilter,
+      enable_mmr: enableMmr,
+      enable_reranker: enableReranker,
     }),
   });
 }
