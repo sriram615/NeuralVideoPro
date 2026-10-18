@@ -17,6 +17,7 @@ export interface IntentTelemetry {
   visual_weight_pct: number;
   audio_weight_pct: number;
   auto_detected: boolean;
+  masked_modality?: string;
 }
 
 export interface XAIAttribution {
@@ -25,6 +26,7 @@ export interface XAIAttribution {
   visual_similarity_pct: number;
   audio_similarity_pct: number;
   fused_score_pct: number;
+  rrf_score?: number;
   fusion_formula: string;
   confidence_tier: string;
 }
@@ -35,12 +37,17 @@ export interface SearchResultItem {
   fused_score: number;
   visual_score: number;
   audio_score: number;
+  rrf_score?: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   payload: Record<string, any>;
+  event_segment?: any;
   xai: XAIAttribution;
+  confidence_band?: string;
+  match_rationale?: string[];
 }
 
 export interface SearchResponse {
+  status: string;
   query: string;
   total_results: number;
   latency_ms: number;
@@ -145,7 +152,7 @@ export function staticVideoUrl(filename: string): string {
 /** Construct full URL for static keyframe assets served by FastAPI. */
 export function staticFrameUrl(framePath: string): string {
   if (!framePath) return "";
-  const match = framePath.match(/(?:extracted_frames\/|extracted_frames_v2\/|extracted_frames_my_llm_talk\/)(.+)$/);
+  const match = framePath.match(/extracted_frames[^/]*\/(.+)$/);
   if (match && match[1]) {
     return `${API_BASE}/static/frames/${match[1]}`;
   }

@@ -33,7 +33,7 @@ function Header({
   onSelectVideo: (video: string) => void;
 }) {
   return (
-    <header className="cthdrl-header flex flex-wrap items-center justify-between gap-4 px-6 py-4 bg-[#08080a]/90 backdrop-blur-2xl border-b border-white/10 z-40">
+    <header className="cthdrl-header flex flex-wrap items-center justify-between gap-4 px-6 py-4 bg-[var(--bg-pitch)]/90 backdrop-blur-2xl border-b border-white/10 z-40">
       {/* Brand & Logo */}
       <div className="flex items-center gap-4 cursor-pointer" onClick={() => onNavigate(0)}>
         <div className="w-9 h-9 rounded-xl bg-cyan-950/80 border border-cyan-500/50 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.3)]">
@@ -66,28 +66,20 @@ function Header({
           onChange={(e) => onSelectVideo(e.target.value)}
           className="bg-transparent text-white font-mono text-xs outline-none cursor-pointer pr-2"
         >
-          <option value="all" className="bg-[#08080a] text-white">
+          <option value="all" className="bg-[var(--bg-pitch)] text-white">
             ALL INDEXED VIDEOS ({corpusStats?.total_points || 0} POINTS)
           </option>
           {corpusStats?.video_catalog && corpusStats.video_catalog.length > 0 ? (
             corpusStats.video_catalog.map((item) => (
-              <option key={item.filename} value={item.filename} className="bg-[#08080a] text-white">
+              <option key={item.filename} value={item.filename} className="bg-[var(--bg-pitch)] text-white">
                 {item.title} ({item.size_mb} MB)
               </option>
             ))
           ) : (
-            <>
-              <option value="Abuse001_x264.mp4" className="bg-[#08080a] text-white">
-                Abuse001_x264.mp4 (20.5 MB)
-              </option>
-              <option value="Steve Jobs Interview Feb 18 1981.mp4" className="bg-[#08080a] text-white">
-                Steve Jobs Interview Feb 18 1981.mp4 (50.9 MB)
-              </option>
-              <option value="my_llm_talk.MOV" className="bg-[#08080a] text-white">
-                my_llm_talk.MOV (573.8 MB)
-              </option>
-            </>
-          )}
+  <option disabled className="bg-[var(--bg-pitch)] text-gray-500">
+    No videos indexed
+  </option>
+)}
         </select>
       </div>
 
@@ -166,7 +158,7 @@ function PageLanding({
           </h1>
 
           {/* Tagline */}
-          <p className="font-sans font-normal text-lg sm:text-xl md:text-2xl text-[#E6E1D5] max-w-3xl leading-relaxed mb-10 text-center">
+          <p className="font-[var(--font-inter)] font-normal text-lg sm:text-xl md:text-2xl text-[var(--text-bone)] max-w-3xl leading-relaxed mb-10 text-center">
             Sub-second cross-modal video search fusing{" "}
             <span className="text-cyan-300 font-semibold border-b border-cyan-400/50">
               CLIP ViT-B/32 keyframes
@@ -460,10 +452,105 @@ function PageResultsAndXAI({
           selectedVideo="all"
           onSelectVideo={() => {}}
         />
-        <div className="flex-1 flex flex-col items-center justify-center p-12">
-          <div className="w-14 h-14 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin mb-6" />
-          <p className="font-mono text-xl font-bold text-cyan-300">COMPUTING CLIP + WHISPER FUSION...</p>
-          <p className="font-mono text-xs text-gray-400 mt-2">Evaluating Qdrant dual-vector cosine similarities & XAI attribution</p>
+        <div className="flex-1 flex flex-col p-6 md:p-8 overflow-hidden">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 z-10 pb-3 border-b border-white/15">
+            <div>
+              <span className="font-mono font-bold text-xs text-cyan-400 uppercase tracking-widest">XAI PROVENANCE</span>
+              <span className="font-mono text-xs text-white">QUERY: &quot;...&quot;</span>
+            </div>
+            <p className="font-mono text-xs text-gray-400 mt-1">AUTO-INTENT: ... (&alpha; = ...) &bull; ... RESULTS</p>
+          </div>
+
+          {/* Skeleton Timeline Track */}
+          <div className="z-10 my-3 p-4 bg-black/80 backdrop-blur-2xl border border-cyan-500/40 rounded-2xl space-y-2 font-mono">
+            <div className="flex items-center justify-between text-xs text-gray-300">
+              <span className="font-bold text-cyan-400 tracking-wider">RETRIEVAL TIMELINE TRACK</span>
+              <span className="text-gray-400">VIDEO DURATION: 0:00 ➔ ...</span>
+            </div>
+            <div className="relative w-full h-8 bg-white/5 rounded-xl border border-white/10 flex items-center px-2">
+              <div className="w-full h-1.5 bg-gradient-to-r from-cyan-500/40 via-emerald-500/40 to-cyan-500/40 rounded-full relative">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <button
+                    key={i}
+                    className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cyan-400 shadow-lg skeleton skeleton-circle"
+                    style={{ left: `${20 + i * 16}%` }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Skeleton Results Gallery */}
+          <div className="z-10 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 my-2 overflow-y-auto max-h-[calc(100vh-270px)] pr-2">
+            <div className="lg:col-span-5 space-y-4">
+              <h3 className="font-mono text-sm font-bold text-gray-300 uppercase tracking-wider">TIMELINE MATCH REEL:</h3>
+              <div className="space-y-4">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="p-4 bg-black/80 backdrop-blur-md rounded-2xl border-2 border-white/15 space-y-3">
+                    <div className="flex items-center justify-between font-mono text-xs">
+                      <span className="font-black text-cyan-400 bg-cyan-950 px-2.5 py-1 rounded border border-cyan-500/40">RANK #...</span>
+                      <span className="font-bold text-white">TIMESTAMP: ...</span>
+                      <span className="font-black text-emerald-400">...% MATCH</span>
+                    </div>
+                    <div className="w-full h-40 bg-black rounded-xl overflow-hidden border border-white/20 relative">
+                      <div className="w-full h-full skeleton" />
+                    </div>
+                    <div className="space-y-1 font-mono text-[11px] pt-1 border-t border-white/10">
+                      <div className="h-3 skeleton" />
+                      <div className="h-3 skeleton" style={{ width: "70%" }} />
+                      <div className="h-3 skeleton" style={{ width: "50%" }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-7 space-y-6">
+              {/* Skeleton Video Player */}
+              <div className="p-6 bg-black/90 backdrop-blur-2xl border-2 border-cyan-500/50 rounded-2xl shadow-2xl space-y-4">
+                <div className="flex items-center justify-between border-b border-white/15 pb-3">
+                  <span className="font-mono text-xs font-bold text-cyan-400 uppercase tracking-widest">SYNCHRONIZED VIDEO PLAYER</span>
+                  <span className="font-mono text-xs px-3 py-1 rounded-full font-bold border bg-emerald-950 text-emerald-300 border-emerald-500/50">CONFIDENCE: ...</span>
+                </div>
+                <div className="w-full bg-black rounded-xl overflow-hidden border border-white/20 shadow-2xl relative">
+                  <div className="w-full h-[380px] skeleton" />
+                </div>
+                <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs bg-black/80 p-4 rounded-xl border border-white/10">
+                  <span className="text-gray-300">MATCH TIMESTAMP: <strong className="text-cyan-400 text-sm">...</strong></span>
+                  <button className="px-6 py-3 bg-cyan-500 hover:bg-emerald-400 text-black font-mono font-black text-sm rounded-xl transition-all shadow-md cursor-pointer flex items-center gap-2">▶ JUMP TO TIMESTAMP [...]</button>
+                </div>
+              </div>
+
+              {/* Skeleton Transcript */}
+              <div className="p-6 bg-black/90 backdrop-blur-2xl border border-white/15 rounded-2xl space-y-3 font-mono">
+                <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider block">SPOKEN DIALOGUE TRANSCRIPT:</span>
+                <div className="h-20 p-4 bg-white/5 rounded-xl border border-white/10">
+                  <div className="h-3 skeleton" />
+                  <div className="h-3 skeleton" style={{ width: "80%" }} />
+                  <div className="h-3 skeleton" style={{ width: "60%" }} />
+                  <div className="h-3 skeleton" style={{ width: "40%" }} />
+                </div>
+              </div>
+
+              {/* Skeleton XAI Grid */}
+              <div className="p-6 bg-black/90 backdrop-blur-2xl border border-emerald-500/40 rounded-2xl space-y-4 font-mono">
+                <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider block">TECHNICAL ML SCORE CALCULATIONS</span>
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                    <span className="text-[10px] text-gray-400 uppercase block">FUSED SCORE</span>
+                    <div className="h-10 skeleton" />
+                  </div>
+                  <div className="p-4 bg-cyan-950/60 rounded-xl border border-cyan-500/40">
+                    <span className="text-[10px] text-cyan-400 uppercase block">VISUAL (CLIP)</span>
+                    <div className="h-10 skeleton" />
+                  </div>
+                  <div className="p-4 bg-emerald-950/60 rounded-xl border border-emerald-500/40">
+                    <span className="text-[10px] text-emerald-400 uppercase block">AUDIO (WHISPER)</span>
+                    <div className="h-10 skeleton" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -509,7 +596,7 @@ function PageResultsAndXAI({
 
   // Calculate Max Duration for Interactive Retrieval Timeline Bar
   const maxTimestampInResults = Math.max(...data.results.map((r) => Number(r.payload.timestamp) || 0));
-  const maxDurationSec = Math.max(1170, maxTimestampInResults + 30); // default ~19:30 or max ts
+  const maxDurationSec = maxTimestampInResults > 0 ? maxTimestampInResults + 30 : 300; // actual corpus data + 30s buffer, or 5 min fallback
 
   return (
     <div className="page-view page-view-active">
@@ -708,7 +795,7 @@ function PageResultsAndXAI({
               </span>
               {transcript ? (
                 <p
-                  className="text-base sm:text-lg leading-relaxed text-[#E6E1D5] p-4 bg-white/5 rounded-xl border border-white/10"
+                  className="text-base sm:text-lg leading-relaxed text-[var(--text-bone)] p-4 bg-white/5 rounded-xl border border-white/10"
                   dangerouslySetInnerHTML={{
                     __html: highlightKeywords(transcript, data.query),
                   }}
@@ -798,7 +885,7 @@ export default function Home() {
   );
 
   return (
-    <main className="page-container bg-[#08080a] min-h-screen text-white font-sans overflow-hidden">
+    <main className="page-container bg-[var(--bg-pitch)] min-h-screen text-white font-[var(--font-inter)] overflow-hidden">
       {currentPage === 0 && (
         <PageLanding
           onNavigate={navigateToPage}
@@ -885,13 +972,11 @@ function highlightKeywords(text: string, query: string): string {
 }
 
 function resolveVideoFilename(raw: string | undefined | null): string {
-  if (!raw) return "Steve Jobs Interview Feb 18 1981.mp4";
+  if (!raw) return "";
+  // If it already has a video extension, use as-is
   if (raw.endsWith(".mp4") || raw.endsWith(".MOV") || raw.endsWith(".mkv") || raw.endsWith(".webm")) {
     return raw;
   }
-  if (raw.includes("Abuse001")) return "Abuse001_x264.mp4";
-  if (raw.includes("my_llm_talk")) return "my_llm_talk.MOV";
-  if (raw.includes("Steve") || raw.includes("jobs")) return "Steve Jobs Interview Feb 18 1981.mp4";
-  const stem = raw.replace(/_[a-f0-9]{12}$/i, "");
-  return `${stem}.mp4`;
+  // Otherwise it's a video_id — append .mp4 as best guess
+  return `${raw}.mp4`;
 }
