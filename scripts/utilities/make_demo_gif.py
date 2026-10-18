@@ -119,8 +119,8 @@ def landing_page(c: Canvas):
     # Badge
     c.text((W // 2 - 220, 150), "HACKATHON JUDGE DEMO MODE  •  SUB-300MS CPU LATENCY", load_font(13, mono=True), fill=EMERALD)
     # Hero title
-    c.text((W // 2 - 320, 200), "NEURALVIDEO", load_font(100), fill=TEXT)
-    c.text((W // 2 + 240, 210), "PRO", load_font(100), fill=CYAN)
+    c.text((120, 190), "NEURALVIDEO", load_font(92), fill=TEXT)
+    c.text((820, 190), "PRO", load_font(92), fill=CYAN)
     # Tagline
     c.text((W // 2 - 420, 320), "Sub-second cross-modal video search fusing CLIP ViT-B/32 keyframes", load_font(20), fill=MUTED)
     c.text((W // 2 - 420, 350), "and Whisper Base dialogue transcripts with Reciprocal Rank Fusion & XAI.", load_font(20), fill=MUTED)
