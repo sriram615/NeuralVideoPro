@@ -9,6 +9,7 @@ __pycache__/
 # Datasets & Local Vector Storage
 data/*
 !data/.gitkeep
+backend/data/
 qdrant_storage/
 
 # Archived dev history (do not vendored environments)
