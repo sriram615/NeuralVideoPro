@@ -96,23 +96,29 @@ class Canvas:
         return self.img
 
 
-def load_thumbnail(rel_path: str, size: Tuple[int, int]) -> Image.Image:
-    """Load a real keyframe from the corpus and resize it."""
+def load_thumbnail(rel_path: str, max_w: int, max_h: int) -> Image.Image:
+    """Load a real keyframe from the corpus, resized to fit within bounds
+    while preserving aspect ratio."""
     src = FRAMES_DIR / rel_path
     if not src.exists():
         return None
     img = Image.open(src).convert("RGB")
-    img = img.resize(size, Image.LANCZOS)
+    img.thumbnail((max_w, max_h), Image.LANCZOS)
     return img
 
 
 def paste_thumb(c: Canvas, img: Image.Image | None, xy: Tuple[int, int], size: Tuple[int, int], radius: int = 8):
-    """Paste a thumbnail image onto the canvas inside a rounded card area."""
+    """Paste a thumbnail image onto the canvas, centered in the card area,
+    preserving aspect ratio."""
     x0, y0 = xy
     x1, y1 = x0 + size[0], y0 + size[1]
     if img is not None:
-        c.img.paste(img, (x0, y0))
-    # draw a subtle border
+        # center the image within the available area
+        iw, ih = img.size
+        cx = x0 + (size[0] - iw) // 2
+        cy = y0 + (size[1] - ih) // 2
+        c.img.paste(img, (cx, cy))
+    # draw a subtle border around the card area
     c.rect([x0, y0, x1, y1], None, radius=radius, outline=(*WIRE[:3], 100), outline_w=1)
 
 
@@ -311,7 +317,7 @@ def build_frames(tmpdir: Path) -> list[str]:
             frames.append(str(p))
 
     # Load real thumbnails once
-    thumbs = [load_thumbnail(rel, (300, 60)) for rel, _, _ in THUMBNAILS]
+    thumbs = [load_thumbnail(rel, 300, 60) for rel, _, _ in THUMBNAILS]
 
     # 1. Landing page (~1s)
     c = make_frame()
