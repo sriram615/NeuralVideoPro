@@ -36,20 +36,20 @@ export default function ResultCard({
           onSelect(rank);
         }
       }}
-      className={`p-4 bg-black/80 backdrop-blur-md rounded-2xl border-2 transition-all cursor-pointer space-y-3 focus-visible:ring-2 focus-visible:ring-[#06B6D4] ${
+      className={`p-4 bg-black/80 backdrop-blur-md rounded-2xl border-2 transition-all cursor-pointer space-y-3 focus-visible:ring-2 focus-visible:ring-accent-cyan ${
         isSelected
-          ? "border-[#06B6D4] shadow-[0_0_20px_rgba(6,182,212,0.3)] bg-[#06B6D4]/20"
+          ? "border-accent-cyan shadow-[0_0_20px_rgba(6,182,212,0.3)] bg-accent-cyan/20"
           : "border-white/15 hover:border-white/40"
       }`}
     >
       <div className="flex items-center justify-between font-mono text-xs">
-        <span className={`font-black bg-[#06B6D4]/40 px-2.5 py-1 rounded border border-[#06B6D4]/40 ${
-          isSelected ? "text-black" : "text-[#06B6D4]"
+        <span className={`font-black bg-accent-cyan/40 px-2.5 py-1 rounded border border-accent-cyan/40 ${
+          isSelected ? "text-black" : "text-accent-cyan"
         }`}>
           RANK #{rank}
         </span>
         <span className="font-bold text-white">TIMESTAMP: {rTimeStr}</span>
-        <span className={`font-black ${item.visual_score > 0.15 ? "text-[#10B981]" : "text-gray-500"}`}>
+        <span className={`font-black ${item.visual_score > 0.15 ? "text-accent-emerald" : "text-gray-500"}`}>
           {item.xai.fused_score_pct.toFixed(1)}% MATCH
         </span>
       </div>
@@ -67,7 +67,7 @@ export default function ResultCard({
             KEYFRAME PREVIEW
           </div>
         )}
-        <div className="absolute bottom-2 right-2 bg-black/90 px-3 py-1 rounded font-mono text-xs font-bold text-[#06B6D4] border border-[#06B6D4]/40">
+        <div className="absolute bottom-2 right-2 bg-black/90 px-3 py-1 rounded font-mono text-xs font-bold text-accent-cyan border border-accent-cyan/40">
           {rTimeStr}
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function ResultCard({
       <div className="space-y-1 font-mono text-[11px] pt-1 border-t border-white/10">
         <div
           className={`flex items-center gap-2 ${
-            item.visual_score > 0.15 ? "text-[#10B981]" : "text-gray-500"
+            item.visual_score > 0.15 ? "text-accent-emerald" : "text-gray-500"
           }`}
         >
           <span aria-hidden="true">&check;</span>
@@ -85,14 +85,14 @@ export default function ResultCard({
         </div>
         <div
           className={`flex items-center gap-2 ${
-            item.audio_score > 0.15 ? "text-[#10B981]" : "text-gray-500"
+            item.audio_score > 0.15 ? "text-accent-emerald" : "text-gray-500"
           }`}
         >
           <span aria-hidden="true">&check;</span>
           <span className="sr-only">Transcript aligned at target timestamp</span>
           {`${item.xai.audio_similarity_pct.toFixed(1)}%`}
         </div>
-        <div className="flex items-center gap-2 text-[#06B6D4]">
+        <div className="flex items-center gap-2 text-accent-cyan">
           <span aria-hidden="true">&check;</span>
           <span className="sr-only">Multi-modal cross-agreement score verified</span>
           Verified

@@ -1,11 +1,20 @@
 @import "tailwindcss";
 
+/*
+ * Single source of truth for the palette.
+ * Tailwind v4 CSS-first theme: every `--color-*` token generates matching
+ * utilities (bg-pitch, text-bone, text-accent-cyan, …) so components never
+ * need to hardcode a hex value.
+ */
 @theme {
-  --color-bg-pitch: #0c0c0c;
-  --color-text-bone: #e6e1d5;
-  --color-text-muted: rgba(230, 225, 213, 0.45);
-  --color-border-wire: rgba(230, 225, 213, 0.25);
+  --color-pitch: #0c0c0c;
+  --color-void: #08080a;
+  --color-bone: #e6e1d5;
+  --color-muted: rgba(230, 225, 213, 0.45);
+  --color-wire: rgba(230, 225, 213, 0.25);
   --color-accent-cyan: #06B6D4;
+  --color-accent-emerald: #10B981;
+  --color-accent-amber: #F59E0B;
   --color-accent-cyan-dim: rgba(6, 182, 212, 0.2);
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Fira Code", monospace;
@@ -23,13 +32,13 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0c0c0c;
-  color: #e6e1d5;
+  background-color: var(--color-pitch);
+  color: var(--color-bone);
 }
 
 body {
-  background-color: #0c0c0c;
-  color: #e6e1d5;
+  background-color: var(--color-pitch);
+  color: var(--color-bone);
   font-family: var(--font-sans);
   overflow-x: hidden;
 }

@@ -44,7 +44,7 @@ function highlightKeywords(text: string, query: string): string {
   if (!tokens.length) return text;
 
   const pattern = new RegExp(`\\b(${tokens.join("|")})\\b`, "gi");
-  return text.replace(pattern, '<mark class="bg-[#06B6D4]/30 text-[#06B6D4]/90 border-b border-[#06B6D4]/50 px-1 py-0.5 rounded font-mono font-bold">$1</mark>');
+  return text.replace(pattern, '<mark class="bg-accent-cyan/30 text-accent-cyan/90 border-b border-accent-cyan/50 px-1 py-0.5 rounded font-mono font-bold">$1</mark>');
 }
 
 function PageLanding({
@@ -74,22 +74,22 @@ function PageLanding({
       <div className="flex-1 relative flex flex-col justify-center items-center p-4 md:p-8 text-center overflow-hidden pt-16 md:pt-24">
         <WireframeArcs variant="manifesto" aria-hidden="true" />
         <div className="z-10 max-w-5xl mx-auto flex flex-col items-center justify-center my-auto px-3 md:px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-[#10B981]/40 mb-6 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
-            <span className="w-2 h-2 rounded-full bg-[#10B981]" aria-hidden="true" />
-            <span className="font-mono font-bold text-[10px] text-[#10B981] tracking-[0.25em] uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-accent-emerald/40 mb-6 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+            <span className="w-2 h-2 rounded-full bg-accent-emerald" aria-hidden="true" />
+            <span className="font-mono font-bold text-[10px] text-accent-emerald tracking-[0.25em] uppercase">
               HACKATHON JUDGE DEMO MODE &bull; &lt; 300 MS CPU LATENCY
             </span>
           </div>
           <h1 className="font-mono font-black text-4xl sm:text-6xl lg:text-8xl uppercase tracking-[0.1em] text-white leading-none mb-6 drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-            NEURALVIDEO <span className="text-[#06B6D4]">PRO</span>
+            NEURALVIDEO <span className="text-accent-cyan">PRO</span>
           </h1>
-          <p className="font-[var(--font-inter)] font-normal text-sm sm:text-base md:text-lg text-[var(--text-bone)] max-w-3xl leading-relaxed mb-8 text-center">
+          <p className="font-sans font-normal text-sm sm:text-base md:text-lg text-bone max-w-3xl leading-relaxed mb-8 text-center">
             Sub-second cross-modal video search fusing{" "}
-            <span className="text-[#06B6D4]/90 font-semibold border-b border-[#06B6D4]/50">
+            <span className="text-accent-cyan/90 font-semibold border-b border-accent-cyan/50">
               CLIP ViT-B/32 keyframes
             </span>{" "}
             and{" "}
-            <span className="text-[#10B981]/90 font-semibold border-b border-[#10B981]/50">
+            <span className="text-accent-emerald/90 font-semibold border-b border-accent-emerald/50">
               Whisper Base dialogue transcripts
             </span>{" "}
             with Reciprocal Rank Fusion & XAI attribution.
@@ -97,11 +97,11 @@ function PageLanding({
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full max-w-4xl mb-8 font-mono">
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
               <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">SEARCH SLA</span>
-              <span className="text-xl font-black text-[#10B981]">&lt; 300ms</span>
+              <span className="text-xl font-black text-accent-emerald">&lt; 300ms</span>
             </div>
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
               <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">VECTOR STORE</span>
-              <span className="text-xl font-black text-[#06B6D4]">Qdrant Dual 512-D</span>
+              <span className="text-xl font-black text-accent-cyan">Qdrant Dual 512-D</span>
             </div>
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
               <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">INDEX POINTS</span>
@@ -109,12 +109,12 @@ function PageLanding({
             </div>
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
               <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">EXPLAINABILITY</span>
-              <span className="text-xl font-black text-[#06B6D4]">RRF + XAI</span>
+              <span className="text-xl font-black text-accent-cyan">RRF + XAI</span>
             </div>
           </div>
           <button
             onClick={() => onNavigate(1)}
-            className="font-mono font-bold text-base sm:text-lg tracking-[0.2em] uppercase px-8 py-4 bg-[#06B6D4] hover:bg-[#10B981] text-black rounded-2xl transition-all duration-300 shadow-[0_0_35px_rgba(6,182,212,0.4)] hover:scale-105 group cursor-pointer flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+            className="font-mono font-bold text-base sm:text-lg tracking-[0.2em] uppercase px-8 py-4 bg-accent-cyan hover:bg-accent-emerald text-black rounded-2xl transition-all duration-300 shadow-[0_0_35px_rgba(6,182,212,0.4)] hover:scale-105 group cursor-pointer flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-accent-cyan"
           >
             ENTER SEARCH CONSOLE
             <span className="text-2xl group-hover:translate-x-1 transition-transform" aria-hidden="true">
@@ -184,7 +184,7 @@ function PageConsole({
         <WireframeArcs variant="terminal" aria-hidden="true" />
         <div className="z-10 max-w-5xl mx-auto w-full flex flex-col items-center justify-center my-auto px-3 md:px-6 py-4 md:py-6 space-y-6">
           <div className="text-center">
-            <span className="font-mono font-bold text-xs text-[#06B6D4] tracking-[0.25em] uppercase block mb-2">
+            <span className="font-mono font-bold text-xs text-accent-cyan tracking-[0.25em] uppercase block mb-2">
               JUDGE DEMO CONSOLE // QUERY INFERENCE ENGINE
             </span>
             <h2 className="font-mono font-black text-3xl sm:text-5xl md:text-6xl uppercase tracking-[0.1em] text-white leading-none drop-shadow-lg">
@@ -208,7 +208,7 @@ function PageConsole({
                     setQuery(sample.q);
                     onSearch(sample.q);
                   }}
-                  className="text-xs sm:text-sm font-mono font-bold py-2 px-3 bg-black/60 hover:bg-[#06B6D4] hover:text-black text-gray-200 transition-all duration-200 rounded-xl border border-white/15 hover:border-[#06B6D4] cursor-pointer backdrop-blur-md shadow-md hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+                  className="text-xs sm:text-sm font-mono font-bold py-2 px-3 bg-black/60 hover:bg-accent-cyan hover:text-black text-gray-200 transition-all duration-200 rounded-xl border border-white/15 hover:border-accent-cyan cursor-pointer backdrop-blur-md shadow-md hover:scale-105 focus-visible:ring-2 focus-visible:ring-accent-cyan"
                   aria-label={`Search: ${sample.label}`}
                 >
                   {sample.label}
@@ -217,10 +217,10 @@ function PageConsole({
             </div>
           </div>
           {searchError && (
-            <div className="w-full max-w-3xl mx-auto p-4 border border-[#F59E0B]/50 bg-[#F59E0B]/60 text-[#F59E0B]/200 text-sm font-mono font-bold rounded-xl" role="alert">
+            <div className="w-full max-w-3xl mx-auto p-4 border border-accent-amber/50 bg-accent-amber/60 text-accent-amber text-sm font-mono font-bold rounded-xl" role="alert">
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[#F59E0B]/80">SEARCH ERROR:</span>
-                <span className="text-[#E6E1D5]/90">{searchError}</span>
+                <span className="text-accent-amber/80">SEARCH ERROR:</span>
+                <span className="text-bone/90">{searchError}</span>
               </div>
               <button
                 onClick={() => {
@@ -229,7 +229,7 @@ function PageConsole({
                     onSearch(query.trim());
                   }
                 }}
-                className="text-xs font-mono text-[#06B6D4] hover:text-[#10B981] focus-visible:ring-2 focus-visible:ring-[#06B6D4] mt-2"
+                className="text-xs font-mono text-accent-cyan hover:text-accent-emerald focus-visible:ring-2 focus-visible:ring-accent-cyan mt-2"
               >
                 Try again
               </button>
@@ -280,7 +280,7 @@ function PageResultsAndXAI({
         <div className="flex-1 flex flex-col p-4 md:p-6 overflow-hidden">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 z-10 pb-3 border-b border-white/15">
             <div>
-              <span className="font-mono font-bold text-xs text-[#06B6D4] uppercase tracking-widest">XAI PROVENANCE</span>
+              <span className="font-mono font-bold text-xs text-accent-cyan uppercase tracking-widest">XAI PROVENANCE</span>
               <span className="font-mono text-xs text-white">QUERY: &quot;&hellip;&quot;</span>
             </div>
             <p className="font-mono text-xs text-gray-400 mt-1">AUTO-INTENT: ... (&alpha; = ...) &bull; ... RESULTS</p>
@@ -334,7 +334,7 @@ function PageResultsAndXAI({
           </p>
           <button
             onClick={() => onNavigate(1)}
-            className="mt-6 px-6 py-3 bg-[#06B6D4] text-black font-mono font-bold rounded-xl transition-all focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+            className="mt-6 px-6 py-3 bg-accent-cyan text-black font-mono font-bold rounded-xl transition-all focus-visible:ring-2 focus-visible:ring-accent-cyan"
           >
             GO TO SEARCH CONSOLE &rarr;
           </button>
@@ -366,18 +366,18 @@ function PageResultsAndXAI({
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 z-10 pb-3 border-b border-white/15">
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-mono font-bold text-xs text-[#06B6D4] uppercase tracking-widest">XAI PROVENANCE</span>
+              <span className="font-mono font-bold text-xs text-accent-cyan uppercase tracking-widest">XAI PROVENANCE</span>
               <span className="font-mono text-xs text-white">
-                QUERY: &quot;<strong className="text-[#06B6D4]/90">{data.query}</strong>&quot;
+                QUERY: &quot;<strong className="text-accent-cyan/90">{data.query}</strong>&quot;
               </span>
             </div>
             <p className="font-mono text-xs text-gray-400 mt-1">
-              AUTO-INTENT: {data.intent.intent_label} (&alpha; = {alpha.toFixed(2)}) &bull; {data.total_results} RESULTS IN <span className="text-[#10B981] font-bold">{data.latency_ms}ms</span>
+              AUTO-INTENT: {data.intent.intent_label} (&alpha; = {alpha.toFixed(2)}) &bull; {data.total_results} RESULTS IN <span className="text-accent-emerald font-bold">{data.latency_ms}ms</span>
             </p>
           </div>
           <button
             onClick={() => onNavigate(1)}
-            className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white rounded-xl border border-white/20 transition-all focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+            className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white rounded-xl border border-white/20 transition-all focus-visible:ring-2 focus-visible:ring-accent-cyan"
           >
             NEW SEARCH &rarr;
           </button>
@@ -397,11 +397,11 @@ function PageResultsAndXAI({
           <div className="lg:col-span-7 space-y-4">
             <VideoPlayer item={activeItem} formattedTime={formattedTime} timestampSec={timestampSec} confidenceBand={confidenceBand} catalog={corpusStats?.video_catalog ?? null} onDurationChange={setVideoDurationSec} />
             <div className="p-5 bg-black/90 backdrop-blur-2xl border border-white/15 rounded-xl space-y-3 font-mono">
-              <span className="text-xs font-bold text-[#06B6D4] uppercase tracking-wider block">
+              <span className="text-xs font-bold text-accent-cyan uppercase tracking-wider block">
                 SPOKEN DIALOGUE TRANSCRIPT (TIMESTAMP {formattedTime}):
               </span>
               {transcript ? (
-                <p className="text-base sm:text-lg leading-relaxed text-[var(--text-bone)] p-4 bg-white/5 rounded-xl border border-white/10" dangerouslySetInnerHTML={{ __html: highlightKeywords(transcript, data.query) }} />
+                <p className="text-base sm:text-lg leading-relaxed text-bone p-4 bg-white/5 rounded-xl border border-white/10" dangerouslySetInnerHTML={{ __html: highlightKeywords(transcript, data.query) }} />
               ) : (
                 <p className="text-sm text-gray-500">No acoustic dialogue transcript available for this keyframe segment.</p>
               )}
@@ -461,7 +461,7 @@ export default function Home() {
   );
 
   return (
-    <main className="page-container bg-[#08080a] min-h-screen text-white font-[var(--font-inter)] overflow-hidden">
+    <main className="page-container bg-void min-h-screen text-white font-sans overflow-hidden">
       {currentPage === 0 && (
         <PageLanding onNavigate={navigateToPage} health={health} corpusStats={corpusStats} selectedVideo={selectedVideo} onSelectVideo={setSelectedVideo} />
       )}
@@ -498,7 +498,7 @@ export default function Home() {
             key={item.idx}
             onClick={() => navigateToPage(item.idx)}
             aria-current={currentPage === item.idx ? "page" : undefined}
-            className={`px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#06B6D4] ${currentPage === item.idx ? "bg-[#06B6D4] text-black shadow-md" : "text-gray-400 hover:text-white"}`}
+            className={`px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all focus-visible:ring-2 focus-visible:ring-accent-cyan ${currentPage === item.idx ? "bg-accent-cyan text-black shadow-md" : "text-gray-400 hover:text-white"}`}
           >
             {item.label}
           </button>

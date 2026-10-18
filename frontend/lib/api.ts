@@ -31,6 +31,16 @@ export interface XAIAttribution {
   confidence_tier: string;
 }
 
+export interface EventSegment {
+  video_id: string;
+  event_start: number;
+  event_end: number;
+  hero_keyframe_timestamp: number;
+  hero_keyframe_path: string;
+  full_transcript_segment: string;
+  visual_scene_description?: string;
+}
+
 export interface SearchResultItem {
   rank: number;
   id: string | number;
@@ -40,8 +50,7 @@ export interface SearchResultItem {
   rrf_score?: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   payload: Record<string, any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  event_segment?: any;
+  event_segment?: EventSegment;
   xai: XAIAttribution;
   confidence_band?: string;
   match_rationale?: string[];
