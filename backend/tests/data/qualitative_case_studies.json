@@ -42,7 +42,7 @@
       {
         "rank": 1,
         "video_id": "middle_east_news_report_0a56c7e5359d",
-        "timestamp_range": "01:02 - 01:10",
+        "timestamp_range": "01:01 - 01:10",
         "final_score": 0.0133,
         "visual_score": 0.0,
         "audio_score": 0.85549,
@@ -52,12 +52,12 @@
       {
         "rank": 2,
         "video_id": "ecns_opening_speech_665f4791a4e8",
-        "timestamp_range": "01:25 - 01:27",
-        "final_score": 0.0116,
+        "timestamp_range": "01:24 - 01:26",
+        "final_score": 0.0115,
         "visual_score": 0.0,
         "audio_score": 0.849541,
         "transcript_snippet": "The idea of that all of us share is very serious. We are the community who will be able to get",
-        "match_rationale": "Visual vector cosine similarity (0.0000) + Audio similarity (0.8495) fused via RRF (0.0116) and cross-modal agreement scoring."
+        "match_rationale": "Visual vector cosine similarity (0.0000) + Audio similarity (0.8495) fused via RRF (0.0115) and cross-modal agreement scoring."
       }
     ]
   },
@@ -78,7 +78,7 @@
       {
         "rank": 2,
         "video_id": "obama_farewell_speech_353ca4868dfb",
-        "timestamp_range": "00:14 - 00:18",
+        "timestamp_range": "00:15 - 00:18",
         "final_score": 0.0154,
         "visual_score": 0.322951,
         "audio_score": 0.0,
@@ -88,12 +88,12 @@
       {
         "rank": 3,
         "video_id": "obama_farewell_speech_353ca4868dfb",
-        "timestamp_range": "01:42 - 01:44",
-        "final_score": 0.0131,
-        "visual_score": 0.326601,
-        "audio_score": 0.0,
-        "transcript_snippet": "and the new generation sets its sights higher because it has you as a role model.",
-        "match_rationale": "Visual vector cosine similarity (0.3266) + Audio similarity (0.0000) fused via RRF (0.0131) and cross-modal agreement scoring."
+        "timestamp_range": "01:35 - 01:37",
+        "final_score": 0.0166,
+        "visual_score": 0.321084,
+        "audio_score": 0.70483,
+        "transcript_snippet": "You made the White House a place that belongs to everybody,",
+        "match_rationale": "Visual vector cosine similarity (0.3211) + Audio similarity (0.7048) fused via RRF (0.0149) and cross-modal agreement scoring."
       }
     ]
   }

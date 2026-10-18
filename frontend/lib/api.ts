@@ -40,6 +40,7 @@ export interface SearchResultItem {
   rrf_score?: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   payload: Record<string, any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   event_segment?: any;
   xai: XAIAttribution;
   confidence_band?: string;
@@ -151,6 +152,32 @@ export async function fetchCorpusStats(): Promise<CorpusStats> {
 /** Construct full URL for static video assets served by FastAPI. */
 export function staticVideoUrl(filename: string): string {
   return `${API_BASE}/static/videos/${filename}`;
+}
+
+/**
+ * Resolve the on-disk video filename for a search result.
+ *
+ * Search payloads carry a hashed ``video_id`` (e.g.
+ * ``atheist_discussion_interview_0b781ddebb17``) that is *not* a filename, so
+ * the authoritative name is taken from the corpus catalog when available.
+ * Callers should treat an empty string as "no playable source" and render a
+ * placeholder rather than guessing an extension.
+ */
+export function resolveVideoFilename(
+  rawFilename: string | undefined | null,
+  videoId?: string | null,
+  catalog?: VideoCatalogItem[] | null,
+): string {
+  const explicit = (rawFilename ?? "").trim();
+  if (explicit) {
+    return explicit;
+  }
+  const id = (videoId ?? "").trim();
+  if (!id) {
+    return "";
+  }
+  const match = catalog?.find((item) => item.video_id === id);
+  return match?.filename ?? "";
 }
 
 /** Construct full URL for static keyframe assets served by FastAPI. */

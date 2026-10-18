@@ -29,7 +29,7 @@ export default function SearchBar({
         <input
           id="search-input"
           type="text"
-          className="w-full px-6 py-5 bg-transparent text-white font-mono text-lg sm:text-xl placeholder-gray-500 outline-none focus-visible:ring-2 focus-visible-ring-[#06B6D4]"
+          className="w-full px-6 py-5 bg-transparent text-white font-mono text-lg sm:text-xl placeholder-gray-500 outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
           placeholder='Try "speaker discussing transformers" or "prompt engineering"...'
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -44,7 +44,17 @@ export default function SearchBar({
           className="absolute right-4 top-1/2 -translate-y-1/2 px-8 py-3.5 bg-[#06B6D4] hover:bg-[#10B981] disabled:opacity-40 disabled:cursor-not-allowed text-black font-mono font-black text-sm tracking-wider uppercase rounded-xl transition-all shadow-md cursor-pointer focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
           aria-label={isSearching ? "Search in progress" : "Search"}
         >
-          {isSearching ? "INFERRING..." : "SEARCH"}
+          {isSearching ? (
+            <>
+              <svg className="animate-spin h-4 w-4 text-black" viewBox="0 0 24 24" aria-hidden="true">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+                <path className="opacity-75" cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="4" fill="none"></path>
+              </svg>
+              INFERRING...
+            </>
+          ) : (
+            "SEARCH"
+          )}
         </button>
       </div>
     </form>

@@ -12,25 +12,40 @@ function formatTimestamp(seconds: number): string {
 interface TimelineTrackProps {
   results: SearchResultItem[];
   selectedIndex: number;
+  /** Real duration of the source video in seconds, when the player reports it. */
+  durationSec?: number;
   onSelect: (index: number, timestamp: number) => void;
 }
 
 export default function TimelineTrack({
   results,
   selectedIndex,
+  durationSec = 0,
   onSelect,
 }: TimelineTrackProps) {
   const maxTimestampInResults =
     results.length > 0
       ? Math.max(...results.map((r) => Number(r.payload.timestamp) || 0))
       : 0;
-  const maxDurationSec = maxTimestampInResults > 0 ? maxTimestampInResults + 30 : 300;
+
+  // Prefer the duration reported by the <video> element; otherwise derive the
+  // track span from the retrieved hits. Fall back to 1s only so the marker
+  // math never divides by zero before the player has loaded metadata.
+  const maxDurationSec =
+    durationSec > 0
+      ? durationSec
+      : maxTimestampInResults > 0
+      ? maxTimestampInResults + 30
+      : 1;
+  const hasDuration = durationSec > 0 || maxTimestampInResults > 0;
 
   return (
     <div className="z-10 my-3 p-4 bg-black/80 backdrop-blur-2xl border border-[#06B6D4]/50 rounded-2xl space-y-2 font-mono">
       <div className="flex items-center justify-between text-xs text-gray-300">
         <span className="font-bold text-[#06B6D4] tracking-wider">RETRIEVAL TIMELINE TRACK</span>
-        <span className="text-gray-400">VIDEO DURATION: 0:00 &rarr; {formatTimestamp(maxDurationSec)}</span>
+        <span className="text-gray-400">
+          VIDEO DURATION: 0:00 &rarr; {hasDuration ? formatTimestamp(maxDurationSec) : "--:--"}
+        </span>
       </div>
 
       <div className="relative w-full h-8 bg-white/5 rounded-xl border border-white/10 flex items-center px-2">

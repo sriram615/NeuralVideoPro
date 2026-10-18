@@ -9,19 +9,43 @@ import ResultCard from "@/components/ResultCard";
 import TimelineTrack from "@/components/TimelineTrack";
 import VideoPlayer from "@/components/VideoPlayer";
 import XAIGrid from "@/components/XAIGrid";
+import Skeleton from "@/components/Skeleton";
 import {
   fetchCorpusStats,
   fetchHealth,
   fetchSearch,
-  staticVideoUrl,
   type CorpusStats,
   type HealthResponse,
   type SearchResponse,
 } from "@/lib/api";
 
-/* ================================================================
-   PAGE 1 (Index 0) — JUDGE LANDING & DEMO OVERVIEW
-   ================================================================ */
+function formatTimestamp(seconds: number): string {
+  const total = Math.round(seconds);
+  const mins = Math.floor(total / 60);
+  const secs = total % 60;
+  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+}
+
+const STOP_WORDS = new Set([
+  "the", "and", "a", "an", "in", "on", "at", "to", "for", "of", "with",
+  "by", "from", "up", "about", "into", "over", "after", "is", "are", "was",
+  "were", "be", "been", "being", "have", "has", "had", "do", "does", "did",
+  "but", "or", "so", "if", "out", "no", "not", "only", "own", "same", "that",
+  "this", "these", "those", "then", "there", "when", "where", "why", "how",
+]);
+
+function highlightKeywords(text: string, query: string): string {
+  const tokens = query
+    .toLowerCase()
+    .split(/\W+/)
+    .filter((w) => w.length >= 3 && !STOP_WORDS.has(w))
+    .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+
+  if (!tokens.length) return text;
+
+  const pattern = new RegExp(`\\b(${tokens.join("|")})\\b`, "gi");
+  return text.replace(pattern, '<mark class="bg-[#06B6D4]/30 text-[#06B6D4]/90 border-b border-[#06B6D4]/50 px-1 py-0.5 rounded font-mono font-bold">$1</mark>');
+}
 
 function PageLanding({
   onNavigate,
@@ -47,26 +71,19 @@ function PageLanding({
         onSelectVideo={onSelectVideo}
         health={health}
       />
-
-      <div className="flex-1 relative flex flex-col justify-center items-center p-6 md:p-12 text-center overflow-hidden pt-20">
+      <div className="flex-1 relative flex flex-col justify-center items-center p-4 md:p-8 text-center overflow-hidden pt-16 md:pt-24">
         <WireframeArcs variant="manifesto" aria-hidden="true" />
-
-        <div className="z-10 max-w-5xl mx-auto flex flex-col items-center justify-center my-auto px-4">
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-3 px-5 py-2 bg-black/60 backdrop-blur-md rounded-full border border-[#10B981]/40 mb-8 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#10B981]" aria-hidden="true" />
-            <span className="font-mono font-bold text-xs text-[#10B981] tracking-[0.25em] uppercase">
+        <div className="z-10 max-w-5xl mx-auto flex flex-col items-center justify-center my-auto px-3 md:px-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-[#10B981]/40 mb-6 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+            <span className="w-2 h-2 rounded-full bg-[#10B981]" aria-hidden="true" />
+            <span className="font-mono font-bold text-[10px] text-[#10B981] tracking-[0.25em] uppercase">
               HACKATHON JUDGE DEMO MODE &bull; &lt; 300 MS CPU LATENCY
             </span>
           </div>
-
-          {/* Hero Title */}
-          <h1 className="font-mono font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-[0.12em] text-white leading-none mb-6 drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+          <h1 className="font-mono font-black text-4xl sm:text-6xl lg:text-8xl uppercase tracking-[0.1em] text-white leading-none mb-6 drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
             NEURALVIDEO <span className="text-[#06B6D4]">PRO</span>
           </h1>
-
-          {/* Tagline */}
-          <p className="font-[var(--font-inter)] font-normal text-lg sm:text-xl md:text-2xl text-[var(--text-bone)] max-w-3xl leading-relaxed mb-10 text-center">
+          <p className="font-[var(--font-inter)] font-normal text-sm sm:text-base md:text-lg text-[var(--text-bone)] max-w-3xl leading-relaxed mb-8 text-center">
             Sub-second cross-modal video search fusing{" "}
             <span className="text-[#06B6D4]/90 font-semibold border-b border-[#06B6D4]/50">
               CLIP ViT-B/32 keyframes
@@ -77,34 +94,30 @@ function PageLanding({
             </span>{" "}
             with Reciprocal Rank Fusion & XAI attribution.
           </p>
-
-          {/* Key Metrics Pill Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-4xl mb-12 font-mono">
-            <div className="p-4 bg-black/70 rounded-2xl border border-white/10 text-center">
-              <span className="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">SEARCH SLA</span>
-              <span className="text-2xl font-black text-[#10B981]">&lt; 300ms</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full max-w-4xl mb-8 font-mono">
+            <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
+              <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">SEARCH SLA</span>
+              <span className="text-xl font-black text-[#10B981]">&lt; 300ms</span>
             </div>
-            <div className="p-4 bg-black/70 rounded-2xl border border-white/10 text-center">
-              <span className="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">VECTOR STORE</span>
-              <span className="text-2xl font-black text-[#06B6D4]">Qdrant Dual 512-D</span>
+            <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
+              <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">VECTOR STORE</span>
+              <span className="text-xl font-black text-[#06B6D4]">Qdrant Dual 512-D</span>
             </div>
-            <div className="p-4 bg-black/70 rounded-2xl border border-white/10 text-center">
-              <span className="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">INDEX POINTS</span>
-              <span className="text-2xl font-black text-white">{corpusStats?.total_points || 2086}</span>
+            <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
+              <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">INDEX POINTS</span>
+              <span className="text-xl font-black text-white">{corpusStats?.total_points || 2086}</span>
             </div>
-            <div className="p-4 bg-black/70 rounded-2xl border border-white/10 text-center">
-              <span className="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">EXPLAINABILITY</span>
-              <span className="text-2xl font-black text-[#06B6D4]">RRF + XAI</span>
+            <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
+              <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">EXPLAINABILITY</span>
+              <span className="text-xl font-black text-[#06B6D4]">RRF + XAI</span>
             </div>
           </div>
-
-          {/* Launch Action CTA */}
           <button
             onClick={() => onNavigate(1)}
-            className="font-mono font-bold text-lg sm:text-xl tracking-[0.2em] uppercase px-12 py-6 bg-[#06B6D4] hover:bg-[#10B981] text-black rounded-2xl transition-all duration-300 shadow-[0_0_35px_rgba(6,182,212,0.4)] hover:scale-105 group cursor-pointer flex items-center gap-4 focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+            className="font-mono font-bold text-base sm:text-lg tracking-[0.2em] uppercase px-8 py-4 bg-[#06B6D4] hover:bg-[#10B981] text-black rounded-2xl transition-all duration-300 shadow-[0_0_35px_rgba(6,182,212,0.4)] hover:scale-105 group cursor-pointer flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
           >
             ENTER SEARCH CONSOLE
-            <span className="text-3xl group-hover:translate-x-1.5 transition-transform" aria-hidden="true">
+            <span className="text-2xl group-hover:translate-x-1 transition-transform" aria-hidden="true">
               &rarr;
             </span>
           </button>
@@ -114,16 +127,13 @@ function PageLanding({
   );
 }
 
-/* ================================================================
-   PAGE 2 (Index 1) — SEARCH CONSOLE & PIPELINE STORYTELLING BAR
-   ================================================================ */
-
 function PageConsole({
   onNavigate,
   onSearch,
   isSearching,
   searchStage,
   searchError,
+  setSearchError,
   corpusStats,
   selectedVideo,
   onSelectVideo,
@@ -133,18 +143,12 @@ function PageConsole({
   isSearching: boolean;
   searchStage: number;
   searchError: string | null;
+  setSearchError: (err: string | null) => void;
   corpusStats: CorpusStats | null;
   selectedVideo: string;
   onSelectVideo: (video: string) => void;
 }) {
   const [query, setQuery] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (query.trim() && !isSearching) {
-      onSearch(query.trim());
-    }
-  };
 
   const samplePrompts = [
     { label: "security camera footage of incident scene", q: "security camera footage of incident scene" },
@@ -166,7 +170,7 @@ function PageConsole({
   ];
 
   return (
-    <div className="page-view page-view-active pt-20">
+    <div className="page-view page-view-active pt-16 md:pt-20">
       <Header
         tickerText="SEARCH CONSOLE // LIVE PIPELINE STORYTELLING & INFERENCE"
         pageIndex={1}
@@ -176,37 +180,26 @@ function PageConsole({
         onSelectVideo={onSelectVideo}
         health={null}
       />
-
-      <div className="flex-1 relative flex flex-col justify-center items-center p-6 md:p-12 text-center overflow-hidden">
+      <div className="flex-1 relative flex flex-col justify-center items-center p-4 md:p-8 text-center overflow-hidden">
         <WireframeArcs variant="terminal" aria-hidden="true" />
-
-        <div className="z-10 max-w-5xl mx-auto w-full flex flex-col items-center justify-center my-auto px-4 py-6 space-y-8">
+        <div className="z-10 max-w-5xl mx-auto w-full flex flex-col items-center justify-center my-auto px-3 md:px-6 py-4 md:py-6 space-y-6">
           <div className="text-center">
-            <span className="font-mono font-bold text-xs text-[#06B6D4] tracking-[0.25em] uppercase block mb-3">
+            <span className="font-mono font-bold text-xs text-[#06B6D4] tracking-[0.25em] uppercase block mb-2">
               JUDGE DEMO CONSOLE // QUERY INFERENCE ENGINE
             </span>
-            <h2 className="font-mono font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-[0.1em] text-white leading-none drop-shadow-lg">
+            <h2 className="font-mono font-black text-3xl sm:text-5xl md:text-6xl uppercase tracking-[0.1em] text-white leading-none drop-shadow-lg">
               MULTIMODAL SEARCH
             </h2>
           </div>
-
-          <SearchBar
-            query={query}
-            setQuery={setQuery}
-            onSearch={onSearch}
-            isSearching={isSearching}
-          />
-
+          <SearchBar query={query} setQuery={setQuery} onSearch={onSearch} isSearching={isSearching} />
           {isSearching && (
             <PipelineSteps steps={pipelineSteps} activeStep={searchStage} />
           )}
-
-          {/* Curated High-Reliability Demo Query Chips */}
           <div className="w-full max-w-4xl mx-auto text-center space-y-3">
             <span className="font-mono font-bold text-xs text-gray-400 tracking-[0.2em] uppercase block">
               CURATED HACKATHON DEMO QUERY CHIPS:
             </span>
-            <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="flex flex-wrap items-center justify-center gap-2">
               {samplePrompts.map((sample) => (
                 <button
                   key={sample.q}
@@ -215,7 +208,7 @@ function PageConsole({
                     setQuery(sample.q);
                     onSearch(sample.q);
                   }}
-                  className="text-xs font-mono font-bold py-2.5 px-4 bg-black/60 hover:bg-[#06B6D4] hover:text-black text-gray-200 transition-all duration-200 rounded-xl border border-white/15 hover:border-[#06B6D4] cursor-pointer backdrop-blur-md shadow-md hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+                  className="text-xs sm:text-sm font-mono font-bold py-2 px-3 bg-black/60 hover:bg-[#06B6D4] hover:text-black text-gray-200 transition-all duration-200 rounded-xl border border-white/15 hover:border-[#06B6D4] cursor-pointer backdrop-blur-md shadow-md hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
                   aria-label={`Search: ${sample.label}`}
                 >
                   {sample.label}
@@ -223,11 +216,23 @@ function PageConsole({
               ))}
             </div>
           </div>
-
-          {/* Error Banner */}
           {searchError && (
             <div className="w-full max-w-3xl mx-auto p-4 border border-[#F59E0B]/50 bg-[#F59E0B]/60 text-[#F59E0B]/200 text-sm font-mono font-bold rounded-xl" role="alert">
-              SEARCH ERROR: {searchError}
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-[#F59E0B]/80">SEARCH ERROR:</span>
+                <span className="text-[#E6E1D5]/90">{searchError}</span>
+              </div>
+              <button
+                onClick={() => {
+                  setSearchError(null);
+                  if (query.trim()) {
+                    onSearch(query.trim());
+                  }
+                }}
+                className="text-xs font-mono text-[#06B6D4] hover:text-[#10B981] focus-visible:ring-2 focus-visible:ring-[#06B6D4] mt-2"
+              >
+                Try again
+              </button>
             </div>
           )}
         </div>
@@ -236,27 +241,22 @@ function PageConsole({
   );
 }
 
-/* ================================================================
-   PAGE 3 (Index 2) — RESULTS GALLERY & RETRIEVAL TIMELINE BAR
-   ================================================================ */
-
 function PageResultsAndXAI({
   onNavigate,
   data,
   isSearching,
+  corpusStats,
 }: {
   onNavigate: (page: number) => void;
   data: SearchResponse | null;
   isSearching: boolean;
+  corpusStats: CorpusStats | null;
 }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [videoDurationSec, setVideoDurationSec] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [data]);
-
-  const activeItem = data?.results?.[selectedIndex] || data?.results?.[0];
+  const activeItem = data?.results[selectedIndex];
 
   const handleSeekAndPlay = (timestampInSeconds: number) => {
     if (videoRef.current) {
@@ -267,7 +267,7 @@ function PageResultsAndXAI({
 
   if (isSearching) {
     return (
-      <div className="page-view page-view-active pt-20">
+      <div className="page-view page-view-active pt-16 md:pt-20">
         <Header
           tickerText="SEARCH ENGINE EXECUTING MULTIMODAL INFERENCE..."
           pageIndex={2}
@@ -277,15 +277,14 @@ function PageResultsAndXAI({
           onSelectVideo={() => {}}
           health={null}
         />
-        <div className="flex-1 flex flex-col p-6 md:p-8 overflow-hidden">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 z-10 pb-3 border-b border-white/15">
+        <div className="flex-1 flex flex-col p-4 md:p-6 overflow-hidden">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 z-10 pb-3 border-b border-white/15">
             <div>
               <span className="font-mono font-bold text-xs text-[#06B6D4] uppercase tracking-widest">XAI PROVENANCE</span>
-              <span className="font-mono text-xs text-white">QUERY: "&quot;...&quot;</span>
+              <span className="font-mono text-xs text-white">QUERY: &quot;&hellip;&quot;</span>
             </div>
             <p className="font-mono text-xs text-gray-400 mt-1">AUTO-INTENT: ... (&alpha; = ...) &bull; ... RESULTS</p>
           </div>
-
           <PipelineSteps
             steps={[
               { step: 1, title: "Encoding Query...", desc: "CLIP ViT-B/32 & Text Transformer" },
@@ -297,14 +296,23 @@ function PageResultsAndXAI({
             ]}
             activeStep={4}
           />
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" aria-hidden="true">
+            {[0, 1, 2, 3].map((i) => (
+              <div key={i} className="p-4 bg-black/70 rounded-xl border border-white/10 space-y-3">
+                <Skeleton height="0.75rem" width="45%" />
+                <Skeleton height="0.75rem" width="85%" />
+                <Skeleton height="2.5rem" width="100%" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-  );
-}
+    );
+  }
 
   if (!data || !data.results || data.results.length === 0 || !activeItem) {
     return (
-      <div className="page-view page-view-active pt-20">
+      <div className="page-view page-view-active pt-16 md:pt-20">
         <Header
           tickerText="RESULTS GALLERY // AWAITING SEARCH EXECUTION"
           pageIndex={2}
@@ -314,10 +322,15 @@ function PageResultsAndXAI({
           onSelectVideo={() => {}}
           health={null}
         />
-        <div className="flex-1 flex flex-col items-center justify-center p-12 text-center">
-          <p className="font-mono text-lg text-gray-300">NO RESULTS DISPLAYED YET</p>
-          <p className="font-mono text-xs text-gray-500 mt-2 max-w-md">
-            Enter a query in the Search Console to execute multimodal vector retrieval.
+        <div className="flex-1 flex flex-col items-center justify-center p-6 md:p-12 text-center">
+          <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4">
+            <svg className="w-6 h-6 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <p className="font-mono text-lg text-gray-300">No results found</p>
+          <p className="font-mono text-xs text-gray-500 max-w-md">
+            Try adjusting your query or browse the video catalog to see indexed content.
           </p>
           <button
             onClick={() => onNavigate(1)}
@@ -333,39 +346,26 @@ function PageResultsAndXAI({
   const alpha = data.intent.alpha;
   const transcript = (activeItem.payload.transcribed_text as string) ?? "";
   const timestampSec = (activeItem.payload.timestamp as number) ?? 0;
-  const formattedTime = `${Math.floor(timestampSec / 60)
-    .toString()
-    .padStart(2, "0")}:${Math.floor(timestampSec % 60)
-    .toString()
-    .padStart(2, "0")}`;
+  const formattedTime = formatTimestamp(timestampSec);
 
   const confidenceBand = activeItem.xai.confidence_tier || "HIGH";
 
-  const maxTimestampInResults =
-    resultsLength(data.results) > 0
-      ? Math.max(...data.results.map((r) => Number(r.payload.timestamp) || 0))
-      : 0;
-  const maxDurationSec = maxTimestampInResults > 0 ? maxTimestampInResults + 30 : 300;
-
   return (
-    <div className="page-view page-view-active pt-20">
+    <div className="page-view page-view-active pt-16 md:pt-20">
       <Header
         tickerText={`RESULTS // ${data.total_results} MATCHES FOR "${data.query}" (${data.latency_ms}ms)`}
         pageIndex={2}
         onNavigate={onNavigate}
-        corpusStats={null}
+        corpusStats={corpusStats}
         selectedVideo="all"
         onSelectVideo={() => {}}
         health={null}
       />
-
-      <div className="flex-1 relative flex flex-col justify-between p-6 md:p-8 overflow-hidden">
+      <div className="flex-1 relative flex flex-col justify-between p-4 md:p-6 overflow-hidden">
         <WireframeArcs variant="gallery" aria-hidden="true" />
-
-        {/* Results Toolbar */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 z-10 pb-3 border-b border-white/15">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 z-10 pb-3 border-b border-white/15">
           <div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <span className="font-mono font-bold text-xs text-[#06B6D4] uppercase tracking-widest">XAI PROVENANCE</span>
               <span className="font-mono text-xs text-white">
                 QUERY: &quot;<strong className="text-[#06B6D4]/90">{data.query}</strong>&quot;
@@ -375,74 +375,37 @@ function PageResultsAndXAI({
               AUTO-INTENT: {data.intent.intent_label} (&alpha; = {alpha.toFixed(2)}) &bull; {data.total_results} RESULTS IN <span className="text-[#10B981] font-bold">{data.latency_ms}ms</span>
             </p>
           </div>
-
           <button
             onClick={() => onNavigate(1)}
-            className="px-4 py-2 bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white rounded-xl border border-white/20 transition-all focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+            className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white rounded-xl border border-white/20 transition-all focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
           >
             NEW SEARCH &rarr;
           </button>
         </div>
-
-        <TimelineTrack
-          results={data.results}
-          selectedIndex={selectedIndex}
-          onSelect={(idx, ts) => {
-            setSelectedIndex(idx);
-            handleSeekAndPlay(ts);
-          }}
-        />
-
-        {/* Main 2-Column Split Console */}
-        <div className="z-10 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 my-2 overflow-y-auto max-h-[calc(100vh-270px)] pr-2">
-          {/* LEFT COLUMN: Timeline Keyframe Match Cards */}
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="font-mono text-sm font-bold text-gray-300 uppercase tracking-wider">
+        <TimelineTrack results={data.results} selectedIndex={selectedIndex} durationSec={videoDurationSec} onSelect={(idx, ts) => { setSelectedIndex(idx); handleSeekAndPlay(ts); }} />
+        <div className="z-10 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 my-2 overflow-y-auto max-h-[calc(100vh-260px)] pr-2">
+          <div className="lg:col-span-5 space-y-3">
+            <h3 className="font-mono text-xs font-bold text-gray-300 uppercase tracking-widest">
               TIMELINE MATCH REEL (CLICK TO SYNC PLAYER):
             </h3>
-
-            <div className="space-y-4">
+            <div className="space-y-3">
               {data.results.map((r, idx) => (
-                <ResultCard
-                  key={String(r.id)}
-                  item={r}
-                  rank={idx + 1}
-                  isSelected={idx === selectedIndex}
-                  onSelect={(rankIdx) => {
-                    setSelectedIndex(rankIdx - 1);
-                    handleSeekAndPlay(Number(r.payload.timestamp) || 0);
-                  }}
-                />
+                <ResultCard key={String(r.id)} item={r} rank={idx + 1} isSelected={idx === selectedIndex} onSelect={(rankIdx) => { setSelectedIndex(rankIdx - 1); handleSeekAndPlay(Number(r.payload.timestamp) || 0); }} />
               ))}
             </div>
           </div>
-
-          {/* RIGHT COLUMN: Video Player & XAI */}
-          <div className="lg:col-span-7 space-y-6">
-            <VideoPlayer
-              item={activeItem}
-              formattedTime={formattedTime}
-              timestampSec={timestampSec}
-              confidenceBand={confidenceBand}
-            />
-
-            {/* Spoken Dialogue Transcript Block */}
-            <div className="p-6 bg-black/90 backdrop-blur-2xl border border-white/15 rounded-2xl space-y-3 font-mono">
+          <div className="lg:col-span-7 space-y-4">
+            <VideoPlayer item={activeItem} formattedTime={formattedTime} timestampSec={timestampSec} confidenceBand={confidenceBand} catalog={corpusStats?.video_catalog ?? null} onDurationChange={setVideoDurationSec} />
+            <div className="p-5 bg-black/90 backdrop-blur-2xl border border-white/15 rounded-xl space-y-3 font-mono">
               <span className="text-xs font-bold text-[#06B6D4] uppercase tracking-wider block">
                 SPOKEN DIALOGUE TRANSCRIPT (TIMESTAMP {formattedTime}):
               </span>
               {transcript ? (
-                <p
-                  className="text-base sm:text-lg leading-relaxed text-[var(--text-bone)] p-4 bg-white/5 rounded-xl border border-white/10"
-                  dangerouslySetInnerHTML={{
-                    __html: highlightKeywords(transcript, data.query),
-                  }}
-                />
+                <p className="text-base sm:text-lg leading-relaxed text-[var(--text-bone)] p-4 bg-white/5 rounded-xl border border-white/10" dangerouslySetInnerHTML={{ __html: highlightKeywords(transcript, data.query) }} />
               ) : (
                 <p className="text-sm text-gray-500">No acoustic dialogue transcript available for this keyframe segment.</p>
               )}
             </div>
-
             <XAIGrid item={activeItem} />
           </div>
         </div>
@@ -450,14 +413,6 @@ function PageResultsAndXAI({
     </div>
   );
 }
-
-function resultsLength(results: SearchResponse["results"]): number {
-  return results.length;
-}
-
-/* ================================================================
-   MAIN APP ORCHESTRATOR
-   ================================================================ */
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -493,9 +448,9 @@ export default function Home() {
         const data = await fetchSearch(query, 5, undefined, "all");
         setSearchData(data);
         setCurrentPage(2);
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Search error:", err);
-        setSearchError(err?.message || "Failed to connect to backend server");
+        setSearchError(err instanceof Error ? err.message : "Failed to connect to backend server");
         setCurrentPage(1);
       } finally {
         setIsSearching(false);
@@ -508,13 +463,7 @@ export default function Home() {
   return (
     <main className="page-container bg-[#08080a] min-h-screen text-white font-[var(--font-inter)] overflow-hidden">
       {currentPage === 0 && (
-        <PageLanding
-          onNavigate={navigateToPage}
-          health={health}
-          corpusStats={corpusStats}
-          selectedVideo={selectedVideo}
-          onSelectVideo={setSelectedVideo}
-        />
+        <PageLanding onNavigate={navigateToPage} health={health} corpusStats={corpusStats} selectedVideo={selectedVideo} onSelectVideo={setSelectedVideo} />
       )}
       {currentPage === 1 && (
         <PageConsole
@@ -523,6 +472,7 @@ export default function Home() {
           isSearching={isSearching}
           searchStage={searchStage}
           searchError={searchError}
+          setSearchError={setSearchError}
           corpusStats={corpusStats}
           selectedVideo={selectedVideo}
           onSelectVideo={setSelectedVideo}
@@ -530,13 +480,14 @@ export default function Home() {
       )}
       {currentPage === 2 && (
         <PageResultsAndXAI
+          key={searchData?.query ?? "no-results"}
           onNavigate={navigateToPage}
           data={searchData}
           isSearching={isSearching}
+          corpusStats={corpusStats}
         />
       )}
 
-      {/* Floating Dock Navbar */}
       <nav className="fixed bottom-6 right-8 z-50 flex items-center gap-2 bg-black/80 px-4 py-2 rounded-full backdrop-blur-2xl border border-white/20 shadow-2xl" aria-label="Section navigation">
         {[
           { label: "1. DEMO", idx: 0 },
@@ -547,11 +498,7 @@ export default function Home() {
             key={item.idx}
             onClick={() => navigateToPage(item.idx)}
             aria-current={currentPage === item.idx ? "page" : undefined}
-            className={`px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#06B6D4] ${
-              currentPage === item.idx
-                ? "bg-[#06B6D4] text-black shadow-md"
-                : "text-gray-400 hover:text-white"
-            }`}
+            className={`px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#06B6D4] ${currentPage === item.idx ? "bg-[#06B6D4] text-black shadow-md" : "text-gray-400 hover:text-white"}`}
           >
             {item.label}
           </button>
@@ -559,37 +506,4 @@ export default function Home() {
       </nav>
     </main>
   );
-}
-
-/* ================================================================
-   HELPERS
-   ================================================================ */
-
-const STOP_WORDS = new Set([
-  "the", "and", "a", "an", "in", "on", "at", "to", "for", "of", "with",
-  "by", "from", "up", "about", "into", "over", "after", "is", "are", "was",
-  "were", "be", "been", "being", "have", "has", "had", "do", "does", "did",
-  "but", "or", "so", "if", "out", "no", "not", "only", "own", "same", "that",
-  "this", "these", "those", "then", "there", "when", "where", "why", "how",
-]);
-
-function highlightKeywords(text: string, query: string): string {
-  const tokens = query
-    .toLowerCase()
-    .split(/\W+/)
-    .filter((w) => w.length >= 3 && !STOP_WORDS.has(w))
-    .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-
-  if (!tokens.length) return text;
-
-  const pattern = new RegExp(`\\b(${tokens.join("|")})\\b`, "gi");
-  return text.replace(pattern, '<mark class="bg-[#06B6D4]/30 text-[#06B6D4]/90 border-b border-[#06B6D4]/50 px-1 py-0.5 rounded font-mono font-bold">$1</mark>');
-}
-
-function resolveVideoFilename(raw: string | undefined | null): string {
-  if (!raw) return "";
-  if (raw.endsWith(".mp4") || raw.endsWith(".MOV") || raw.endsWith(".mkv") || raw.endsWith(".webm")) {
-    return raw;
-  }
-  return `${raw}.mp4`;
 }
