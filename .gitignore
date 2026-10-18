@@ -11,6 +11,9 @@ data/*
 !data/.gitkeep
 qdrant_storage/
 
+# Archived dev history (do not vendored environments)
+archive/
+
 # Environment Secrets
 .env
 

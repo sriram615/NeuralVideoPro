@@ -156,7 +156,7 @@ function PageLanding({
           <div className="inline-flex items-center gap-3 px-5 py-2 bg-black/60 backdrop-blur-md rounded-full border border-emerald-500/40 mb-8 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
             <span className="font-mono font-bold text-xs text-emerald-400 tracking-[0.25em] uppercase">
-              HACKATHON JUDGE DEMO MODE &bull; SUB-180MS RETRIEVAL SLA
+              HACKATHON JUDGE DEMO MODE &bull; &lt; 300 MS CPU LATENCY
             </span>
           </div>
 
@@ -182,7 +182,7 @@ function PageLanding({
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-4xl mb-12 font-mono">
             <div className="p-4 bg-black/70 rounded-2xl border border-white/10 text-center">
               <span className="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">SEARCH SLA</span>
-              <span className="text-2xl font-black text-emerald-400">&lt; 180ms</span>
+              <span className="text-2xl font-black text-emerald-400">&lt; 300ms</span>
             </div>
             <div className="p-4 bg-black/70 rounded-2xl border border-white/10 text-center">
               <span className="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">VECTOR STORE</span>

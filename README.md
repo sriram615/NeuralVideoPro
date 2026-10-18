@@ -62,7 +62,7 @@ VEA (Video Exploration & Analytics) is a high-performance multimodal video searc
                                          v
 +-----------------------------------------------------------------------------------+
 |                        FastAPI Server & Next.js UI                                |
-|        Sub-180ms Latency SLA, XAI Score Breakdown, Synchronized Video Player      |
+|        < 300 ms CPU Latency, XAI Score Breakdown, Synchronized Video Player      |
 +-----------------------------------------------------------------------------------+
 ```
 
@@ -88,7 +88,7 @@ VEA/
 |   `-- lib/                      # API Client Service (api.ts)
 |-- data/                         # Datasets & Vector Database Storage
 |   |-- raw/                      # Source MP4 Video Files
-|   |-- processed/                # Extracted Keyframe JPEGs (1 fps)
+|   |-- processed/                # Extracted Keyframe JPEGs (extracted_frames_v2/)
 |   `-- vectors/                  # Embedded Qdrant Database Storage
 |-- docs/                         # Architecture Documentation & Specifications
 |-- reports/                      # Evaluation Reports & IR Benchmark Results
@@ -121,8 +121,8 @@ Ensure your host system meets the following requirements:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/sriram615/VEA.git
-   cd VEA
+   git clone https://github.com/sriram615/NeuralVideoPro.git
+   cd NeuralVideoPro
    ```
 
 2. **Create Python Virtual Environment:**

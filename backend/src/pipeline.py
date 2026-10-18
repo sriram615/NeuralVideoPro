@@ -46,30 +46,39 @@ from src.retrieval.ranker import (
 logger = logging.getLogger(__name__)
 
 
-VISUAL_KEYWORDS = {
-    "visual", "scene", "showing", "look", "looking", "whiteboard", "diagram",
-    "podium", "suit", "red tie", "flag", "banner", "crowd", "stage", "camera",
-    "background", "wearing", "standing", "sitting", "walking", "gesturing",
-}
-AUDIO_KEYWORDS = {
-    "said", "speech", "transcript", "audio", "talking", "spoken", "words",
-    "statement", "quote", "announced", "declared", "mentioned", "retaliate",
-    "economy", "inflation", "interview", "podcast",
-}
+VISUAL_KEYWORDS = [
+    "person", "suit", "standing", "podium", "blue", "earth", "space view",
+    "wearing", "color", "background", "flags", "crowd", "holding", "scene",
+    "jacket", "tie", "red", "stage", "building", "cars", "traffic", "video",
+    "logo", "visual", "showing", "look", "looking", "whiteboard", "diagram",
+    "red tie", "banner", "camera", "sitting", "walking", "gesturing",
+]
+AUDIO_KEYWORDS = [
+    "said", "talking", "speech", "quote", "statement", "retaliate", "interview",
+    "discussion", "asked", "transcript", "words", "mentioned", "talks", "briefing",
+    "speaker", "saying", "claims", "address", "audio", "spoken", "announced",
+    "declared", "economy", "inflation", "podcast",
+]
 
 
-def predict_alpha_intent(query: str) -> float:
-    """Classify query intent using keyword matching to determine optimal alpha."""
+def predict_alpha(query: str) -> tuple[float, str]:
+    """Classify query intent using keyword matching to determine optimal alpha.
+
+    Returns
+    -------
+    tuple[float, str]
+        (alpha_value, intent_label)
+    """
     q_lower = query.lower()
     has_visual = any(kw in q_lower for kw in VISUAL_KEYWORDS)
     has_audio = any(kw in q_lower for kw in AUDIO_KEYWORDS)
 
     if has_visual and not has_audio:
-        return 0.8
+        return 0.8, "High Visual Bias"
     elif has_audio and not has_visual:
-        return 0.2
+        return 0.2, "High Audio/Speech Bias"
     else:
-        return 0.5
+        return 0.5, "Balanced Hybrid"
 
 
 class VideoSearchPipeline:
@@ -87,7 +96,7 @@ class VideoSearchPipeline:
     def __init__(
         self,
         db_path: Union[str, Path] = "./data/vectors/qdrant_db",
-        frames_dir: Union[str, Path] = "./data/processed/extracted_frames",
+        frames_dir: Union[str, Path] = "./data/processed/extracted_frames_v2",
     ) -> None:
         self.db_path = Path(db_path)
         self.frames_dir = Path(frames_dir)
@@ -226,7 +235,7 @@ class VideoSearchPipeline:
         """
         effective_alpha = alpha
         if effective_alpha is None:
-            effective_alpha = predict_alpha_intent(query)
+            effective_alpha, _ = predict_alpha(query)
 
         logger.info("Encoding query: '%s' (effective_alpha=%.2f)", query, effective_alpha)
         query_vec = self.text_encoder.encode_query(query).tolist()
@@ -266,7 +275,11 @@ class VideoSearchPipeline:
         visual_scores: Dict[Any, float] = {hit["id"]: hit["score"] for hit in visual_hits}
         audio_scores: Dict[Any, float] = {hit["id"]: hit["score"] for hit in audio_hits}
         payload_map: Dict[Any, Dict[str, Any]] = {hit["id"]: hit["payload"] for hit in visual_hits + audio_hits}
-        vector_map: Dict[Any, Any] = {hit["id"]: hit.get("visual_vector") for hit in visual_hits if hit.get("visual_vector") is not None}
+        vector_map: Dict[Any, Any] = {}
+        for hit in visual_hits + audio_hits:
+            vec = hit.get("visual_vector")
+            if vec is not None:
+                vector_map[hit["id"]] = vec
 
         all_ids = set(visual_ranks.keys()).union(audio_ranks.keys())
 

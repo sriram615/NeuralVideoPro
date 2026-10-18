@@ -25,7 +25,7 @@ import logging
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 import gc
 import torch
@@ -46,45 +46,10 @@ from schemas import (
     XAIAttribution,
 )
 from src.db.qdrant_db import COLLECTION_NAME
-from src.pipeline import VideoSearchPipeline
+from src.pipeline import VideoSearchPipeline, predict_alpha
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
-
-# ---------------------------------------------------------------------------
-# Intent Classification Engine (mirrored from app.py for API independence)
-# ---------------------------------------------------------------------------
-VISUAL_KEYWORDS = [
-    "person", "suit", "standing", "podium", "blue", "earth", "space view",
-    "wearing", "color", "background", "flags", "crowd", "holding", "scene",
-    "jacket", "tie", "red", "stage", "building", "cars", "traffic", "video",
-    "logo",
-]
-AUDIO_KEYWORDS = [
-    "said", "talking", "speech", "quote", "statement", "retaliate", "interview",
-    "discussion", "asked", "transcript", "words", "mentioned", "talks", "briefing",
-    "speaker", "saying", "claims", "address",
-]
-
-
-def predict_alpha(query: str) -> Tuple[float, str]:
-    """Classify query intent using keyword matching to determine optimal alpha.
-
-    Returns
-    -------
-    tuple[float, str]
-        (alpha_value, intent_label)
-    """
-    q_lower = query.lower()
-    has_visual = any(kw in q_lower for kw in VISUAL_KEYWORDS)
-    has_audio = any(kw in q_lower for kw in AUDIO_KEYWORDS)
-
-    if has_visual and not has_audio:
-        return 0.8, "High Visual Bias"
-    elif has_audio and not has_visual:
-        return 0.2, "High Audio/Speech Bias"
-    else:
-        return 0.5, "Balanced Hybrid"
 
 
 def _build_xai(
@@ -210,7 +175,7 @@ if _static_raw.exists():
     app.mount("/static/videos", StaticFiles(directory=str(_static_raw)), name="videos")
     logger.info("📂 Mounted static video files from %s", _static_raw)
 
-_static_frames = PROJECT_ROOT / "data" / "processed" / "extracted_frames"
+_static_frames = PROJECT_ROOT / "data" / "processed" / "extracted_frames_v2"
 if _static_frames.exists():
     app.mount("/static/frames", StaticFiles(directory=str(_static_frames)), name="frames")
     logger.info("📂 Mounted static keyframe files from %s", _static_frames)

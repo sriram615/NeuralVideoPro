@@ -59,7 +59,7 @@ It does **not** measure **retrieval quality** — whether a search actually retu
 - Frames lacking speech transcription fall back to a placeholder `"news video footage scene"` string, avoiding empty-embedding exceptions. Worth noting: several of the matches above (rows with that exact placeholder transcript) are matching on visual signal only — that's expected behavior, not a bug, but it means those rows say nothing about audio retrieval quality.
 - Keyframe records contain all mandatory metadata fields (`video_id`, `timestamp`, `frame_idx`, `transcribed_text`, `domain`, `frame_path`).
 
-**Latency:** Mac CPU execution capped at 2 threads achieved an average retrieval latency of 165.8 ms, comfortably under a 1,500 ms budget.
+**Latency:** Mac CPU execution capped at 2 threads achieved an average retrieval latency of 165.8 ms, under the 300 ms CPU target (maximum observed 271.6 ms).
 
 ---
 
@@ -69,7 +69,7 @@ It does **not** measure **retrieval quality** — whether a search actually retu
 |---|---|---|---|
 | Vector Space Normalization | ‖v‖₂ = 1.0 | 1.000000 | Passed |
 | Qdrant Point Count | ~1,900 points | 1,903 points | Passed |
-| Query Latency | < 1,500 ms | 165.8 ms avg | Passed |
+| Query Latency | < 300 ms | 165.8 ms avg | Passed |
 | Late Fusion Consistency | Exact linear combination | α·V + (1−α)·A | Passed |
 | Payload Integrity | Zero KeyErrors / NaNs | 0 exceptions | Passed |
 

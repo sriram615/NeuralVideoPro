@@ -1,0 +1,432 @@
+================================================================================
+NEURALVIDEOPRO EVALUATION — 26 Search + 4 Q&A
+================================================================================
+
+### SECTION A: One clean query per video (10)
+------------------------------------------------------------
+
+A1: "a 1981 interview with a personal computer industry pioneer"
+  Expected: Steve Jobs Interview Feb 18 1981.mp4
+  Correct: YES
+  Latency: 285.3ms
+  Intent: alpha=0.5 label=Balanced Hybrid
+  #1: Steve Jobs Interview Feb 18 1981.mp4  fused=0.5831  vis=0.3150  aud=0.8512  rrf=0.015889  ts=593.6s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "Are there any other major areas that personal computers are going to change in t"
+  #2: my_llm_talk.mp4  fused=0.3920  vis=0.0000  aud=0.7841  rrf=0.008408  ts=27.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "So to begin it with an example is that then we started communicating with machin"
+  #3: my_llm_talk.mp4  fused=0.3920  vis=0.0000  aud=0.7841  rrf=0.006801  ts=11.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "So to begin it with an example is that then we started communicating with machin"
+
+A2: "an explanation of how AI agents are designed using large language models"
+  Expected: my_llm_talk
+  Correct: NO
+  Latency: 340.9ms
+  Intent: alpha=0.5 label=Balanced Hybrid
+  #1: atheist_discussion_interview_a3bb4396b531  fused=0.2348  vis=0.2348  aud=0.0000  rrf=0.014706  ts=427.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: ecns_opening_speech_665f4791a4e8  fused=0.2299  vis=0.2299  aud=0.0000  rrf=0.011905  ts=103.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #3: my_llm_talk.mp4  fused=0.4417  vis=0.0000  aud=0.8834  rrf=0.008668  ts=49.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "But the most problem is that people think the AI systems that we communicate wit"
+  [DEDUP CHECK] my_llm_talk hits in top-5: 3
+    -> my_llm_talk.mp4
+    -> my_llm_talk.mp4
+    -> my_llm_talk.mp4
+
+A3: "a crowd gathering around a physical altercation caught on camera"
+  Expected: Abuse001_x264.mp4
+  Correct: NO
+  Latency: 257.7ms
+  Intent: alpha=0.8 label=High Visual Bias
+  #1: obama_farewell_speech_353ca4868dfb  fused=0.2628  vis=0.2628  aud=0.0000  rrf=0.016393  ts=20.0s  driver=CLIP Visual Scene  tier=HIGH
+     transcript: "Visual scene footage"
+  #2: sports_news_breakdown_372460f80e66  fused=0.1722  vis=0.0000  aud=0.8611  rrf=0.004033  ts=542.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "confrontational and tight?"
+  #3: sports_news_breakdown_372460f80e66  fused=0.1717  vis=0.0000  aud=0.8583  rrf=0.003981  ts=518.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "collectively, you know, the opposition can hurt you."
+
+A4: "a president's farewell address about democracy"
+  Expected: obama_farewell_speech.mp4
+  Correct: YES
+  Latency: 259.5ms
+  Intent: alpha=0.2 label=High Audio/Speech Bias
+  #1: obama_farewell_speech_353ca4868dfb  fused=0.3119  vis=0.3119  aud=0.0000  rrf=0.016129  ts=85.1s  driver=CLIP Visual Scene  tier=HIGH
+     transcript: "Visual scene footage"
+  #2: obama_farewell_speech_353ca4868dfb  fused=0.6721  vis=0.0000  aud=0.8402  rrf=0.011783  ts=104.1s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "So you have made me proud and you have made the country proud."
+  #3: ecns_opening_speech_665f4791a4e8  fused=0.6702  vis=0.0000  aud=0.8377  rrf=0.010999  ts=169.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "In a very friendly atmosphere has always made me think that, yes, we have the le"
+
+A5: "news coverage of conflict and diplomacy in the Middle East"
+  Expected: middle_east_news_report.mp4
+  Correct: YES
+  Latency: 236.3ms
+  Intent: alpha=0.5 label=Balanced Hybrid
+  #1: middle_east_news_report_0a56c7e5359d  fused=0.5742  vis=0.2819  aud=0.8664  rrf=0.014191  ts=70.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "So there's not much they can go against the United States and Israel."
+  #2: middle_east_news_report_0a56c7e5359d  fused=0.4348  vis=0.0000  aud=0.8696  rrf=0.008668  ts=37.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "The only country there that has ever struck back against Israel has been Iran an"
+  #3: middle_east_news_report_0a56c7e5359d  fused=0.4342  vis=0.0000  aud=0.8685  rrf=0.007825  ts=7.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "I don't really see too many possibilities of retaliation against Israel."
+
+A6: "a rocket launch and space exploration"
+  Expected: nasa_space_flight_news.mp4
+  Correct: YES
+  Latency: 1187.1ms
+  Intent: alpha=0.5 label=Balanced Hybrid
+  #1: nasa_space_flight_news_a485d4f58b49  fused=0.5491  vis=0.2626  aud=0.8356  rrf=0.013235  ts=16.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "Right, but in space, changes are more dramatic."
+  #2: sports_news_breakdown_372460f80e66  fused=0.4287  vis=0.0000  aud=0.8573  rrf=0.008668  ts=561.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "they didn't get it launched and didn't get gone."
+  #3: ecns_opening_speech_665f4791a4e8  fused=0.4212  vis=0.0000  aud=0.8425  rrf=0.008284  ts=195.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "Why I mentioned those people here? The reason is to let the young scientists kno"
+
+A7: "sports commentary and game highlights"
+  Expected: sports_news_breakdown.mp4
+  Correct: NO
+  Latency: 287.4ms
+  Intent: alpha=0.5 label=Balanced Hybrid
+  #1: atheist_discussion_interview_a3bb4396b531  fused=0.2453  vis=0.2453  aud=0.0000  rrf=0.015873  ts=426.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: sports_news_breakdown_372460f80e66  fused=0.4512  vis=0.0000  aud=0.9023  rrf=0.008668  ts=537.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "What kind of game do you expect to see from the off?"
+  #3: sports_news_breakdown_372460f80e66  fused=0.4510  vis=0.0000  aud=0.9019  rrf=0.008284  ts=686.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "And the team that wins this game is going to be the team that,"
+
+A8: "a keynote on global trade and financial policy"
+  Expected: ecns_opening_speech.mp4
+  Correct: YES
+  Latency: 227.7ms
+  Intent: alpha=0.5 label=Balanced Hybrid
+  #1: ecns_opening_speech_665f4791a4e8  fused=0.2763  vis=0.2763  aud=0.0000  rrf=0.0125  ts=102.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: my_llm_talk.mp4  fused=0.4250  vis=0.0000  aud=0.8501  rrf=0.008668  ts=182.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "LLM presentation technology talk"
+  #3: middle_east_news_report_0a56c7e5359d  fused=0.4211  vis=0.0000  aud=0.8422  rrf=0.008408  ts=85.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "towards a shift to maybe to a multipolar or towards a China side. But nothing im"
+
+A9: "a debate between an atheist and a religious believer"
+  Expected: atheist_discussion_interview.mp4
+  Correct: NO
+  Latency: 228.9ms
+  Intent: alpha=0.5 label=Balanced Hybrid
+  #1: Abuse001_x264_b05204644f3f  fused=0.2834  vis=0.2834  aud=0.0000  rrf=0.016393  ts=75.0s  driver=CLIP Visual Scene  tier=HIGH
+     transcript: "Visual scene footage"
+  #2: atheist_discussion_interview_a3bb4396b531  fused=0.4425  vis=0.0000  aud=0.8849  rrf=0.008668  ts=273.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "It's so-called rational atheist-free thinkers."
+  #3: atheist_discussion_interview_a3bb4396b531  fused=0.4178  vis=0.0000  aud=0.8357  rrf=0.007416  ts=392.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "and the extremists and the really, I don't see anyone having the goal to acknowl"
+
+A10: "an interview about identity politics and social policy"
+  Expected: identity_politics_interview.mp4
+  Correct: YES
+  Latency: 266.2ms
+  Intent: alpha=0.2 label=High Audio/Speech Bias
+  #1: identity_politics_interview_d8c8047ee6b7  fused=0.7810  vis=0.2720  aud=0.9082  rrf=0.016341  ts=25.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "objected to precisely a year ago, is that the social-constructionist view of hum"
+  #2: identity_politics_interview_d8c8047ee6b7  fused=0.7088  vis=0.0000  aud=0.8860  rrf=0.012129  ts=51.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "associated with this crazy utopianism. But I still don't exactly understand what"
+  #3: atheist_discussion_interview_a3bb4396b531  fused=0.7055  vis=0.0000  aud=0.8819  rrf=0.011456  ts=306.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "You want to make reasonable criticisms, that's fine."
+
+  Section A Score: 6/10
+
+### SECTION B: Cross-video ambiguity / MMR diversification (3)
+------------------------------------------------------------
+
+B11: "computing and artificial intelligence transforming society"
+  Plausible: ['Steve Jobs', 'my_llm_talk']
+  Latency: 224.5ms
+  #1: ecns_opening_speech_665f4791a4e8  fused=0.2613  vis=0.2613  aud=0.0000  rrf=0.013889  ts=102.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: my_llm_talk.mp4  fused=0.4513  vis=0.0000  aud=0.9026  rrf=0.008668  ts=83.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "It is not just chatting but it is narrowing down the possibilities so that the A"
+  #3: Steve Jobs Interview Feb 18 1981.mp4  fused=0.4468  vis=0.0000  aud=0.8936  rrf=0.007615  ts=593.6s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "Are there any other major areas that personal computers are going to change in t"
+  #4: my_llm_talk.mp4  fused=0.4467  vis=0.0000  aud=0.8934  rrf=0.007514  ts=173.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "And you also it is we are slowly becoming conductors of AI systems and I think i"
+  #5: my_llm_talk.mp4  fused=0.4445  vis=0.0000  aud=0.8890  rrf=0.006154  ts=41.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "But the most problem is that people think the AI systems that we communicate wit"
+  Plausible in top-3: ['Steve Jobs', 'my_llm_talk']
+
+B12: "a broadcast interview touching on politics and society"
+  Plausible: ['atheist_discussion', 'identity_politics', 'ecns_opening', 'middle_east']
+  Latency: 208.1ms
+  #1: sports_news_breakdown_372460f80e66  fused=0.7213  vis=0.0000  aud=0.9017  rrf=0.013303  ts=380.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "I don't really care what the journalist tried."
+  #2: ecns_opening_speech_665f4791a4e8  fused=0.7165  vis=0.0000  aud=0.8957  rrf=0.01231  ts=85.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "The idea of that all of us share is very serious. We are the community who will "
+  #3: atheist_discussion_interview_a3bb4396b531  fused=0.7142  vis=0.0000  aud=0.8927  rrf=0.009945  ts=51.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "There's no right or wrong in this issue but there are certain things we need to "
+  #4: identity_politics_interview_d8c8047ee6b7  fused=0.0555  vis=0.2773  aud=0.0000  rrf=0.004033  ts=5.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "It seems to me what they're trying to do is to take all the potential power for "
+  #5: middle_east_news_report_0a56c7e5359d  fused=0.0535  vis=0.2674  aud=0.0000  rrf=0.003164  ts=19.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "or the will to try and retaliate against Israel. We saw that the final declarati"
+  Plausible in top-3: ['atheist_discussion', 'ecns_opening']
+
+B13: "a formal address given from behind a podium"
+  Plausible: ['obama_farewell', 'ecns_opening']
+  Latency: 431.2ms
+  #1: obama_farewell_speech_353ca4868dfb  fused=0.3073  vis=0.3073  aud=0.0000  rrf=0.016129  ts=59.1s  driver=CLIP Visual Scene  tier=HIGH
+     transcript: "Visual scene footage"
+  #2: obama_farewell_speech_353ca4868dfb  fused=0.0000  vis=0.0000  aud=0.8527  rrf=0.000943  ts=81.1s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "Visual scene footage"
+  #3: ecns_opening_speech_665f4791a4e8  fused=0.0000  vis=0.0000  aud=0.8527  rrf=0.000943  ts=20.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "Visual scene footage"
+  #4: atheist_discussion_interview_a3bb4396b531  fused=0.0000  vis=0.0000  aud=0.8527  rrf=0.000943  ts=423.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "Visual scene footage"
+  #5: sports_news_breakdown_372460f80e66  fused=0.0000  vis=0.0000  aud=0.8527  rrf=0.000943  ts=777.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "Visual scene footage"
+  Plausible in top-3: ['obama_farewell', 'ecns_opening']
+
+### SECTION C: Visual/CLIP-path tests (2)
+------------------------------------------------------------
+
+C14: "grainy black-and-white security camera footage of two people fighting"
+  Expected: Abuse001_x264.mp4
+  Correct: YES
+  Latency: 241.7ms
+  #1: Abuse001_x264_b05204644f3f  fused=0.2944  vis=0.2944  aud=0.0000  rrf=0.016129  ts=5.0s  driver=CLIP Visual Scene  tier=HIGH
+     transcript: "Visual scene footage"
+  #2: sports_news_breakdown_372460f80e66  fused=0.3672  vis=0.0000  aud=0.7344  rrf=0.008668  ts=511.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "They both respect each other and know the threats and dangers."
+  #3: ecns_opening_speech_665f4791a4e8  fused=0.0000  vis=0.0000  aud=0.7299  rrf=0.000943  ts=20.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "Visual scene footage"
+
+C15: "a bright rocket exhaust plume against the sky during liftoff"
+  Expected: nasa_space_flight_news.mp4
+  Correct: NO
+  Latency: 219.8ms
+  #1: sports_news_breakdown_372460f80e66  fused=0.2200  vis=0.2200  aud=0.0000  rrf=0.015385  ts=777.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: sports_news_breakdown_372460f80e66  fused=0.3089  vis=0.0000  aud=0.6177  rrf=0.008668  ts=561.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "they didn't get it launched and didn't get gone."
+  #3: nasa_space_flight_news_a485d4f58b49  fused=0.2967  vis=0.0000  aud=0.5934  rrf=0.008047  ts=27.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "Astronauts grow about 1 to 2 inches in space because fluids also move into the s"
+
+  Section C Score: 1/2
+
+### SECTION D: Speech/Whisper-path tests (2)
+------------------------------------------------------------
+
+D16: "an explanation of how the attention mechanism lets a model weigh different words"
+  Expected: my_llm_talk
+  Correct: NO
+  Latency: 243.3ms
+  #1: ecns_opening_speech_665f4791a4e8  fused=0.2524  vis=0.2524  aud=0.0000  rrf=0.013889  ts=17.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: nasa_space_flight_news_a485d4f58b49  fused=0.6818  vis=0.0000  aud=0.8522  rrf=0.013303  ts=47.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "To find out how the brain and body adapt to these changes,"
+  #3: my_llm_talk.mp4  fused=0.6652  vis=0.0000  aud=0.8315  rrf=0.012689  ts=80.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "It is not just chatting but it is narrowing down the possibilities so that the A"
+
+D17: "remarks about currency exchange rates and global markets"
+  Expected: ecns_opening_speech.mp4
+  Correct: NO
+  Latency: 239.4ms
+  #1: sports_news_breakdown_372460f80e66  fused=0.2262  vis=0.2262  aud=0.0000  rrf=0.014493  ts=777.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: my_llm_talk.mp4  fused=0.4231  vis=0.0000  aud=0.8462  rrf=0.008668  ts=29.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "But today it is the most ultimate way of communication is through natural langua"
+  #3: middle_east_news_report_0a56c7e5359d  fused=0.4224  vis=0.0000  aud=0.8449  rrf=0.007615  ts=68.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "if not, you know, near trillions, dollars worth of investment from their wealth "
+
+  Section D Score: 0/2
+
+### SECTION E: Precision / near-miss pairs (3)
+------------------------------------------------------------
+
+E18: "an interview exploring religious belief versus atheism"
+  Expected: atheist_discussion_interview.mp4
+  Should NOT win: identity_politics_interview.mp4
+  Correct: NO  Wrong-won: YES (BAD)
+  Latency: 198.6ms
+  #1: identity_politics_interview_d8c8047ee6b7  fused=0.7443  vis=0.2827  aud=0.8597  rrf=0.013405  ts=25.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "objected to precisely a year ago, is that the social-constructionist view of hum"
+  #2: Abuse001_x264_b05204644f3f  fused=0.2572  vis=0.2572  aud=0.0000  rrf=0.013333  ts=75.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #3: atheist_discussion_interview_a3bb4396b531  fused=0.7230  vis=0.0000  aud=0.9037  rrf=0.013303  ts=275.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "It's so-called rational atheist-free thinkers."
+
+E19: "a discussion of race, gender, or social identity in politics"
+  Expected: identity_politics_interview.mp4
+  Should NOT win: atheist_discussion_interview.mp4
+  Correct: YES  Wrong-won: no
+  Latency: 227.1ms
+  #1: identity_politics_interview_d8c8047ee6b7  fused=0.7590  vis=0.2538  aud=0.8853  rrf=0.015441  ts=24.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "objected to precisely a year ago, is that the social-constructionist view of hum"
+  #2: obama_farewell_speech_353ca4868dfb  fused=0.2538  vis=0.2538  aud=0.0000  rrf=0.014493  ts=37.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #3: atheist_discussion_interview_a3bb4396b531  fused=0.7007  vis=0.0000  aud=0.8759  rrf=0.012129  ts=322.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "making all court, it just dozens upon dozens of disgusting abuse and racial slur"
+
+E20: "an economic keynote address"
+  Expected: ecns_opening_speech.mp4
+  Should NOT win: obama_farewell_speech.mp4
+  Correct: YES  Wrong-won: no
+  Latency: 257.8ms
+  #1: ecns_opening_speech_665f4791a4e8  fused=0.2763  vis=0.2763  aud=0.0000  rrf=0.015385  ts=21.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: middle_east_news_report_0a56c7e5359d  fused=0.7238  vis=0.0000  aud=0.9047  rrf=0.013303  ts=0.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "Let's talk about the importance of this summit and possibilities in your perspec"
+  #3: ecns_opening_speech_665f4791a4e8  fused=0.7127  vis=0.0000  aud=0.8909  rrf=0.01231  ts=93.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "The idea of that all of us share is very serious. We are the community who will "
+
+  Section E Score: 2/3
+
+### SECTION F: Keyframe-density / multi-timestamp test (2)
+------------------------------------------------------------
+
+F21: "a highlight reel narrator describing a game-winning play"
+  Expected: sports_news_breakdown.mp4
+  Correct: NO
+  Top-1 timestamp: 85.1s
+  Latency: 234.8ms
+  #1: obama_farewell_speech_353ca4868dfb  fused=0.2670  vis=0.2670  aud=0.0000  rrf=0.016393  ts=85.1s  driver=CLIP Visual Scene  tier=HIGH
+     transcript: "Visual scene footage"
+  #2: sports_news_breakdown_372460f80e66  fused=0.4382  vis=0.0000  aud=0.8764  rrf=0.008668  ts=537.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "What kind of game do you expect to see from the off?"
+  #3: sports_news_breakdown_372460f80e66  fused=0.4373  vis=0.0000  aud=0.8746  rrf=0.008284  ts=689.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "And the team that wins this game is going to be the team that,"
+
+F22: "analysts breaking down team strategy after a match"
+  Expected: sports_news_breakdown.mp4
+  Correct: NO
+  Top-1 timestamp: 78.1s
+  Latency: 233.0ms
+  #1: obama_farewell_speech_353ca4868dfb  fused=0.2282  vis=0.2282  aud=0.0000  rrf=0.013889  ts=78.1s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: sports_news_breakdown_372460f80e66  fused=0.4114  vis=0.0000  aud=0.8228  rrf=0.008668  ts=669.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "I sometimes, Martin, when we get that scenario of two attacking mindset teams,"
+  #3: sports_news_breakdown_372460f80e66  fused=0.4100  vis=0.0000  aud=0.8200  rrf=0.008047  ts=222.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "and every team and every nation, every journalist is talking about their teams,"
+
+  Section F Score: 0/2
+  Timestamps distinct (>5s apart): YES (85.1s vs 78.1s)
+
+### SECTION G: Negative controls — out-of-domain (3)
+------------------------------------------------------------
+
+G23: "a tutorial on how to bake sourdough bread"
+  Expected: No good match / low scores
+  Top-1 score: 0.2109  Low-confidence (<0.45): YES (GOOD)
+  All top-5 scores: ['0.2109', '0.3752', '0.3702', '0.3698', '0.3691']
+  #1: sports_news_breakdown_372460f80e66  fused=0.2109  vis=0.2109  aud=0.0000  rrf=0.013333  ts=777.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: nasa_space_flight_news_a485d4f58b49  fused=0.3752  vis=0.0000  aud=0.7503  rrf=0.008668  ts=45.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "What about the brain? Does it change, too?"
+  #3: sports_news_breakdown_372460f80e66  fused=0.3702  vis=0.0000  aud=0.7405  rrf=0.008284  ts=80.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "Forgive me, I'm not name dropping, I just wanted to point that out."
+
+G24: "a fictional movie trailer with special effects and an on-screen villain"
+  Expected: No good match / low scores
+  Top-1 score: 0.1374  Low-confidence (<0.45): YES (GOOD)
+  All top-5 scores: ['0.1374', '0.0000', '0.0000', '0.0000', '0.0000']
+  #1: atheist_discussion_interview_a3bb4396b531  fused=0.1374  vis=0.2747  aud=0.0000  rrf=0.008668  ts=420.0s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Thank you."
+  #2: ecns_opening_speech_665f4791a4e8  fused=0.0000  vis=0.0000  aud=0.8686  rrf=0.000943  ts=20.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "Visual scene footage"
+  #3: ecns_opening_speech_665f4791a4e8  fused=0.0000  vis=0.0000  aud=0.8686  rrf=0.000943  ts=104.0s  driver=Whisper Audio Transcript  tier=HIGH
+     transcript: "Visual scene footage"
+
+G25: "a children's cartoon show"
+  Expected: No good match / low scores
+  Top-1 score: 0.2710  Low-confidence (<0.45): YES (GOOD)
+  All top-5 scores: ['0.2710', '0.4229', '0.4220', '0.4219', '0.1266']
+  #1: nasa_space_flight_news_a485d4f58b49  fused=0.2710  vis=0.2710  aud=0.0000  rrf=0.014706  ts=58.1s  driver=CLIP Visual Scene  tier=MEDIUM
+     transcript: "Visual scene footage"
+  #2: sports_news_breakdown_372460f80e66  fused=0.4229  vis=0.0000  aud=0.8458  rrf=0.008668  ts=436.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "Yes."
+  #3: Abuse001_x264_b05204644f3f  fused=0.4220  vis=0.0000  aud=0.8439  rrf=0.008536  ts=0.0s  driver=Whisper Audio Transcript  tier=MEDIUM
+     transcript: "you"
+
+  Section G Score: 3/3
+
+### SECTION H: Duplicate-file probe (1)
+------------------------------------------------------------
+
+H26: Re-running query 2 with top_k=10
+  my_llm_talk hits found: 3
+    -> my_llm_talk.mp4  score=0.4417  ts=49.0s
+    -> my_llm_talk.mp4  score=0.4371  ts=5.0s
+    -> my_llm_talk.mp4  score=0.4354  ts=83.0s
+  Distinct file names: {'my_llm_talk.mp4'}
+  [OK] Only one file variant indexed
+
+### GROUNDED VIDEO Q&A (ask-video) — 4 queries
+------------------------------------------------------------
+
+Q1: [Steve Jobs Interview Feb 18 1981.mp4] "What does Steve Jobs say will happen to computing in the future?"
+  Answer: Based strictly on multimodal context: - Audio Transcript: "Are there any other major areas that personal computers are going to change in that direction that most people would be familiar with or make obsolete?" (Cited across 5 event locations).
+  Latency: retrieval=296.7ms  llm=0.0ms  total=296.8ms
+  Citations (5):
+    video=Steve Jobs Interview Feb 18 1981_936669ae85ba  window=593.6s - 595.6s  transcript="Are there any other major areas that personal computers are going to change in t"
+    video=Steve Jobs Interview Feb 18 1981_936669ae85ba  window=1075.1s - 1077.1s  transcript="Even though you and the video manufacturers or Apple and the video game manufact"
+    video=my_llm_talk  window=86.0s - 88.0s  transcript="It is not just chatting but it is narrowing down the possibilities so that the A"
+    video=nasa_space_flight_news_a485d4f58b49  window=48.0s - 50.0s  transcript="To find out how the brain and body adapt to these changes,"
+    video=my_llm_talk  window=104.0s - 106.0s  transcript="And I think a simple analogy would be that you treat it like an intern who start"
+  Context snippet #1:
+    EVENT CONTEXT [Video: Steve Jobs Interview Feb 18 1981_936669ae85ba | Time: 593.6s - 595.6s]:
+- Audio Transcript: "Are there any other major areas that personal computers are going to change in that d
+  Grounded to target video: YES
+  Timestamp given: YES
+
+Q2: [obama_farewell_speech.mp4] "What does Obama say democracy requires of its citizens?"
+  Answer: Based strictly on multimodal context: - Audio Transcript: "Visual scene footage" (Cited across 5 event locations).
+  Latency: retrieval=271.2ms  llm=0.0ms  total=271.2ms
+  Citations (5):
+    video=obama_farewell_speech_353ca4868dfb  window=111.1s - 114.1s  transcript="Visual scene footage"
+    video=obama_farewell_speech_353ca4868dfb  window=78.1s - 80.1s  transcript="Visual scene footage"
+    video=sports_news_breakdown_372460f80e66  window=341.0s - 343.0s  transcript="but they accept a lot of government money for the saying the right things."
+    video=middle_east_news_report_0a56c7e5359d  window=68.0s - 70.0s  transcript="if not, you know, near trillions, dollars worth of investment from their wealth "
+    video=atheist_discussion_interview_a3bb4396b531  window=391.0s - 393.0s  transcript="and the extremists and the really, I don't see anyone having the goal to acknowl"
+  Context snippet #1:
+    EVENT CONTEXT [Video: obama_farewell_speech_353ca4868dfb | Time: 111.1s - 114.1s]:
+- Audio Transcript: "Visual scene footage"
+- Visual Scene Description: "Keyframe visual scene in window 111.1s–114.1s
+  Grounded to target video: YES
+  Timestamp given: YES
+
+Q3: [my_llm_talk.mp4] "How does the speaker describe the role of prompt engineering when building an AI agent?"
+  Answer: Based strictly on multimodal context: - Audio Transcript: "Visual scene footage" (Cited across 5 event locations).
+  Latency: retrieval=385.5ms  llm=0.0ms  total=385.5ms
+  Citations (5):
+    video=ecns_opening_speech_665f4791a4e8  window=20.0s - 22.0s  transcript="Visual scene footage"
+    video=ecns_opening_speech_665f4791a4e8  window=368.0s - 370.0s  transcript="the platform could not be cheap. The best layoffs and have a nice time in Istanb"
+    video=my_llm_talk  window=37.0s - 39.0s  transcript="But the most problem is that people think the AI systems that we communicate wit"
+    video=ecns_opening_speech_665f4791a4e8  window=8.0s - 14.0s  transcript="near meeting. Now it is my honor to present the chair of the organizing committe"
+    video=my_llm_talk  window=5.0s - 7.0s  transcript="Good afternoon. So my topic is prompt engineering with large language models and"
+  Context snippet #1:
+    EVENT CONTEXT [Video: ecns_opening_speech_665f4791a4e8 | Time: 20.0s - 22.0s]:
+- Audio Transcript: "Visual scene footage"
+- Visual Scene Description: "Keyframe visual scene in window 20.0s–22.0s"
+  Grounded to target video: YES
+  Timestamp given: YES
+
+Q4: [atheist_discussion_interview.mp4] "What specific Bible verse does the guest cite to support their argument?"
+  Answer: Based strictly on multimodal context: - Audio Transcript: "Visual scene footage" (Cited across 5 event locations).
+  Latency: retrieval=380.4ms  llm=0.0ms  total=380.4ms
+  Citations (5):
+    video=Abuse001_x264_b05204644f3f  window=72.0s - 74.0s  transcript="Visual scene footage"
+    video=atheist_discussion_interview_a3bb4396b531  window=276.0s - 278.0s  transcript="It's so-called rational atheist-free thinkers."
+    video=atheist_discussion_interview_a3bb4396b531  window=305.0s - 307.0s  transcript="You want to make reasonable criticisms, that's fine."
+    video=sports_news_breakdown_372460f80e66  window=341.0s - 343.0s  transcript="but they accept a lot of government money for the saying the right things."
+    video=sports_news_breakdown_372460f80e66  window=542.0s - 544.0s  transcript="confrontational and tight?"
+  Context snippet #1:
+    EVENT CONTEXT [Video: Abuse001_x264_b05204644f3f | Time: 72.0s - 74.0s]:
+- Audio Transcript: "Visual scene footage"
+- Visual Scene Description: "Keyframe visual scene in window 72.0s–74.0s"
+  Grounded to target video: YES
+  Timestamp given: YES
+
+================================================================================
+SUMMARY
+================================================================================
+Section A (clean per-video):   6/10
+Section C (visual/CLIP-path):  1/2
+Section D (speech/Whisper):     0/2
+Section E (precision pairs):    2/3
+Section F (keyframe-density):   0/2
+Section G (negative controls):  3/3
+Scored search total:            12/22
+(Sections B, H are qualitative, not scored)

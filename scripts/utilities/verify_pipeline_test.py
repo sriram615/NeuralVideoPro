@@ -93,7 +93,7 @@ def run_verification():
         if vid not in video_stats:
             video_stats[vid] = {"file_name": fn, "count": 0, "timestamps": []}
         video_stats[vid]["count"] += 1
-        video_stats[vid]["timestamps"].append(r.payload.get("timestamp_sec", 0))
+        video_stats[vid]["timestamps"].append(r.payload.get("timestamp", 0))
 
     print(f"Total Ingested Video Files: {len(video_stats)}")
     print("\n" + "-"*85)
