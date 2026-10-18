@@ -241,7 +241,7 @@ def loading_state(c: Canvas, stage: int = 4):
     c.text((W // 2, H - 100), "COMPUTING...", load_font(16, mono=True), fill=CYAN, anchor="mm")
 
 
-def results_page(c: Canvas, selected_idx: int = 0, thumbs: list | None = None):
+def results_page(c: Canvas, selected_idx: int = 0, thumbs: list | None = None, main_thumbs: list | None = None):
     header(c, "XAI")
     c.rect([0, 72, W, H], BG)
     c.text((40, 104), f'RESULTS  //  {len(thumbs) if thumbs else 3} MATCHES FOR "speaker discussing transformers"  (142ms)', load_font(13, mono=True), fill=TEXT)
@@ -284,7 +284,7 @@ def results_page(c: Canvas, selected_idx: int = 0, thumbs: list | None = None):
     vid_x, vid_y = 510, 300
     c.rect([vid_x, vid_y, vid_x + vid_w, vid_y + vid_h], (20, 20, 25), radius=12)
     # paste main thumbnail into player
-    main_thumb = thumbs[selected_idx] if thumbs and selected_idx < len(thumbs) else None
+    main_thumb = main_thumbs[selected_idx] if main_thumbs and selected_idx < len(main_thumbs) else None
     paste_thumb(c, main_thumb, (vid_x + 10, vid_y + 10), (vid_w - 20, vid_h - 20), radius=10)
     c.text((vid_x + 10, vid_y + vid_h + 10), "SYNCHRONIZED VIDEO PLAYER", load_font(11, mono=True), fill=CYAN)
     c.text((vid_x + 10, vid_y + vid_h + 32), "middle east news report", load_font(16), fill=TEXT)
@@ -318,6 +318,7 @@ def build_frames(tmpdir: Path) -> list[str]:
 
     # Load real thumbnails once
     thumbs = [load_thumbnail(rel, 300, 60) for rel, _, _ in THUMBNAILS]
+    main_thumbs = [load_thumbnail(rel, 430, 160) for rel, _, _ in THUMBNAILS]
 
     # 1. Landing page (~1s)
     c = make_frame()
@@ -339,17 +340,17 @@ def build_frames(tmpdir: Path) -> list[str]:
 
     # 4. Results page - result #1 selected (~1s)
     c = make_frame()
-    results_page(c, selected_idx=0, thumbs=thumbs)
+    results_page(c, selected_idx=0, thumbs=thumbs, main_thumbs=main_thumbs)
     add(c, FPS, "results_1")
 
     # 5. Results page - result #2 selected (~1s)
     c = make_frame()
-    results_page(c, selected_idx=1, thumbs=thumbs)
+    results_page(c, selected_idx=1, thumbs=thumbs, main_thumbs=main_thumbs)
     add(c, FPS, "results_2")
 
     # 6. Results page - result #3 selected (~1s)
     c = make_frame()
-    results_page(c, selected_idx=2, thumbs=thumbs)
+    results_page(c, selected_idx=2, thumbs=thumbs, main_thumbs=main_thumbs)
     add(c, FPS, "results_3")
 
     return frames
