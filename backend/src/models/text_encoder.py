@@ -110,7 +110,11 @@ class TextQueryEncoder:
 
         # CPU inference — no autograd graph needed.
         with torch.inference_mode():
-            text_features: torch.Tensor = self.model.get_text_features(**inputs)
+            text_features = self.model.get_text_features(**inputs)
+
+        # Newer transformers return BaseModelOutputWithPooling; extract the tensor.
+        if hasattr(text_features, "pooler_output"):
+            text_features = text_features.pooler_output
 
         # L2-normalise so cosine distance == 1 - dot product.
         text_features = text_features / text_features.norm(dim=-1, keepdim=True)

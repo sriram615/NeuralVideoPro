@@ -126,7 +126,11 @@ class CLIPVisionEncoder:
 
             # CPU inference with no autograd
             with torch.inference_mode():
-                image_features: torch.Tensor = self.model.get_image_features(**inputs)
+                image_features = self.model.get_image_features(**inputs)
+
+            # Newer transformers return BaseModelOutputWithPooling; extract the tensor.
+            if hasattr(image_features, "pooler_output"):
+                image_features = image_features.pooler_output
 
             # L2-normalise
             image_features = image_features / image_features.norm(dim=-1, keepdim=True)
