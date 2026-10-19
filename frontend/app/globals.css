@@ -5,6 +5,21 @@
  * Tailwind v4 CSS-first theme: every `--color-*` token generates matching
  * utilities (bg-pitch, text-bone, text-accent-cyan, …) so components never
  * need to hardcode a hex value.
+ *
+ * ── Palette contract ────────────────────────────────────────────────────
+ * Color is never the only signal: every colored element also carries a text
+ * label or glyph, so the UI stays readable for color-blind users.
+ *
+ *   accent-cyan    Brand + INTERACTION (buttons, focus rings, links, active
+ *                  nav) AND the "visual" modality. Interaction use is always
+ *                  a filled control or ring; modality use is always inside a
+ *                  labelled chip (VISUAL (CLIP)).
+ *   accent-emerald The "audio" modality AND positive status (matched row,
+ *                  HIGH confidence). Same rule: labelled chips for modality.
+ *   accent-amber   Caution: MEDIUM confidence and search errors.
+ *   bone           FUSED / neutral data (fused score, body copy).
+ *   muted / wire   Secondary text and hairline borders.
+ * ────────────────────────────────────────────────────────────────────────
  */
 @theme {
   --color-pitch: #0c0c0c;
@@ -16,6 +31,11 @@
   --color-accent-emerald: #10B981;
   --color-accent-amber: #F59E0B;
   --color-accent-cyan-dim: rgba(6, 182, 212, 0.2);
+
+  /* Type scale: the smallest legible step for micro labels (was 9–10px). */
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1.25rem;
+
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Fira Code", monospace;
   --animate-fade-in: fade-in 0.3s ease-out both;

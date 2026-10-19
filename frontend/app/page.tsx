@@ -9,6 +9,7 @@ import ResultCard from "@/components/ResultCard";
 import TimelineTrack from "@/components/TimelineTrack";
 import VideoPlayer from "@/components/VideoPlayer";
 import XAIGrid from "@/components/XAIGrid";
+import ModalityLegend from "@/components/ModalityLegend";
 import {
   fetchCorpusStats,
   fetchHealth,
@@ -75,7 +76,7 @@ function PageLanding({
         <div className="z-10 max-w-5xl mx-auto flex flex-col items-center justify-center my-auto px-3 md:px-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-accent-emerald/40 mb-6 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
             <span className="w-2 h-2 rounded-full bg-accent-emerald" aria-hidden="true" />
-            <span className="font-mono font-bold text-[10px] text-accent-emerald tracking-[0.25em] uppercase">
+            <span className="font-mono font-bold text-micro text-accent-emerald tracking-[0.25em] uppercase">
               HACKATHON JUDGE DEMO MODE &bull; &lt; 300 MS CPU LATENCY
             </span>
           </div>
@@ -95,19 +96,19 @@ function PageLanding({
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full max-w-4xl mb-8 font-mono">
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
-              <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">SEARCH SLA</span>
+              <span className="text-micro text-gray-400 uppercase tracking-widest block mb-1">SEARCH SLA</span>
               <span className="text-xl font-black text-accent-emerald">&lt; 300ms</span>
             </div>
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
-              <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">VECTOR STORE</span>
+              <span className="text-micro text-gray-400 uppercase tracking-widest block mb-1">VECTOR STORE</span>
               <span className="text-xl font-black text-accent-cyan">Qdrant Dual 512-D</span>
             </div>
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
-              <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">INDEX POINTS</span>
+              <span className="text-micro text-gray-400 uppercase tracking-widest block mb-1">INDEX POINTS</span>
               <span className="text-xl font-black text-white">{corpusStats?.total_points ?? "—"}</span>
             </div>
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
-              <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">EXPLAINABILITY</span>
+              <span className="text-micro text-gray-400 uppercase tracking-widest block mb-1">EXPLAINABILITY</span>
               <span className="text-xl font-black text-accent-cyan">RRF + XAI</span>
             </div>
           </div>
@@ -337,9 +338,12 @@ function PageResultsAndXAI({
         <TimelineTrack results={data.results} selectedIndex={selectedIndex} durationSec={videoDurationSec} onSelect={(idx, ts) => { setSelectedIndex(idx); handleSeekAndPlay(ts); }} />
         <div className="z-10 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 my-2 overflow-y-auto max-h-[calc(100vh-260px)] pr-2">
           <div className="lg:col-span-5 space-y-3">
-            <h3 className="font-mono text-xs font-bold text-gray-300 uppercase tracking-widest">
-              TIMELINE MATCH REEL (CLICK TO SYNC PLAYER):
-            </h3>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h3 className="font-mono text-xs font-bold text-gray-300 uppercase tracking-widest">
+                TIMELINE MATCH REEL (CLICK TO SYNC PLAYER):
+              </h3>
+              <ModalityLegend />
+            </div>
             <div className="space-y-3">
               {data.results.map((r, idx) => (
                 <ResultCard key={String(r.id)} item={r} rank={idx + 1} isSelected={idx === selectedIndex} onSelect={(rankIdx) => { setSelectedIndex(rankIdx - 1); handleSeekAndPlay(Number(r.payload.timestamp) || 0); }} />

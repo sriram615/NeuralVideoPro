@@ -70,7 +70,7 @@ export default function VideoPlayer({
             <span className="font-mono text-xs text-gray-400 uppercase tracking-widest">
               VIDEO SOURCE UNAVAILABLE
             </span>
-            <span className="font-mono text-[11px] text-gray-500">
+            <span className="font-mono text-xs text-gray-500">
               This match has no catalogued file on the server. Results and XAI attribution are still valid.
             </span>
           </div>

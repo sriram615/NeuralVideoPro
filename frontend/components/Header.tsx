@@ -58,31 +58,31 @@ export default function Header({
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
               <span className="font-mono font-black text-white text-sm tracking-wider">NEURALVIDEO</span>
-              <span className="font-mono text-[10px] font-bold text-black bg-accent-cyan px-1.5 py-0.5 rounded border border-accent-cyan/30">
+              <span className="font-mono text-micro font-bold text-black bg-accent-cyan px-1.5 py-0.5 rounded border border-accent-cyan/30">
                 v5.0
               </span>
             </div>
-            <span className="font-mono text-[9px] text-bone/80 tracking-widest uppercase">
+            <span className="font-mono text-micro text-bone/80 tracking-widest uppercase">
               MULTIMODAL VIDEO RAG & SEARCH
             </span>
           </div>
         </div>
 
         {/* Ticker Text */}
-        <div className="hidden md:block font-mono text-[10px] text-gray-300 tracking-wider truncate max-w-md" aria-live="polite">
+        <div className="hidden md:block font-mono text-micro text-gray-300 tracking-wider truncate max-w-md" aria-live="polite">
           {tickerText}
         </div>
 
         {/* Catalog Dropdown */}
         <div className="hidden md:flex items-center gap-2 bg-black/60 border border-white/15 px-2.5 py-1.5 rounded-xl">
-          <label htmlFor="catalog-select" className="font-mono text-[10px] font-bold text-accent-cyan uppercase tracking-wider sr-only">
+          <label htmlFor="catalog-select" className="font-mono text-micro font-bold text-accent-cyan uppercase tracking-wider sr-only">
             Catalog
           </label>
           <select
             id="catalog-select"
             value={selectedVideo}
             onChange={(e) => onSelectVideo(e.target.value)}
-            className="bg-transparent text-white font-mono text-[10px] outline-none cursor-pointer pr-2 focus:ring-2 focus:ring-accent-cyan rounded"
+            className="bg-transparent text-white font-mono text-micro outline-none cursor-pointer pr-2 focus:ring-2 focus:ring-accent-cyan rounded"
             aria-label="Select video from catalog"
           >
             <option value="all" className="bg-void text-white">
@@ -103,7 +103,7 @@ export default function Header({
         </div>
 
         {/* Navigation Links */}
-        <nav aria-label="Section navigation" className="hidden md:flex items-center gap-1.5 font-mono text-[10px]">
+        <nav aria-label="Section navigation" className="hidden md:flex items-center gap-1.5 font-mono text-micro">
           {[
             { idx: 0, label: "DEMO" },
             { idx: 1, label: "CONSOLE" },
@@ -140,7 +140,7 @@ export default function Header({
         {/* Mobile Catalog Dropdown */}
         {catalogOpen && (
           <div className="md:hidden w-full bg-black/90 border border-white/15 rounded-xl p-3 mt-2">
-            <label htmlFor="mobile-catalog-select" className="font-mono text-[10px] font-bold text-accent-cyan uppercase tracking-wider block mb-1">
+            <label htmlFor="mobile-catalog-select" className="font-mono text-micro font-bold text-accent-cyan uppercase tracking-wider block mb-1">
               Catalog
             </label>
             <select
@@ -150,7 +150,7 @@ export default function Header({
                 onSelectVideo(e.target.value);
                 setCatalogOpen(false);
               }}
-              className="w-full bg-transparent text-white font-mono text-[10px] outline-none focus:ring-2 focus:ring-accent-cyan rounded"
+              className="w-full bg-transparent text-white font-mono text-micro outline-none focus:ring-2 focus:ring-accent-cyan rounded"
               aria-label="Select video from catalog"
             >
               <option value="all" className="bg-void text-white">

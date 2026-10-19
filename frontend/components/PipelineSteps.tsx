@@ -41,7 +41,7 @@ export default function PipelineSteps({ steps, activeStep }: PipelineStepsProps)
               }`}
             >
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] font-bold tracking-widest uppercase">
+                <span className="text-micro font-bold tracking-widest uppercase">
                   STEP {item.step}
                 </span>
                 <span aria-hidden="true">
@@ -55,7 +55,7 @@ export default function PipelineSteps({ steps, activeStep }: PipelineStepsProps)
                 </span>
               </div>
               <div className="font-bold text-xs truncate">{item.title}</div>
-              <div className="text-[10px] text-gray-400 truncate">{item.desc}</div>
+              <div className="text-micro text-gray-400 truncate">{item.desc}</div>
             </div>
           );
         })}

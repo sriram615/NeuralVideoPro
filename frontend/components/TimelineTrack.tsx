@@ -67,7 +67,7 @@ export default function TimelineTrack({
                 onClick={() => onSelect(idx, ts)}
                 aria-label={`Result ${idx + 1} at ${tsStr}, ${r.xai.fused_score_pct.toFixed(1)}% match`}
                 style={{ left: `${posPct}%` }}
-                className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full font-mono text-[10px] font-black transition-all cursor-pointer shadow-lg focus-visible:ring-2 focus-visible:ring-accent-cyan ${
+                className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full font-mono text-micro font-black transition-all cursor-pointer shadow-lg focus-visible:ring-2 focus-visible:ring-accent-cyan ${
                   isSelected
                     ? "bg-accent-cyan text-black scale-125 z-20 border-2 border-white shadow-[0_0_12px_rgba(6,182,212,0.8)]"
                     : "bg-black text-accent-cyan/80 border border-accent-cyan/60 hover:scale-110 z-10"

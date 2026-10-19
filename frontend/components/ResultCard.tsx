@@ -21,6 +21,15 @@ function tierColor(tier: string | undefined): string {
   return "text-gray-500";
 }
 
+function tierFill(tier: string | undefined): string {
+  if (tier === "HIGH") return "bg-accent-emerald";
+  if (tier === "MEDIUM") return "bg-accent-amber";
+  return "bg-gray-500";
+}
+
+/** Confidence is a LEVEL (segments), not a modality hue. */
+const CONFIDENCE_LEVEL: Record<string, number> = { LOW: 1, MEDIUM: 2, HIGH: 3 };
+
 export default function ResultCard({
   item,
   rank,
@@ -107,7 +116,7 @@ export default function ResultCard({
       </div>
 
       {/* Judge diagnostics — only claim a match when the score clears threshold */}
-      <div className="space-y-1 font-mono text-[11px] pt-1 border-t border-white/10">
+      <div className="space-y-1 font-mono text-xs pt-1 border-t border-white/10">
         {modalityRows.map((row) => {
           const matched = row.score > MATCH_THRESHOLD;
           return (
@@ -120,7 +129,16 @@ export default function ResultCard({
           );
         })}
         <div className="flex items-center gap-2">
-          <span className={tierColor(tier)} aria-hidden="true">&#9679;</span>
+          <span className="inline-flex items-center gap-0.5" aria-hidden="true">
+            {[1, 2, 3].map((step) => (
+              <span
+                key={step}
+                className={`h-3 w-1.5 rounded-sm ${
+                  step <= (CONFIDENCE_LEVEL[tier ?? ""] ?? 0) ? tierFill(tier) : "bg-white/15"
+                }`}
+              />
+            ))}
+          </span>
           <span className="text-gray-400">Confidence</span>
           <span className={`font-bold ${tierColor(tier)}`}>{tier ?? "N/A"}</span>
         </div>
