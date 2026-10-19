@@ -58,7 +58,7 @@ export default function Header({
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
               <span className="font-mono font-black text-white text-sm tracking-wider">NEURALVIDEO</span>
-              <span className="font-mono text-[10px] font-bold text-accent-cyan bg-accent-cyan/60 px-1.5 py-0.5 rounded border border-accent-cyan/30">
+              <span className="font-mono text-[10px] font-bold text-black bg-accent-cyan px-1.5 py-0.5 rounded border border-accent-cyan/30">
                 v5.0
               </span>
             </div>

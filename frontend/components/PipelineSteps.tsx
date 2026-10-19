@@ -34,9 +34,9 @@ export default function PipelineSteps({ steps, activeStep }: PipelineStepsProps)
               key={item.step}
               className={`p-3 rounded-xl border transition-all duration-200 ${
                 isDone
-                  ? "bg-accent-emerald/60 border-accent-emerald/50 text-accent-emerald/80"
+                  ? "bg-accent-emerald/10 border-accent-emerald/50 text-accent-emerald"
                   : isActiveStep
-                  ? "bg-accent-cyan/80 border-accent-cyan text-accent-cyan shadow-[0_0_15px_rgba(6,182,212,0.3)]"
+                  ? "bg-accent-cyan/10 border-accent-cyan text-accent-cyan shadow-[0_0_15px_rgba(6,182,212,0.3)]"
                   : "bg-white/5 border-white/10 text-gray-500"
               }`}
             >

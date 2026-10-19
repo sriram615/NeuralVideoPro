@@ -17,13 +17,13 @@ export default function XAIGrid({ item }: XAIGridProps) {
           <span className="text-[10px] text-gray-400 uppercase block">FUSED SCORE</span>
           <span className="text-2xl font-black text-white">{item.xai.fused_score_pct.toFixed(1)}%</span>
         </div>
-        <div className="p-4 bg-accent-cyan/60 rounded-xl border border-accent-cyan/40">
+        <div className="p-4 bg-accent-cyan/10 rounded-xl border border-accent-cyan/40">
           <span className="text-[10px] text-accent-cyan uppercase block">VISUAL (CLIP)</span>
-          <span className="text-2xl font-black text-accent-cyan/90">{item.xai.visual_similarity_pct.toFixed(1)}%</span>
+          <span className="text-2xl font-black text-accent-cyan">{item.xai.visual_similarity_pct.toFixed(1)}%</span>
         </div>
-        <div className="p-4 bg-accent-emerald/60 rounded-xl border border-accent-emerald/40">
+        <div className="p-4 bg-accent-emerald/10 rounded-xl border border-accent-emerald/40">
           <span className="text-[10px] text-accent-emerald uppercase block">AUDIO (WHISPER)</span>
-          <span className="text-2xl font-black text-accent-emerald/90">{item.xai.audio_similarity_pct.toFixed(1)}%</span>
+          <span className="text-2xl font-black text-accent-emerald">{item.xai.audio_similarity_pct.toFixed(1)}%</span>
         </div>
       </div>
 

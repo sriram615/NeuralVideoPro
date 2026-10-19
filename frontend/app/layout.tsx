@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "NeuralVideo v2.0 — Multimodal News Search Intelligence",
+  title: "NeuralVideo v5.0 — Multimodal News Search Intelligence",
   description:
     "Editorial Brutalist interface for dual-vector late fusion video intelligence. CLIP ViT-B/32 + Whisper Base + Qdrant HNSW.",
 };

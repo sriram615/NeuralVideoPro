@@ -27,9 +27,9 @@ export default function VideoPlayer({
 
   const confidenceColor =
     confidenceBand === "HIGH"
-      ? "bg-accent-emerald/60 text-accent-emerald border-accent-emerald/50"
+      ? "bg-accent-emerald/10 text-accent-emerald border-accent-emerald/50"
       : confidenceBand === "MEDIUM"
-      ? "bg-accent-amber/60 text-accent-amber border-accent-amber/50"
+      ? "bg-accent-amber/10 text-accent-amber border-accent-amber/50"
       : "bg-slate-900 text-slate-300 border-slate-700";
 
   const filename = resolveVideoFilename(

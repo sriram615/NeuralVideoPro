@@ -9,7 +9,6 @@ import ResultCard from "@/components/ResultCard";
 import TimelineTrack from "@/components/TimelineTrack";
 import VideoPlayer from "@/components/VideoPlayer";
 import XAIGrid from "@/components/XAIGrid";
-import Skeleton from "@/components/Skeleton";
 import {
   fetchCorpusStats,
   fetchHealth,
@@ -61,7 +60,7 @@ function PageLanding({
   onSelectVideo: (video: string) => void;
 }) {
   return (
-    <div className="page-view page-view-active">
+    <div className="page-shell">
       <Header
         tickerText="JUDGE DEMO CONSOLE // REAL-TIME MULTIMODAL VIDEO RETRIEVAL"
         pageIndex={0}
@@ -105,7 +104,7 @@ function PageLanding({
             </div>
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
               <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">INDEX POINTS</span>
-              <span className="text-xl font-black text-white">{corpusStats?.total_points || 2086}</span>
+              <span className="text-xl font-black text-white">{corpusStats?.total_points ?? "—"}</span>
             </div>
             <div className="p-3 bg-black/70 rounded-xl border border-white/10 text-center">
               <span className="text-[9px] text-gray-400 uppercase tracking-widest block mb-1">EXPLAINABILITY</span>
@@ -170,7 +169,7 @@ function PageConsole({
   ];
 
   return (
-    <div className="page-view page-view-active pt-16 md:pt-20">
+    <div className="page-shell pt-16 md:pt-20">
       <Header
         tickerText="SEARCH CONSOLE // LIVE PIPELINE STORYTELLING & INFERENCE"
         pageIndex={1}
@@ -244,12 +243,10 @@ function PageConsole({
 function PageResultsAndXAI({
   onNavigate,
   data,
-  isSearching,
   corpusStats,
 }: {
   onNavigate: (page: number) => void;
   data: SearchResponse | null;
-  isSearching: boolean;
   corpusStats: CorpusStats | null;
 }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -265,54 +262,9 @@ function PageResultsAndXAI({
     }
   };
 
-  if (isSearching) {
-    return (
-      <div className="page-view page-view-active pt-16 md:pt-20">
-        <Header
-          tickerText="SEARCH ENGINE EXECUTING MULTIMODAL INFERENCE..."
-          pageIndex={2}
-          onNavigate={onNavigate}
-          corpusStats={null}
-          selectedVideo="all"
-          onSelectVideo={() => {}}
-          health={null}
-        />
-        <div className="flex-1 flex flex-col p-4 md:p-6 overflow-hidden">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 z-10 pb-3 border-b border-white/15">
-            <div>
-              <span className="font-mono font-bold text-xs text-accent-cyan uppercase tracking-widest">XAI PROVENANCE</span>
-              <span className="font-mono text-xs text-white">QUERY: &quot;&hellip;&quot;</span>
-            </div>
-            <p className="font-mono text-xs text-gray-400 mt-1">AUTO-INTENT: ... (&alpha; = ...) &bull; ... RESULTS</p>
-          </div>
-          <PipelineSteps
-            steps={[
-              { step: 1, title: "Encoding Query...", desc: "CLIP ViT-B/32 & Text Transformer" },
-              { step: 2, title: "Searching Visual Index...", desc: "512-D Vision Vectors" },
-              { step: 3, title: "Searching Audio Index...", desc: "16kHz Whisper Transcripts" },
-              { step: 4, title: "Fusing Results (RRF)...", desc: "Reciprocal Rank Fusion" },
-              { step: 5, title: "Diversifying Results (MMR)...", desc: "Semantic Vector Diversity (λ=0.7)" },
-              { step: 6, title: "Returning Top Match...", desc: "Confidence Scoring & Playback Sync" },
-            ]}
-            activeStep={4}
-          />
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" aria-hidden="true">
-            {[0, 1, 2, 3].map((i) => (
-              <div key={i} className="p-4 bg-black/70 rounded-xl border border-white/10 space-y-3">
-                <Skeleton height="0.75rem" width="45%" />
-                <Skeleton height="0.75rem" width="85%" />
-                <Skeleton height="2.5rem" width="100%" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   if (!data || !data.results || data.results.length === 0 || !activeItem) {
     return (
-      <div className="page-view page-view-active pt-16 md:pt-20">
+      <div className="page-shell pt-16 md:pt-20">
         <Header
           tickerText="RESULTS GALLERY // AWAITING SEARCH EXECUTION"
           pageIndex={2}
@@ -351,7 +303,7 @@ function PageResultsAndXAI({
   const confidenceBand = activeItem.xai.confidence_tier || "HIGH";
 
   return (
-    <div className="page-view page-view-active pt-16 md:pt-20">
+    <div className="page-shell pt-16 md:pt-20">
       <Header
         tickerText={`RESULTS // ${data.total_results} MATCHES FOR "${data.query}" (${data.latency_ms}ms)`}
         pageIndex={2}
@@ -437,15 +389,31 @@ export default function Home() {
     async (query: string) => {
       setIsSearching(true);
       setSearchError(null);
+      setSearchStage(1);
 
-      const stages = [1, 2, 3, 4, 5, 6];
-      for (const stg of stages) {
-        setSearchStage(stg);
-        await new Promise((resolve) => setTimeout(resolve, 140));
-      }
+      // Non-blocking stage indicator: advances on a timer purely to signal
+      // activity, and is cancelled when the real request resolves so it never
+      // inflates measured latency.
+      const stageTimer = setInterval(() => {
+        setSearchStage((s) => (s < 5 ? s + 1 : s));
+      }, 200);
+
+      // Fetch extra candidates when scoped to a single video so the client-side
+      // filter below can still surface up to 5 matches.
+      const topK = selectedVideo === "all" ? 5 : 25;
 
       try {
-        const data = await fetchSearch(query, 5, undefined, "all");
+        let data = await fetchSearch(query, topK, undefined, "all");
+
+        if (selectedVideo !== "all" && corpusStats?.video_catalog) {
+          const entry = corpusStats.video_catalog.find((v) => v.filename === selectedVideo);
+          if (entry) {
+            const results = data.results.filter((r) => r.payload.video_id === entry.video_id);
+            data = { ...data, results, total_results: results.length };
+          }
+        }
+
+        setSearchStage(6);
         setSearchData(data);
         setCurrentPage(2);
       } catch (err: unknown) {
@@ -453,15 +421,16 @@ export default function Home() {
         setSearchError(err instanceof Error ? err.message : "Failed to connect to backend server");
         setCurrentPage(1);
       } finally {
+        clearInterval(stageTimer);
         setIsSearching(false);
         setSearchStage(0);
       }
     },
-    []
+    [selectedVideo, corpusStats]
   );
 
   return (
-    <main className="page-container bg-void min-h-screen text-white font-sans overflow-hidden">
+    <main className="bg-void flex min-h-screen flex-col text-white font-sans overflow-hidden">
       {currentPage === 0 && (
         <PageLanding onNavigate={navigateToPage} health={health} corpusStats={corpusStats} selectedVideo={selectedVideo} onSelectVideo={setSelectedVideo} />
       )}
@@ -483,12 +452,11 @@ export default function Home() {
           key={searchData?.query ?? "no-results"}
           onNavigate={navigateToPage}
           data={searchData}
-          isSearching={isSearching}
           corpusStats={corpusStats}
         />
       )}
 
-      <nav className="fixed bottom-6 right-8 z-50 flex items-center gap-2 bg-black/80 px-4 py-2 rounded-full backdrop-blur-2xl border border-white/20 shadow-2xl" aria-label="Section navigation">
+      <nav className="fixed bottom-6 right-8 z-50 flex items-center gap-2 bg-black/80 px-4 py-2 rounded-full backdrop-blur-2xl border border-white/20 shadow-2xl" aria-label="Page switcher">
         {[
           { label: "1. DEMO", idx: 0 },
           { label: "2. CONSOLE", idx: 1 },
