@@ -46,7 +46,7 @@ export default function PipelineSteps({ steps, activeStep }: PipelineStepsProps)
                 </span>
                 <span aria-hidden="true">
                   {isDone ? (
-                    <span className="text-accent-emerald font-bold">&check;</span>
+                    <span className="text-accent-emerald font-bold">{"\u2713"}</span>
                   ) : isActiveStep ? (
                     <span className="w-2 h-2 rounded-full bg-accent-cyan inline-block" />
                   ) : (

@@ -24,7 +24,7 @@ VEA (Video Exploration & Analytics) is a high-performance multimodal video searc
 
 ![NeuralVideo v5.0 Demo — Search Pipeline](docs/demo.gif)
 
-*The demo shows: landing page → query typing → live pipeline storytelling bar → results page with timeline track, keyframe gallery, synchronized video player, and XAI score grid.*
+*Screen recording of the running app (Playwright-driven Chromium, no mock-ups or simulated frames): landing page → query typing in the search console → live pipeline storytelling bar → results page with retrieval timeline track, keyframe match reel, synchronized video player, and the XAI score grid.*
 
 ---
 

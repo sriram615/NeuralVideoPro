@@ -175,7 +175,12 @@ if _static_raw.exists():
     app.mount("/static/videos", StaticFiles(directory=str(_static_raw)), name="videos")
     logger.info("📂 Mounted static video files from %s", _static_raw)
 
-_static_frames = PROJECT_ROOT / "data" / "processed" / "extracted_frames_v2"
+# Static keyframe files. Configurable so an existing index can be served against
+# its matching extraction directory without re-ingesting (default unchanged).
+_frames_env = os.environ.get("STATIC_FRAMES_DIR")
+_static_frames = Path(_frames_env) if _frames_env else PROJECT_ROOT / "data" / "processed" / "extracted_frames_v2"
+if not _static_frames.is_absolute():
+    _static_frames = PROJECT_ROOT / _static_frames
 if _static_frames.exists():
     app.mount("/static/frames", StaticFiles(directory=str(_static_frames)), name="frames")
     logger.info("📂 Mounted static keyframe files from %s", _static_frames)

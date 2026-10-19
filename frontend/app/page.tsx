@@ -134,6 +134,7 @@ function PageConsole({
   searchStage,
   searchError,
   setSearchError,
+  health,
   corpusStats,
   selectedVideo,
   onSelectVideo,
@@ -144,6 +145,7 @@ function PageConsole({
   searchStage: number;
   searchError: string | null;
   setSearchError: (err: string | null) => void;
+  health: HealthResponse | null;
   corpusStats: CorpusStats | null;
   selectedVideo: string;
   onSelectVideo: (video: string) => void;
@@ -178,7 +180,7 @@ function PageConsole({
         corpusStats={corpusStats}
         selectedVideo={selectedVideo}
         onSelectVideo={onSelectVideo}
-        health={null}
+        health={health}
       />
       <div className="flex-1 relative flex flex-col justify-center items-center p-4 md:p-8 text-center overflow-hidden">
         <WireframeArcs variant="terminal" aria-hidden="true" />
@@ -244,10 +246,12 @@ function PageConsole({
 function PageResultsAndXAI({
   onNavigate,
   data,
+  health,
   corpusStats,
 }: {
   onNavigate: (page: number) => void;
   data: SearchResponse | null;
+  health: HealthResponse | null;
   corpusStats: CorpusStats | null;
 }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -273,7 +277,7 @@ function PageResultsAndXAI({
           corpusStats={null}
           selectedVideo="all"
           onSelectVideo={() => {}}
-          health={null}
+          health={health}
         />
         <div className="flex-1 flex flex-col items-center justify-center p-6 md:p-12 text-center">
           <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4">
@@ -312,7 +316,7 @@ function PageResultsAndXAI({
         corpusStats={corpusStats}
         selectedVideo="all"
         onSelectVideo={() => {}}
-        health={null}
+        health={health}
       />
       <div className="flex-1 relative flex flex-col justify-between p-4 md:p-6 overflow-hidden">
         <WireframeArcs variant="gallery" aria-hidden="true" />
@@ -446,6 +450,7 @@ export default function Home() {
           searchStage={searchStage}
           searchError={searchError}
           setSearchError={setSearchError}
+          health={health}
           corpusStats={corpusStats}
           selectedVideo={selectedVideo}
           onSelectVideo={setSelectedVideo}
@@ -456,6 +461,7 @@ export default function Home() {
           key={searchData?.query ?? "no-results"}
           onNavigate={navigateToPage}
           data={searchData}
+          health={health}
           corpusStats={corpusStats}
         />
       )}
