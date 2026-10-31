@@ -5,33 +5,23 @@
     "top_5_retrieved_events": [
       {
         "rank": 1,
-        "video_id": "sports_news_breakdown_372460f80e66",
-        "timestamp_range": "12:54 - 12:59",
-        "final_score": 0.0164,
-        "visual_score": 0.245149,
+        "video_id": "How to TEDx\uff1a Design a stage_b56eece8f029",
+        "timestamp_range": "00:09 - 00:11",
+        "final_score": 0.0133,
+        "visual_score": 0.293316,
         "audio_score": 0.0,
-        "transcript_snippet": "A quaint call of ages of one and the platform.",
-        "match_rationale": "Visual vector cosine similarity (0.2451) + Audio similarity (0.0000) fused via RRF (0.0164) and cross-modal agreement scoring."
+        "transcript_snippet": "What does stage decoration mean?",
+        "match_rationale": "Visual vector cosine similarity (0.2933) + Audio similarity (0.0000) fused via RRF (0.0133) and cross-modal agreement scoring."
       },
       {
         "rank": 2,
-        "video_id": "identity_politics_interview_d8c8047ee6b7",
-        "timestamp_range": "00:48 - 00:54",
-        "final_score": 0.0143,
-        "visual_score": 0.184388,
-        "audio_score": 0.714847,
-        "transcript_snippet": "everywhere. And underneath it all, I see this terrible striving for arbitrary power that's associate",
-        "match_rationale": "Visual vector cosine similarity (0.1844) + Audio similarity (0.7148) fused via RRF (0.0134) and cross-modal agreement scoring."
-      },
-      {
-        "rank": 3,
-        "video_id": "identity_politics_interview_d8c8047ee6b7",
-        "timestamp_range": "00:12 - 00:14",
-        "final_score": 0.0111,
-        "visual_score": 0.183316,
+        "video_id": "How to TEDx\uff1a Design a stage_b56eece8f029",
+        "timestamp_range": "00:45 - 00:47",
+        "final_score": 0.0131,
+        "visual_score": 0.287405,
         "audio_score": 0.0,
-        "transcript_snippet": "and everything is a fluid culture that can be manipulated at will. In Canada, there are terrible arg",
-        "match_rationale": "Visual vector cosine similarity (0.1833) + Audio similarity (0.0000) fused via RRF (0.0111) and cross-modal agreement scoring."
+        "transcript_snippet": "If your theme is about nature, put in some plants.",
+        "match_rationale": "Visual vector cosine similarity (0.2874) + Audio similarity (0.0000) fused via RRF (0.0131) and cross-modal agreement scoring."
       }
     ]
   },
@@ -42,7 +32,7 @@
       {
         "rank": 1,
         "video_id": "middle_east_news_report_0a56c7e5359d",
-        "timestamp_range": "01:01 - 01:10",
+        "timestamp_range": "01:06 - 01:11",
         "final_score": 0.0133,
         "visual_score": 0.0,
         "audio_score": 0.85549,
@@ -52,12 +42,12 @@
       {
         "rank": 2,
         "video_id": "ecns_opening_speech_665f4791a4e8",
-        "timestamp_range": "01:24 - 01:26",
-        "final_score": 0.0115,
+        "timestamp_range": "01:30 - 01:33",
+        "final_score": 0.0116,
         "visual_score": 0.0,
         "audio_score": 0.849541,
         "transcript_snippet": "The idea of that all of us share is very serious. We are the community who will be able to get",
-        "match_rationale": "Visual vector cosine similarity (0.0000) + Audio similarity (0.8495) fused via RRF (0.0115) and cross-modal agreement scoring."
+        "match_rationale": "Visual vector cosine similarity (0.0000) + Audio similarity (0.8495) fused via RRF (0.0116) and cross-modal agreement scoring."
       }
     ]
   },
@@ -68,32 +58,12 @@
       {
         "rank": 1,
         "video_id": "obama_farewell_speech_353ca4868dfb",
-        "timestamp_range": "01:52 - 01:56",
-        "final_score": 0.0164,
-        "visual_score": 0.327527,
-        "audio_score": 0.0,
-        "transcript_snippet": "Visual scene footage",
-        "match_rationale": "Visual vector cosine similarity (0.3275) + Audio similarity (0.0000) fused via RRF (0.0164) and cross-modal agreement scoring."
-      },
-      {
-        "rank": 2,
-        "video_id": "obama_farewell_speech_353ca4868dfb",
-        "timestamp_range": "00:15 - 00:18",
-        "final_score": 0.0154,
-        "visual_score": 0.322951,
-        "audio_score": 0.0,
-        "transcript_snippet": "Visual scene footage",
-        "match_rationale": "Visual vector cosine similarity (0.3230) + Audio similarity (0.0000) fused via RRF (0.0154) and cross-modal agreement scoring."
-      },
-      {
-        "rank": 3,
-        "video_id": "obama_farewell_speech_353ca4868dfb",
-        "timestamp_range": "01:35 - 01:37",
-        "final_score": 0.0166,
-        "visual_score": 0.321084,
+        "timestamp_range": "01:35 - 01:38",
+        "final_score": 0.017,
+        "visual_score": 0.32112,
         "audio_score": 0.70483,
         "transcript_snippet": "You made the White House a place that belongs to everybody,",
-        "match_rationale": "Visual vector cosine similarity (0.3211) + Audio similarity (0.7048) fused via RRF (0.0149) and cross-modal agreement scoring."
+        "match_rationale": "Visual vector cosine similarity (0.3211) + Audio similarity (0.7048) fused via RRF (0.0152) and cross-modal agreement scoring."
       }
     ]
   }

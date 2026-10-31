@@ -65,6 +65,32 @@ export interface SearchResponse {
   results: SearchResultItem[];
 }
 
+/* ------------------------------------------------------------------ */
+/* Video-RAG Q&A                                                      */
+/* ------------------------------------------------------------------ */
+
+export interface AskVideoRequest {
+  question: string;
+  top_k_snippets?: number;
+  use_mmr?: boolean;
+}
+
+export interface AskVideoResponse {
+  question: string;
+  answer: string;
+  citations: Array<{
+    video_id: string;
+    event_window: string;
+    hero_timestamp: number | null;
+    transcript_snippet: string | null;
+    visual_description: string | null;
+  }>;
+  context_snippets: string[];
+  retrieval_latency_ms: number;
+  llm_latency_ms: number;
+  latency_ms: number;
+}
+
 export interface HealthResponse {
   status: string;
   models_loaded: Record<string, boolean>;
@@ -158,9 +184,36 @@ export async function fetchCorpusStats(): Promise<CorpusStats> {
   return apiFetch<CorpusStats>("/api/v1/corpus/stats");
 }
 
+export async function fetchAskVideo(
+  question: string,
+  topK = 5,
+  useMmr = true,
+): Promise<AskVideoResponse> {
+  // Use relative path so the request goes through the Next.js API route proxy
+  // at app/api/ask-video/route.ts, which forwards to the backend's
+  // /api/v1/ask-video endpoint.
+  const res = await fetch(`/api/ask-video`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      question,
+      top_k_snippets: topK,
+      use_mmr: useMmr,
+    }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "Unknown error");
+    throw new Error(`API ${res.status}: ${text}`);
+  }
+  return res.json() as Promise<AskVideoResponse>;
+}
+
 /** Construct full URL for static video assets served by FastAPI. */
 export function staticVideoUrl(filename: string): string {
-  return `${API_BASE}/static/videos/${filename}`;
+  return `${API_BASE}/static/videos/${encodeURIComponent(filename)}`;
 }
 
 /**
@@ -194,8 +247,14 @@ export function staticFrameUrl(framePath: string): string {
   if (!framePath) return "";
   const match = framePath.match(/extracted_frames[^/]*\/(.+)$/);
   if (match && match[1]) {
-    return `${API_BASE}/static/frames/${match[1]}`;
+    // URL-encode the path so spaces and special characters in directory
+    // names (e.g. "Quadratic Equation Demo class_...") don't break the URL.
+    const encodedPath = match[1]
+      .split("/")
+      .map((segment) => encodeURIComponent(segment))
+      .join("/");
+    return `${API_BASE}/static/frames/${encodedPath}`;
   }
   const basename = framePath.split("/").pop() || "";
-  return `${API_BASE}/static/frames/${basename}`;
+  return `${API_BASE}/static/frames/${encodeURIComponent(basename)}`;
 }

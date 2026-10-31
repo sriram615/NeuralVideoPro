@@ -10,10 +10,13 @@ import TimelineTrack from "@/components/TimelineTrack";
 import VideoPlayer from "@/components/VideoPlayer";
 import XAIGrid from "@/components/XAIGrid";
 import ModalityLegend from "@/components/ModalityLegend";
+import AskVideo from "@/components/AskVideo";
 import {
+  fetchAskVideo,
   fetchCorpusStats,
   fetchHealth,
   fetchSearch,
+  type AskVideoResponse,
   type CorpusStats,
   type HealthResponse,
   type SearchResponse,
@@ -383,6 +386,10 @@ export default function Home() {
   const [isSearching, setIsSearching] = useState(false);
   const [searchStage, setSearchStage] = useState(0);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [ragData, setRagData] = useState<AskVideoResponse | null>(null);
+  const [isAsking, setIsAsking] = useState(false);
+  const [questionStage, setQuestionStage] = useState(0);
+  const [ragError, setRagError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchHealth().then(setHealth).catch(console.warn);
@@ -437,6 +444,33 @@ export default function Home() {
     [selectedVideo, corpusStats]
   );
 
+  const handleAskVideo = useCallback(
+    async (question: string) => {
+      setIsAsking(true);
+      setRagError(null);
+      setRagData(null);
+      setQuestionStage(1);
+
+      const stageTimer = setInterval(() => {
+        setQuestionStage((s) => (s < 4 ? s + 1 : s));
+      }, 200);
+
+      try {
+        const data = await fetchAskVideo(question, 5, true);
+        setQuestionStage(5);
+        setRagData(data);
+      } catch (err: unknown) {
+        console.error("Video-RAG error:", err);
+        setRagError(err instanceof Error ? err.message : "Failed to connect to backend server");
+      } finally {
+        clearInterval(stageTimer);
+        setIsAsking(false);
+        setQuestionStage(0);
+      }
+    },
+    []
+  );
+
   return (
     <main className="bg-void flex min-h-screen flex-col text-white font-sans overflow-hidden">
       {currentPage === 0 && (
@@ -465,12 +499,20 @@ export default function Home() {
           corpusStats={corpusStats}
         />
       )}
+      {currentPage === 3 && (
+        <AskVideo
+          onNavigate={navigateToPage}
+          health={health}
+          corpusStats={corpusStats}
+        />
+      )}
 
       <nav className="fixed bottom-6 right-8 z-50 flex items-center gap-2 bg-black/80 px-4 py-2 rounded-full backdrop-blur-2xl border border-white/20 shadow-2xl" aria-label="Page switcher">
         {[
           { label: "1. DEMO", idx: 0 },
           { label: "2. CONSOLE", idx: 1 },
           { label: "3. XAI PROVENANCE", idx: 2 },
+          { label: "4. VIDEO-RAG Q&A", idx: 3 },
         ].map((item) => (
           <button
             key={item.idx}

@@ -1,6 +1,6 @@
 # VEA - Multimodal Video Search and Intelligence Engine
 
-Real-Time Cross-Modal Deep Video Retrieval with OpenAI CLIP (512-D), OpenAI Whisper Speech Transcription, Reciprocal Rank Fusion (RRF), Cross-Modal Agreement Scoring, and Maximal Marginal Relevance (MMR) Diversification.
+Real-Time Cross-Modal Deep Video Retrieval with OpenAI CLIP (512-D), OpenAI Whisper Speech Transcription, Reciprocal Rank Fusion (RRF), Cross-Modal Agreement Scoring, Maximal Marginal Relevance (MMR) Diversification, and Grounded Video-RAG with Groq (gpt-oss-20b).
 
 ---
 
@@ -15,8 +15,9 @@ VEA (Video Exploration & Analytics) is a high-performance multimodal video searc
 - **Reciprocal Rank Fusion (RRF):** Rank-based fusion algorithm (k = 60) overcoming scale disparities between visual and text modalities.
 - **Dynamic Modality Masking:** Automatic detection and zero-weighting of silent frames or missing audio tracks to prevent noise corruption.
 - **Maximal Marginal Relevance (MMR):** Semantic vector diversification using pairwise cosine similarity over 512-D visual vectors to eliminate redundant keyframe matches.
+- **Per-Video Result Cap:** Limits each video to max 2 results per query to prevent single-video dominance.
 - **Explainable AI (XAI) Attribution:** Full score breakdowns including primary modality driver, visual similarity percentage, audio similarity percentage, fused score percentage, confidence tiering, and human-readable match rationales.
-- **Grounded Video-RAG:** Question-answering pipeline synthesizing grounded answers from retrieved visual scene descriptions and Whisper transcript segments.
+- **Grounded Video-RAG:** Question-answering pipeline synthesizing grounded answers from retrieved visual scene descriptions and Whisper transcript segments with `[Source N]` citations via Groq (gpt-oss-20b).
 
 ---
 
@@ -69,8 +70,19 @@ VEA (Video Exploration & Analytics) is a high-performance multimodal video searc
                                          |
                                          v
 +-----------------------------------------------------------------------------------+
+|           Per-Video Cap (max 2 per video) + MMR Diversification                   |
+|                Reranks candidates to ensure cross-video diversity                 |
++-----------------------------------------------------------------------------------+
+                                         |
+                                         v
++-----------------------------------------------------------------------------------+
 |                        FastAPI Server & Next.js UI                                |
 |        < 300 ms CPU Latency, XAI Score Breakdown, Synchronized Video Player      |
++-----------------------------------------------------------------------------------+
+                                         |
+                                         v
++-----------------------------------------------------------------------------------+
+|                      Grounded Video-RAG (Groq gpt-oss-20b + Citations)           |
 +-----------------------------------------------------------------------------------+
 ```
 
@@ -88,11 +100,13 @@ VEA/
 |   |   |-- db/                   # Qdrant Vector Store Wrapper
 |   |   |-- ingestion/            # Keyframe Sampler & Audio Transcriber
 |   |   |-- models/               # CLIP Vision & Text Encoder Modules
+|   |   |-- rag/                  # Grounded Video-RAG Generator (Groq)
 |   |   `-- retrieval/            # Ranker, XAI Attribution & Merging Logic
 |   `-- tests/                    # Comprehensive Test Suite
 |-- frontend/                     # Next.js 16 Web Application (TypeScript, Tailwind CSS)
 |   |-- app/                      # Next.js App Router (page.tsx, layout.tsx, globals.css)
-|   |-- components/               # UI Components (WireframeArcs.tsx)
+|   |   `-- api/                  # API Route Proxies (/api/search, /api/ask-video)
+|   |-- components/               # UI Components (WireframeArcs.tsx, AskVideo.tsx, …)
 |   `-- lib/                      # API Client Service (api.ts)
 |-- data/                         # Datasets & Vector Database Storage
 |   |-- raw/                      # Source MP4 Video Files
@@ -163,6 +177,21 @@ On macOS or Linux, run:
 ```bash
 bash setup.sh
 ```
+
+### Environment Variables
+
+Copy `.env.example` to `.env` and configure:
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `QDRANT_DB_PATH` | Path to local Qdrant database directory | No (default: `./data/vectors/qdrant_db`) |
+| `GROQ_API_KEY` | Groq API key for generative Video-RAG answers | Yes (for ask-video endpoint) |
+| `GROQ_MODEL` | Groq model to use | No (default: `openai/gpt-oss-20b`) |
+| `HOST` | FastAPI host | No (default: `0.0.0.0`) |
+| `PORT` | FastAPI port | No (default: `8000`) |
+| `NEXT_PUBLIC_API_URL` | Backend URL for frontend | No (default: `http://localhost:8000`) |
+
+Get a Groq API key at https://console.groq.com/
 
 ---
 
@@ -285,7 +314,7 @@ Executes Reciprocal Rank Fusion multimodal video search with auto-intent classif
 
 ### POST /api/v1/ask-video
 
-Executes grounded Video-RAG Q&A deriving answers strictly from retrieved visual scene descriptions and Whisper dialogue transcripts.
+Executes Grounded Video-RAG Q&A deriving answers strictly from retrieved visual scene descriptions and Whisper dialogue transcripts, synthesized by Groq (gpt-oss-20b) with `[Source N]` citations.
 
 **Request Payload:**
 ```json
@@ -293,6 +322,27 @@ Executes grounded Video-RAG Q&A deriving answers strictly from retrieved visual 
   "question": "What did Steve Jobs say about personal computers?",
   "top_k_snippets": 5,
   "use_mmr": true
+}
+```
+
+**Response Example:**
+```json
+{
+  "question": "What did Steve Jobs say about personal computers?",
+  "answer": "Steve Jobs said calculators would eliminate slide rules... [Source 1]",
+  "citations": [
+    {
+      "video_id": "Steve Jobs Interview Feb 18 1981_936669ae85ba",
+      "event_window": "13.0s - 15.0s",
+      "hero_timestamp": 13.0,
+      "transcript_snippet": "...",
+      "visual_description": "Keyframe visual scene in window 13.0s–15.0s"
+    }
+  ],
+  "context_snippets": ["..."],
+  "retrieval_latency_ms": 142.5,
+  "llm_latency_ms": 800.0,
+  "latency_ms": 942.5
 }
 ```
 
@@ -354,6 +404,26 @@ python -m scripts.utilities.verify_pipeline_test
 ```
 
 Reports are saved to `reports/eval_results.md`.
+
+### LLM-Generated Question Evaluation
+
+42 easy/medium/hard questions were generated from video transcripts using Groq (gpt-oss-20b) and run through the retrieval pipeline:
+
+| Difficulty | Correct | Total | Accuracy |
+|------------|---------|-------|----------|
+| Easy       | 13      | 14    | 92.9%    |
+| Medium     | 13      | 14    | 92.9%    |
+| Hard       | 14      | 14    | 100.0%   |
+| **Overall**| **40**  | **42**| **95.2%**|
+
+Generate new questions:
+
+```bash
+source .venv/bin/activate
+PYTHONPATH=backend python scripts/evaluation/generate_llm_questions.py
+```
+
+Results saved to `reports/llm_generated_evaluation.md` and `backend/tests/data/llm_generated_questions.json`.
 
 ---
 

@@ -27,6 +27,10 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 import gc
 import torch
 from fastapi import FastAPI, HTTPException, Request, Response
@@ -47,6 +51,7 @@ from schemas import (
 )
 from src.db.qdrant_db import COLLECTION_NAME
 from src.pipeline import VideoSearchPipeline, predict_alpha
+from src.rag.generator import get_rag_generator
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
@@ -390,15 +395,19 @@ async def ask_video(request: AskVideoRequest) -> AskVideoResponse:
     t_llm_start = time.perf_counter()
     if not context_snippets:
         answer = "The provided video corpus does not contain sufficient context to answer this query."
+        llm_ms = 0.0
     else:
-        # Grounded answer synthesis combining visual and acoustic evidence
-        lines = context_snippets[0].splitlines()
-        summary_line = lines[1] if len(lines) > 1 else context_snippets[0][:100]
-        answer = f"Based strictly on multimodal context: {summary_line} (Cited across {len(citations)} event locations)."
+        # Grounded answer synthesis via Groq (falls back to extractive if no API key)
+        generator = get_rag_generator()
+        answer = generator.generate(
+            question=request.question,
+            context_snippets=context_snippets,
+            citations=citations,
+        )
+        llm_ms = round((time.perf_counter() - t_llm_start) * 1000, 2)
 
     t_end = time.perf_counter()
     retrieval_ms = round((t_llm_start - t0) * 1000, 2)
-    llm_ms = round((t_end - t_llm_start) * 1000, 2)
     total_ms = round((t_end - t0) * 1000, 2)
 
     return AskVideoResponse(

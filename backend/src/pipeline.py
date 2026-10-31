@@ -370,9 +370,12 @@ class VideoSearchPipeline:
         else:
             candidate_pool = results
 
-        # Stage 2: Optional Semantic Vector MMR Diversification
+        # Stage 2a: Cap results per video to prevent a single video from dominating
+        candidate_pool = self._cap_results_per_video(candidate_pool, max_per_video=2)
+
+        # Stage 2b: Optional Semantic Vector MMR Diversification
         if enable_mmr:
-            top_results = self._apply_mmr_diversification(candidate_pool, top_k=top_k, lambda_param=0.7)
+            top_results = self._apply_mmr_diversification(candidate_pool, top_k=top_k, lambda_param=0.5)
         else:
             top_results = candidate_pool[:top_k]
 
@@ -390,6 +393,42 @@ class VideoSearchPipeline:
             "results": top_results,
             "masked_modality": global_masked_modality,
         }
+
+    # ------------------------------------------------------------------
+    # Per-Video Result Cap — prevents a single video from dominating top-k
+    # ------------------------------------------------------------------
+    @staticmethod
+    def _cap_results_per_video(
+        candidates: List[Dict[str, Any]],
+        max_per_video: int = 2,
+    ) -> List[Dict[str, Any]]:
+        """Limit each video to at most *max_per_video* results.
+
+        Without this cap, a single video with many strong keyframes can
+        occupy most of the top-k slots (e.g., Obama taking 3 of 5 results).
+        The cap guarantees cross-video diversity before MMR runs, so MMR's
+        visual-similarity penalty doesn't need to do all the heavy lifting.
+
+        Parameters
+        ----------
+        candidates : list[dict]
+            Ranked search candidate dictionaries.
+        max_per_video : int
+            Maximum results allowed per video_id (default 2).
+
+        Returns
+        -------
+        list[dict]
+            Candidates with per-video cap applied, original order preserved.
+        """
+        seen: Dict[str, int] = {}
+        capped: List[Dict[str, Any]] = []
+        for cand in candidates:
+            vid = cand.get("payload", {}).get("video_id", "unknown")
+            if seen.get(vid, 0) < max_per_video:
+                capped.append(cand)
+                seen[vid] = seen.get(vid, 0) + 1
+        return capped
 
     # ------------------------------------------------------------------
     # Cross-Modal Agreement Scoring Helper

@@ -108,6 +108,7 @@ export default function Header({
             { idx: 0, label: "DEMO" },
             { idx: 1, label: "CONSOLE" },
             { idx: 2, label: "XAI PROVENANCE" },
+            { idx: 3, label: "VIDEO-RAG Q&A" },
           ].map((item) => (
             <button
               key={item.idx}

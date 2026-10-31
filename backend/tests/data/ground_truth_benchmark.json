@@ -208,5 +208,110 @@
     "category": "hybrid",
     "ground_truth_video_ids": ["sports_news_breakdown_372460f80e66"],
     "ground_truth_timestamps": [150.0]
+  },
+  {
+    "query_id": "v_11",
+    "query": "president speaking at podium with flags and seal behind",
+    "category": "visual",
+    "ground_truth_video_ids": ["'Wait ... be careful ... quiet!' Trump snaps at reporters during White House press conference_9acd664fd096"],
+    "ground_truth_timestamps": [32.0]
+  },
+  {
+    "query_id": "v_12",
+    "query": "chef cracking eggs into frying pan kitchen stove",
+    "category": "visual",
+    "ground_truth_video_ids": ["How To Make an Omelette_3f9a7f590a70"],
+    "ground_truth_timestamps": [39.0]
+  },
+  {
+    "query_id": "v_13",
+    "query": "speaker on stage presenting slides to audience conference",
+    "category": "visual",
+    "ground_truth_video_ids": ["How to TEDx： Design a stage_b56eece8f029"],
+    "ground_truth_timestamps": [70.0]
+  },
+  {
+    "query_id": "v_14",
+    "query": "teacher writing math equations on whiteboard classroom",
+    "category": "visual",
+    "ground_truth_video_ids": ["Quadratic Equation Demo class_dd11e5ce2493"],
+    "ground_truth_timestamps": [30.0]
+  },
+  {
+    "query_id": "v_15",
+    "query": "person talking to camera in apartment room vlog",
+    "category": "visual",
+    "ground_truth_video_ids": ["what they dont tell you about living alone._cfdf48ba368c"],
+    "ground_truth_timestamps": [15.0]
+  },
+  {
+    "query_id": "a_11",
+    "query": "president answering reporters questions press briefing",
+    "category": "audio",
+    "ground_truth_video_ids": ["'Wait ... be careful ... quiet!' Trump snaps at reporters during White House press conference_9acd664fd096"],
+    "ground_truth_timestamps": [57.0]
+  },
+  {
+    "query_id": "a_12",
+    "query": "cooking instructions seasoning omelette recipe steps",
+    "category": "audio",
+    "ground_truth_video_ids": ["How To Make an Omelette_3f9a7f590a70"],
+    "ground_truth_timestamps": [35.0]
+  },
+  {
+    "query_id": "a_13",
+    "query": "stage design lighting setup presentation advice tips",
+    "category": "audio",
+    "ground_truth_video_ids": ["How to TEDx： Design a stage_b56eece8f029"],
+    "ground_truth_timestamps": [17.0]
+  },
+  {
+    "query_id": "a_14",
+    "query": "algebra quadratic formula solving math problem step by step",
+    "category": "audio",
+    "ground_truth_video_ids": ["Quadratic Equation Demo class_dd11e5ce2493"],
+    "ground_truth_timestamps": [80.0]
+  },
+  {
+    "query_id": "a_15",
+    "query": "living alone apartment tips daily routine advice",
+    "category": "audio",
+    "ground_truth_video_ids": ["what they dont tell you about living alone._cfdf48ba368c"],
+    "ground_truth_timestamps": [40.0]
+  },
+  {
+    "query_id": "h_11",
+    "query": "white house press conference president speaking at podium",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["'Wait ... be careful ... quiet!' Trump snaps at reporters during White House press conference_9acd664fd096"],
+    "ground_truth_timestamps": [32.0]
+  },
+  {
+    "query_id": "h_12",
+    "query": "cooking demonstration making omelette in kitchen",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["How To Make an Omelette_3f9a7f590a70"],
+    "ground_truth_timestamps": [60.0]
+  },
+  {
+    "query_id": "h_13",
+    "query": "TEDx talk stage design presentation slide show",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["How to TEDx： Design a stage_b56eece8f029"],
+    "ground_truth_timestamps": [17.0]
+  },
+  {
+    "query_id": "h_14",
+    "query": "math lecture quadratic equation whiteboard teaching",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["Quadratic Equation Demo class_dd11e5ce2493"],
+    "ground_truth_timestamps": [130.0]
+  },
+  {
+    "query_id": "h_15",
+    "query": "vlog apartment living alone personal story room tour",
+    "category": "hybrid",
+    "ground_truth_video_ids": ["what they dont tell you about living alone._cfdf48ba368c"],
+    "ground_truth_timestamps": [70.0]
   }
 ]
